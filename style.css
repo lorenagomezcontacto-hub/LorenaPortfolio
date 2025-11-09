@@ -1,0 +1,2464 @@
+
+/* Tipografía y estilos generales */
+body {
+  margin: 0;
+  font-family: 'Urbanist', sans-serif;
+  background: #fff;
+  color: #111;
+  line-height: 1.6;
+  cursor: url("images/cursor_lorena_minimal_24.png") 2 2, auto;
+}
+
+/* ===== HEADER ===== */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  opacity: 1;
+  transform: translateY(0);
+  font-family: 'Urbanist', sans-serif;
+  line-height: 0.3;
+  transform: translateY(0);
+}
+
+#main-header.hide {
+  transform: translateY(-100%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+header.solid {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-family: 'Urbanist', sans-serif;
+}
+
+/* Navegación */
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+  color: #000;
+  transform: scale(1.08);
+}
+
+/* Botón de contacto en el header */
+.btn-contacto {
+  padding: .6rem 1.2rem;
+  border: 1.5px solid #111;
+  border-radius: 6px;
+  margin-left: 1.5rem;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.3s ease;
+  background-color: #FFEE58;
+  color: #000000;
+
+    /* 🔧 fijamos proporciones exactas */
+  font-size: 1.2rem;               /* tamaño de texto constante */
+  line-height: 1.2;              /* evita que la caja amarilla se achate */
+  box-sizing: border-box;        /* asegura que padding + borde se midan igual */
+}
+
+.btn-contacto:hover {
+  background-color: #111;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== SOLO MÓVIL: header con “+” ===== */
+@media (max-width: 899.98px){
+  #main-header{
+    position: sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 18px;
+    background:#fff;     border-bottom: none;
+
+  }
+
+  /* nombre corto sin cambiar tu H1 original */
+  #main-header .logo{
+    margin:0; font-weight:700; font-size:1.05rem; line-height:1.1;
+    position:relative; color:transparent;      /* oculto el largo… */
+  }
+  #main-header .logo::before{
+    content:"Lorena Gómez";                     /* …muestro el corto */
+    color:#111; position:absolute; inset:0;
+  }
+
+  /* botón + */
+  #main-header .menu-toggle{
+    appearance:none; border:0; background:transparent; cursor:pointer;
+    line-height:1; padding:6px 8px; margin:-6px -8px;
+    font-weight:800; font-size:1.8rem; color:#FFC300;
+  }
+  #main-header .menu-toggle:focus-visible{outline:2px solid #FFC300; outline-offset:2px}
+
+  /* nav colapsable bajo el header */
+  #primary-nav{
+    overflow:scroll; transition:max-height 1.95s ease;
+    width:100%; 
+    border-bottom: none; /* adiós línea final */
+    text-align: center; line-height: 90%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  #primary-nav a{
+    display:block; padding:12px 18px; text-decoration:none; color:inherit; font-weight:600;
+    border-top:1px solid #f5f5f5;
+  }
+}
+/* ===== BOTÓN "CONTACTO" — SOLO MÓVIL ===== */
+@media (max-width: 899.98px){
+  #primary-nav .btn-contacto {
+    display: inline-block;
+    background: #FFEE58;       /* amarillo principal */
+    color: #000;               /* texto negro */
+    border: 1px solid #000;    /* borde negro */
+    border-radius: 6px;
+    padding: 0.55rem 1.2rem;   /* tamaño compacto */
+    margin-top: 1.2rem;        /* separación del resto */
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  #primary-nav .btn-contacto:hover {
+    background: #ffe02f;       /* un poco más intenso al pasar el cursor */
+    transform: scale(1.04);    /* sutil aumento */
+  }
+}
+
+/* ===== SOLO ESCRITORIO: conserva tu header tal cual ===== */
+@media (min-width:900px){
+  #main-header .menu-toggle{display:none;}
+  /* no cambiamos estilos de tu nav/links de escritorio */
+}
+
+/* ===== MOBILE HEADER FIX (≤ 899px): nombre izq + a la derecha ===== */
+@media (max-width: 899.98px){
+  /* Header en grid: 2 columnas */
+  #main-header{
+    position: sticky; top:0; z-index:100;
+    display:grid !important;
+    grid-template-columns: 1fr auto;   /* izquierda: nombre | derecha: + */
+    grid-auto-rows: min-content;
+    align-items:center;
+    padding:12px 16px;
+    background:#fff; border-bottom:1px solid #eee;
+  }
+
+  /* Nombre corto sin que el H1 empuje nada */
+  #main-header .logo{
+    margin:0; line-height:1.1; font-weight:700; font-size:0;  /* colapsa ancho */
+    white-space:nowrap;
+  }
+  #main-header .logo::before{
+    content:"Lorena Gómez";
+    font-size:1.06rem; font-weight:700; color:#111;
+  }
+
+  /* Botón + alineado a la esquina derecha */
+  #main-header .menu-toggle{
+    justify-self:end;                 /* lo pega a la derecha */
+    appearance:none; border:0; background:transparent; cursor:pointer;
+    line-height:1; padding:6px 8px;
+    font-weight:800; font-size:1.9rem; color:#FFC300;
+    margin:0;                         /* sin márgenes raros */
+  }
+  /* (opcional) + → × al abrir */
+  #main-header .menu-toggle[aria-expanded="true"] span{ display:none }
+  #main-header .menu-toggle[aria-expanded="true"]::after{ content:"×"; }
+
+  /* El nav va en la fila 2 y ocupa todo el ancho */
+  #primary-nav{
+    grid-column: 1 / -1;              /* span de 2 columnas */
+    overflow:hidden; max-height:0; transition:max-height .35s ease;
+    width:100%; border-bottom:1px solid #eee;
+  }
+  #primary-nav a{
+    display:block; padding:12px 16px; text-decoration:none; color:#111; font-weight:600;
+    border-top:1px solid #f5f5f5;
+  }
+
+  /* Collage full width y sin hueco */
+  .collage .img1{ width:100% !important; }
+
+  body{ margin:0; }
+}
+
+@media (max-width: 899.98px){
+
+  /* Quitar la línea final bajo el menú */
+  #primary-nav{
+    border-bottom: none;
+  }
+
+  /* Separadores entre enlaces */
+  #primary-nav a{
+    border-top: 1px solid #f5f5f5;
+  }
+  #primary-nav a:first-of-type{
+    border-top: none; /* que no aparezca antes de Redacción */
+  }
+
+  /* === BOTÓN CONTACTO (restauramos su borde real) === */
+  #primary-nav .btn-contacto{
+    border-top: none;          /* no queremos la línea del menú encima */
+    border: 1px solid #000;    /* restauramos borde del botón */
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 1.2rem;        /* mantiene separación bonita */
+    font-weight: 900;
+  }
+}
+
+/* ===== PORTADA ===== */
+.hero {
+  background: url('images/portada.jpg') center/cover no-repeat;
+  background-color: #000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+/* ===== BLOG ===== */
+.blog {
+  padding: 2rem 2rem;
+  text-align: center;
+}
+
+.blog h2 {
+  margin-bottom: 2rem;
+  font-size: 2.3rem;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* TARJETAS */
+.post {
+  background: #fafafa;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+
+  /* Transición suave y elegante */
+  transition: transform .45s cubic-bezier(.23,.7,.18,1), 
+              box-shadow .45s cubic-bezier(.23,.7,.18,1);
+  transform-origin: center;
+}
+
+/* Imagen */
+.post img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform .45s cubic-bezier(.23,.7,.18,1), 
+              filter .45s ease;
+}
+
+/* Título */
+.post h3 {
+  padding: 1rem 1rem 0;
+  font-size: 1.5rem;
+}
+
+/* Texto */
+.post p {
+  padding: 0 1rem 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Enlace */
+.post a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: #111;
+  font-weight: 500;
+  text-decoration: none;
+  border-top: 1px solid #eee;
+  width: 100%;
+  transition: background 0.3s;
+
+  /* Para que no interfiera con el hover del post */
+  pointer-events: none;
+}
+
+/* Hover general de la tarjeta */
+.post:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* Oscurecer la imagen ligeramente al hacer hover (editorial, elegante) */
+.post:hover img {
+  filter: brightness(0.92);
+  transform: scale(1.05);
+}
+
+/* Cuando hacemos hover en la tarjeta, el enlace vuelve a ser clicable */
+.post:hover a {
+  pointer-events: auto;
+  background: #f5f5f5;
+}
+
+/* Cursor elegante */
+.post {
+  cursor: inherit; /* ← No mano en la tarjeta */
+}
+
+/* Solo el enlace tiene cursor de mano */
+.post a {
+  cursor: pointer;
+}
+
+.post a:hover {
+  background: #f0f0f0;
+  text-decoration: underline;
+}
+
+/* ===== CITA ===== */
+.quote {
+  text-align: center;
+  background: #fff88a;
+  padding: 3rem 1rem;
+  font-size: 2.8rem;
+  font-family: 'Urbanist', sans-serif;   
+  padding-top: 2rem;
+  margin-top: 0;
+}
+
+/* ===== PIE ===== */
+footer {
+  text-align: center;
+  padding: 0.5rem;
+  background: #ffffff;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ===== COLLAJE INTERACTIVO — LIENZO PROPORCIONAL ===== */
+/* Mantiene un lienzo base 1000×600. Por debajo de 1000px, todo se reduce en proporción. */
+
+.collage {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;          /* ancho máximo del diseño original */
+  aspect-ratio: 1000 / 600;   /* alto proporcional al ancho */
+  margin: 4rem auto;
+  margin-top: 110px;
+  margin-bottom: 120px;
+  overflow: visible;
+  z-index: 10;
+  /* no flex/grid aquí: el collage es un lienzo con elementos absolutos */
+}
+
+/* Cada imagen como tile (ya no hay <a>) */
+.collage img {
+  position: absolute;
+  display: block;
+  border-radius: 8px;
+  height: auto;
+  overflow: hidden;
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: inherit;
+}
+
+/* Hover general */
+.collage img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+/* Evita que la imagen base (img1) se superponga o reciba sombra */
+.collage .img1 {
+  z-index: 0 !important;
+  box-shadow: none !important;
+}
+
+.collage .img1:hover {
+  transform: scale(1.08);
+  box-shadow: none !important;
+}
+
+/* ===== POSICIONES Y TAMAÑOS (en %) ===== */
+
+.img1 {
+  top: 5%;
+  left: -8%;
+  width: 115%;
+  z-index: 1;
+}
+
+.img2 {
+  top: 7%;
+  left: -12%;
+  width: 38%;
+  z-index: 2;
+}
+
+.img3 {
+  top: 78%;
+  left: 10%;
+  width: 35%;
+  z-index: 3;
+}
+
+.img4 {
+  top: 35%;
+  left: 30%;
+  width: 20%;
+  z-index: 1;
+}
+
+.img5 {
+  top: 55%;
+  left: 85%;
+  width: 25%;
+  z-index: 2;
+}
+
+.img6 {
+  top: 40%;
+  left: 57%;
+  width: 30%;
+  z-index: 3;
+}
+
+.img7 {
+  top: 1%;
+  left: 47%;
+  width: 50%;
+  z-index: 3;
+}
+
+
+/* ===== Opcional: suavizar en táctiles (sin “zoom” en hover) ===== */
+@media (hover: none) {
+  .collage a:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+  }
+}
+
+
+/* === SECCIÓN CONECTAMOS === */
+#contacto {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 80px 20px;
+  background: #fff88a;
+  margin-top: 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  scroll-margin-top: 100px;
+}
+
+#contacto > h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 72px);
+  line-height: 1.2;
+}
+
+#contacto > p {
+  margin: 0 0 24px;
+  color: #000000;
+  font-size: 1.25rem;
+  max-width: 90ch;
+  margin-inline: auto;
+}
+
+#contacto .boton-contacto {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: transform 0.15s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+#contacto .boton-contacto:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* === FORMULARIO CONTACTO === */
+.formulario-contacto {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-contacto button {
+  align-self: center;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.formulario-contacto button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* === REDES CONTACTO (iconos SVG integrados) === */
+.redes-contacto {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.redes-contacto p {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.iconos-redes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.iconos-redes a svg {
+  transition: transform 0.25s ease, stroke 0.25s ease;
+  opacity: 0.85;
+}
+
+.iconos-redes a:hover svg {
+  transform: scale(1.15);
+  stroke: #000;
+  opacity: 1;
+}
+
+
+/* ===== REDACCIÓN ===== */
+/* ===== Redacción: sección hero protagonista (fondo amarillento) ===== */
+.redaccion-hero {
+  background: #fff88a;            /* el amarillo que ya usabas */
+  padding: 72px 0 64px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+#Redacción { scroll-margin-top: 90px; } /* por el header sticky */
+.redaccion-hero .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.redaccion-hero h1 { 
+  margin: 0 0 10px; 
+  font-size: clamp(2.2rem, 1.2rem + 2.6vw, 3.2rem);
+  text-align: center; 
+  color: #111;
+  font-family: 'Orbitron', sans-serif;
+
+}
+.redaccion-hero .sub { 
+  margin: 0 auto 14px; 
+  text-align: center; 
+  font-weight: 700; 
+  letter-spacing: .2px; 
+  color: #111; 
+}
+.redaccion-hero .desc { 
+  margin: 0 auto; 
+  max-width: 70ch; 
+  text-align: center; 
+  color: #333; 
+  font-size: clamp(1rem,.95rem + .25vw,1.1rem);
+}
+
+/* ===== 4 categorías: fondo negro + tarjetas superpuestas en 4 columnas ===== */
+.servicios {
+  background: #000;               /* fondo negro para toda la sección */
+  padding: 96px 0 80px;           /* aire para que “floten” */
+  position: relative;
+}
+.servicios .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Grid en 4 columnas (horizontal) */
+.servicios-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: -36px;              /* efecto de superposición respecto a la hero */
+  margin-bottom: -15px;
+  align-items: stretch; /* estira las tarjetas para igualarlas */
+
+}
+
+/* Tarjetas: blancas, elevadas, con hover suave tipo collage */
+.servicio{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  padding:24px 20px;
+  box-shadow:0 10px 28px rgba(0,0,0,.18);
+  transform: translateY(0) scale(1);
+  transition: transform .25s ease, box-shadow .25s ease;
+
+  /* estructura interna para alinear títulos y textos */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;   /* empezamos arriba */
+  align-items:center;
+  text-align:center;
+
+  min-height: 240px;            /* asegura misma altura visual de la caja */
+}
+
+.servicio:hover{
+  transform: translateY(-6px) scale(1.10);
+  box-shadow:0 18px 40px rgba(0,0,0,.26);
+}
+
+/* TÍTULO: reserva exactamente 2 líneas (alineación superior igual) */
+.servicio h3{
+  margin:0 0 15px;
+  font-size:1.9rem;
+  line-height:1.25;
+  color:#111;
+  font-family: 'Orbitron', sans-serif;
+
+
+  /* el truco: bloque de 2 líneas de alto */
+  min-height: calc(1.25em * 2);
+  display:flex;
+  align-items:flex-end; /* alinea la última línea a la base del bloque */
+  justify-content:center;
+}
+
+/* DESCRIPCIÓN: reserva 3 líneas para alinear el inicio con los demás */
+.servicio p{
+  margin:0;
+  color:#555;
+  font-size:.98rem;
+  line-height:1.5;
+  margin-bottom: 0.8em;
+
+  
+  /* bloque de 3 líneas de alto mínimo */
+  min-height: calc(1.5em * 3);
+  display:flex;
+  align-items:flex-start;  /* el texto empieza arriba del bloque */
+  justify-content:center;
+  text-align:center;
+}
+
+/* responsive (igual que antes) */
+@media (max-width: 980px){
+  .servicios-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); margin-top:-40px; }
+}
+@media (max-width: 560px){
+  .servicios-grid{ grid-template-columns: 1fr; margin-top:-24px; }
+}
+
+/* ===== Blog: dos artículos por fila ===== */
+.blog-redaccion {
+  position: relative;
+  background-color: #f9f9f9; /* tono base por si el fondo no carga */
+  background-image: url('images/image_fondoruido.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* efecto de fondo fijo */
+  background-position: center center;
+  padding: 72px 0 80px;
+  color: #111;
+  overflow: hidden;
+}
+
+.blog-redaccion .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-redaccion h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.3rem);
+  text-align: center;
+  color: #111;
+}
+
+.blog-redaccion .intro {
+  margin: 0 auto 28px;
+  max-width: 65ch;
+  color: #000000;
+  text-align: center;
+}
+
+.blog-redaccion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.40);
+  z-index: 0;
+}
+
+/* 2 columnas fijas en escritorio */
+.blog-redaccion .posts {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Tarjetas del blog (reutiliza tus estilos base si ya existen) */
+.blog-redaccion .post {
+  border: 1px solid rgba(0,0,0,.08); 
+  border-radius: 12px; 
+  overflow: hidden; 
+  background: #fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.blog-redaccion .post:hover { 
+  transform: translateY(-8px) scale(1.02);; 
+  box-shadow: 0 10px 26px rgba(0,0,0,.08); 
+}
+.blog-redaccion .post img { 
+  width: 100%; height: 200px; object-fit: cover; display: block; 
+}
+.blog-redaccion .post h3 { margin: 12px 14px 6px; font-size: 1.7rem; }
+.blog-redaccion .post p  { margin: 0 14px 14px; color: #555; font-size: .98rem; }
+.blog-redaccion .post a  { display: inline-block; margin: 0 14px 16px; text-decoration: none; font-weight: 600; color: #111; }
+
+/* Responsive blog: a 1 columna en móvil */
+@media (max-width: 720px) {
+  .blog-redaccion .posts { grid-template-columns: 1fr; }
+}
+
+/* (Opcional) Respeto accesibilidad para gente que prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .servicio, .post { transition: none; }
+  .servicio:hover, .post:hover { transform: none; }
+}
+
+/* === Efecto máquina: cursor solo en la línea activa, sin residuos === */
+.typewriter{
+  max-width: 90ch;
+  width: min(90ch, 95vw);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tw-line{
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-size: clamp(1rem, .95rem + .25vw, 1.15rem);
+  color: #000000;
+  line-height: 1.6;
+  display: block;         /* punto y aparte real */
+  margin-bottom: 1rem;
+  /* CANCELA cualquier resto anterior */
+  border-right: 0 !important;
+  animation: none !important;
+  position: relative;
+}
+
+/* Cursor solo cuando la línea está activa */
+.tw-line.cursor::after{
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: transparent;
+  margin-left: 2px;
+  animation: caret-blink .9s step-end infinite;
+  vertical-align: -0.15em; /* ajusta a tu gusto */
+}
+
+@keyframes caret-blink { 50% { opacity: 0; } }
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .tw-line.cursor::after { animation: none; }
+}
+
+/* === Letras decorativas: opacas, elegantes y animadas === */
+.decorativa-g {
+  position: absolute;
+  top: 66%;
+  left: -15%;
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 0;
+  pointer-events: auto; /* ahora sí permiten interacción */
+  transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+  transform-origin: left center; /* punto de rotación */
+}
+
+.decorativa-g svg {
+  width: 670px;
+  height: auto;
+}
+
+/* Al pasar el cursor */
+.decorativa-g:hover {
+  transform: translateY(-50%) rotate(-4deg) scale(1.02);
+}
+
+/* Mientras haces clic */
+.decorativa-g:active {
+  transform: translateY(-50%) rotate(-6deg) scale(1.03);
+}
+
+/* === Letra derecha === */
+.decorativa-derecha {
+  position: absolute;
+  top: 67%;
+  right: -31%;
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+  transform-origin: right center;
+}
+
+.decorativa-derecha svg {
+  width: 695px;
+  height: auto;
+}
+
+/* Hover y clic */
+.decorativa-derecha:hover {
+  transform: translateY(-50%) rotate(4deg) scale(1.02);
+}
+.decorativa-derecha:active {
+  transform: translateY(-50%) rotate(6deg) scale(1.03);
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .decorativa-g,
+  .decorativa-derecha {
+    transition: none;
+  }
+}
+
+
+
+.redaccion-hero {
+  position: relative;
+  background-color: #ffeb6d;   /* fondo amarillento */
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.redaccion-hero .container {
+  position: relative;
+  z-index: 2;                  /* asegura que el texto esté encima */
+}
+
+
+/* === Sección final: Leer más en Medium (solo icono) === */
+.leer-mas-medium {
+  background: #000;
+  padding: 1rem 1rem;
+  text-align: center;
+  padding: 1rem 1rem 2rem; /* igual arriba y abajo */
+
+}
+
+.medium-link {
+  display: inline-block;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.medium-link:hover {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+.medium-icon {
+  width: 90px;   /* ← tamaño mayor que los iconos de redes */
+  height: auto;
+  fill: #fff;
+}
+
+.leer-mas-texto {
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Preloader pantalla completa */
+#preloader{
+  position: fixed; inset: 0; z-index: 9999;
+  display: grid; place-items: center;
+  background: #000; transition: opacity .6s ease, visibility .6s ease;
+}
+#preloader.hide{ opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Dots amarillos */
+.dots{ display: inline-flex; gap: .6rem; }
+.dot{
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #FFEE58; transform: scale(0.6);
+  animation: dotPulse 1s infinite ease-in-out;
+}
+.dot:nth-child(2){ animation-delay: .15s; }
+.dot:nth-child(3){ animation-delay: .3s; }
+
+@keyframes dotPulse{
+  0%, 80%, 100% { transform: scale(0.6); opacity: .6; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Texto accesible oculto visualmente */
+.sr{
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(1px,1px,1px,1px); white-space: nowrap;
+}
+
+/* Respeto a reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .dot{ animation: none; }
+  #preloader{ transition: none; }
+}
+
+/* Reveal on scroll para las tarjetas del blog */
+.blog-redaccion .post{
+  opacity: 0;
+  transform: translateY(18px) scale(.98);
+  transition:
+    opacity .6s cubic-bezier(.2,.65,.2,1),
+    transform .6s cubic-bezier(.2,.65,.2,1);
+  transition-delay: var(--d, 0ms);   /* para escalonar entradas */
+  will-change: transform, opacity;
+}
+
+/* Estado visible */
+.blog-redaccion .post.is-visible{
+  opacity: 1;
+  transform: none;
+}
+
+/* Respeto accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .blog-redaccion .post{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Ocultar las letras decorativas G y R en tablet y móvil */
+@media (max-width: 1024px){
+  .decorativa-g,
+  .decorativa-derecha{
+    display: none !important;
+  }
+}
+
+/* === Anti-overflow puntuales === */
+
+/* 1) Servicios: que los ítems de la grid puedan encogerse */
+.servicios-grid > * { min-width: 0; }
+.servicio { min-width: 0; }
+
+/* 2) Hero/typewriter: no permitir que el texto empuje el ancho */
+.redaccion-hero, 
+.redaccion-hero .container,
+.typewriter { max-width: 100%; }
+
+.typewriter .tw-line {
+  overflow-wrap: anywhere;   /* corta palabras largas */
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* 3) En móvil/tablet, elimina cualquier riesgo de “sumar ancho” */
+@media (max-width: 980px){
+  .servicios,
+  .servicios .container,
+  .servicios-grid,
+  .servicio { max-width: 100%; }
+  .servicio,
+  .servicio:hover { transform: none !important; } /* por si la escala se activa */
+}
+
+/* 4) Oculta G/R en pantallas pequeñas para evitar empujes invisibles */
+@media (max-width: 1024px){
+  .decorativa-g, .decorativa-derecha { display: none !important; }
+}
+
+/* 5) Última red de seguridad */
+html, body { overflow-x: hidden; }
+
+
+/* ========== DISEÑO ========== */ 
+/* ========== BLOQUE 3D (hero) ========== */ 
+.d3-hero{ 
+  position: relative; 
+  min-height: 60vh; /* alto cómodo de portada */ 
+  display: grid; 
+  place-items: center; 
+  overflow: hidden; 
+  background: #0f0f0f; /* color de fondo por si el canvas tarda */ }
+   
+  #scene3d{ 
+    position: absolute; 
+    inset: 0; width: 100%; 
+    height: 100%; 
+    display: block; /* evita espacios fantasma */ } 
+    
+  .d3-overlay{ 
+    position: relative; 
+    z-index: 2; 
+    text-align: center; 
+    color: #fff; 
+    padding: 1rem 1.25rem; 
+    backdrop-filter: blur(2px); } 
+    
+    .d3-overlay h2{ 
+      margin: 0 0 .4rem; 
+      font-size: clamp(2rem, 1.2rem + 3vw, 3rem); 
+      font-weight: 700; } 
+      
+      .d3-overlay p{ 
+        margin: 0; 
+        opacity: .9; f
+        font-size: clamp(.95rem, .9rem + .2vw, 1.05rem); }
+
+/* ========== SECCIÓN AMARILLA (descripción de diseño) ========== */
+.diseno-desc .container{
+  max-width: 1100px; margin: 0 auto;
+}
+.diseno-desc h1{
+  margin: 0 0 .6rem;
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+}
+.diseno-desc .lead {
+  margin: 0;
+  max-width: 70ch;
+  line-height: 1.6;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.6rem);
+  color: #111;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  font-size: 1.2rem !important;
+}
+
+/* ===== Bloque 3: tres columnas foto + título (sin márgenes) ===== */
+.diseno-triad{
+  margin: 0;
+  padding: 0;                /* sin aire arriba/abajo */
+}
+
+.diseno-triad .container{
+  max-width: 100%;           /* que ocupe todo el ancho */
+  padding: 0;                /* sin padding lateral */
+}
+
+.diseno-triad .grid-3{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;                    /* sin huecos entre columnas */
+}
+
+/* Tarjeta 100% imagen */
+.diseno-card{ position: relative; }
+
+.diseno-figure{
+  position: relative;
+  margin: 0;                 /* quitar margen por defecto de <figure> */
+  aspect-ratio: 2 / 3;       /* proporción elegante; cambia si quieres */
+  overflow: hidden;
+}
+
+.diseno-figure img{
+  width: 100%;
+  height: 100%;
+  display: block;            /* evita espacios fantasma */
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform .45s ease;
+}
+
+/* Oscurecedor sutil para leer el título */
+.diseno-figure::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.05));
+  opacity: .85;
+  transition: opacity .35s ease;
+}
+
+/* Título encima de la foto */
+.diseno-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 1.5rem + 1.5vw, 3.3rem);
+  text-align: center;
+  text-shadow: 0 3px 10px rgba(0,0,0,.4);
+  pointer-events: none; /* ← ESTA es la clave */
+  user-select: none;
+  transition: transform 0.4s ease, letter-spacing 0.4s ease;
+}
+
+/* Hover global sobre la tarjeta */
+.diseno-card:hover .diseno-figure img {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+.diseno-card:hover .diseno-figure::after {
+  opacity: 1;
+}
+
+.diseno-card:hover .diseno-title {
+  transform: translate(-50%, -50%) scale(1.05);
+  letter-spacing: 0.1em;
+}
+
+
+
+/* ===== Ajustes tablet y móvil ===== */
+
+/* Tablet: 601px–980px → seguir con 3 columnas (más estrechas) */
+@media (min-width: 601px) and (max-width: 980px){
+  .diseno-triad .grid-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* fuerza 3 */
+  }
+  .diseno-triad .container{
+    padding-inline: 0px;
+  }
+  .diseno-title{
+    font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem);
+  }
+}
+
+/* Móvil: ≤600px → 1 columna y proporción vertical 2:3 */
+@media (max-width: 600px){
+  .diseno-triad .grid-3{
+    grid-template-columns: 1fr;
+  }
+  .diseno-figure{
+    aspect-ratio: 2 / 3;
+  }
+  .diseno-title{
+    font-size: clamp(1.2rem, 1rem + 2.5vw, 2rem);
+  }
+}
+
+
+
+.diseno-desc {
+  background: #fff88a;
+  padding: 72px 20px;  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.diseno-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+}
+
+.diseno-texto {
+  flex: 1.1;
+  text-align: justify;
+}
+
+.diseno-texto h1 {
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 3rem);
+  margin-bottom: 0.6rem;
+  font-family: 'Orbitron', sans-serif;
+
+}
+
+.diseno-desc .lead {
+  margin: 0 0 1.4em;
+  max-width: 70ch;
+  line-height: 1.6;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.6rem);
+  color: #111;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+/* Columna derecha: no invade el texto */
+/* Columna derecha: NO pisa el texto */
+.diseno-visual{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.diseno-texto{ position: relative; z-index: 2; }
+
+/* Zona de juego a la derecha */
+.instrumentos{
+  --w: 520px;          /* ancho de la columna visual */
+  --h: 320px;          /* alto */
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  margin-left: auto;
+  overflow: visible;
+  perspective: 800px;
+}
+
+/* Tweak rápido (px) de la POSICIÓN FINAL */
+.instrumentos{
+  --r-final-x: 91px;   /* regla: mover en X al final */
+  --r-final-y: -150px;   /* regla: mover en Y al final */
+  --c-final-x: -210px;   /* cartabón: mover en X al final */
+  --c-final-y: -72px;    /* cartabón: mover en Y al final */
+}
+
+.regla, .cartabon{
+  position: absolute;
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: transform .85s cubic-bezier(.25,.8,.25,1);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+  will-change: transform;
+  pointer-events: none; /* hover en el contenedor */
+}
+
+/* ===== ESTADO INICIAL (casual, sin tapar texto) ===== */
+.regla{
+  left: 100px;           /* dentro de la columna derecha */
+  bottom: -100px;
+  width: 72px;           /* svg de regla es vertical por defecto */
+  transform: rotate(-8deg) translate(0,0);
+}
+.cartabon{
+  right: 6px;
+  top: 24px;
+  width: 270px;
+  transform: rotate(18deg) translate(0,0);
+}
+
+/* ===== Hover SOLO en escritorio con ratón ===== */
+/* Subimos a 1024px para excluir tablets grandes */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .instrumentos:hover .regla{
+    transform: rotate(90deg) translate(var(--r-final-x), var(--r-final-y));
+    transition-delay: 0s;
+  }
+  .instrumentos:hover .cartabon{
+    transform: rotate(0deg) translate(var(--c-final-x), var(--c-final-y));
+    transition-delay: .12s;
+  }
+}
+
+/* En móvil/tablet (o pantallas táctiles), desactiva interacciones */
+@media (max-width: 1023.98px), (hover: none), (pointer: coarse){
+  .instrumentos{ pointer-events: none; }
+}
+
+
+/* Responsive suave */
+@media (max-width: 900px){
+  .instrumentos{ --w: 380px; --h: 270px; width: var(--w); height: var(--h); }
+  .cartabon{ width: 230px; }
+
+  /* pequeños reajustes finales para pantallas estrechas */
+  .instrumentos{
+    --r-final-x: 128px;
+    --r-final-y: 100px;
+    --c-final-x: -20px;
+    --c-final-y: -4px;
+  }
+}
+
+/* Área visible de la paleta */
+.rotor-wrap{
+  position: relative;
+  height: 50vh;              /* alto de la franja de color */
+  min-height: 320px;
+  max-height: 620px;
+  overflow: hidden;          /* recorta la rueda para que sea una banda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Paleta circular que rota (efecto infinito) */
+.rotor{
+  --speed: 22s;              /* ajusta la velocidad de giro */
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 140vmax;            /* grande para cubrir siempre el viewport */
+  height: 140vmax;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    #F7C948,
+    #F9A825,
+    #F57F17,
+    #EF5350,
+    #AB47BC,
+    #5C6BC0,
+    #26A69A,
+    #9CCC65,
+    #FFEE58
+  );
+  animation: rotor-spin var(--speed) linear infinite;
+  will-change: transform;
+}
+
+/* Giro circular, empieza donde termina (bucle perfecto) */
+@keyframes rotor-spin{
+  to { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+/* Título sobre la paleta */
+.color-rotor h2{
+  position: relative;
+  z-index: 1;
+  color: #111;
+  border-radius: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 1.8rem + 2.1vw, 8rem);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Responsive: reduce un pelín la banda en móviles altos */
+@media (max-width: 600px){
+  .rotor-wrap{ height: 42vh; min-height: 260px; }
+}
+
+.video-fullwidth {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.video-fullwidth video {
+  width: 100%;
+  height: 70vh; /* define cuánto se muestra verticalmente */
+  overflow: hidden; /* oculta lo que quede fuera */  display: block;
+  object-position: center bottom; /* <-- recorta desde arriba */
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  filter: grayscale(100%) contrast(1.5) brightness(0.9);
+  /* Blanco y negro con alto contraste */
+}
+
+/* Capa de grano intensa y animada */
+.video-fullwidth::after {
+  content: "";
+  position: absolute;
+  inset: -2px;               /* margen de seguridad para que no asome */
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  background-size: 400px 400px;    /* ajusta el tamaño del grano */
+  opacity: 0.85;                   /* intensidad del grano */
+  mix-blend-mode: overlay;
+  animation: grainShift 0.5s steps(4) infinite; /* sin transform */
+}
+
+@keyframes grainShift {
+  0%   { background-position:   0px   0px; }
+  25%  { background-position:  20px -30px; }
+  50%  { background-position: -15px  10px; }
+  75%  { background-position:  10px   5px; }
+  100% { background-position:   0px   0px; }
+}
+
+html, body { overflow-x: hidden; }
+
+/* =========================
+   BASE (seguridades suaves)
+   ========================= */
+.diseno-desc { position: relative; background:#fff88a; }
+.diseno-desc .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.diseno-visual svg { max-width: 100%; height: auto; display: block; }
+
+/* ===== MOVIMIENTO SOLO EN ESCRITORIO GRANDE (≥900px) ===== */
+
+/* Reactiva interacciones por defecto */
+.diseno-visual, .diseno-visual svg {
+  pointer-events: auto;
+}
+.instrumentos { pointer-events: auto; }
+
+.diseno-visual .regla,
+.diseno-visual .cartabon {
+  transition: transform .85s cubic-bezier(.25,.8,.25,1) !important;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+}
+
+/* Solo activar hover en pantallas grandes con ratón */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  .instrumentos:hover .regla {
+    transform: rotate(90deg) translate(var(--r-final-x), var(--r-final-y));
+  }
+  .instrumentos:hover .cartabon {
+    transform: rotate(0deg) translate(var(--c-final-x), var(--c-final-y));
+  }
+}
+
+/* En pantallas pequeñas o táctiles: sin hover */
+@media (max-width: 899px), (hover: none), (pointer: coarse) {
+  .instrumentos { pointer-events: none; }
+}
+
+
+/* =========================
+   MÓVIL (≤ 599.98px)
+   - 1 columna
+   - todo centrado: título, texto, SVGs
+   ========================= */
+@media (max-width: 599.98px){
+
+  /* La sección se vuelve una columna apilada y centrada */
+  .diseno-layout{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 48px 0 56px;
+  }
+
+  .diseno-texto{
+    max-width: 72ch;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0 16px;              /* margen interno para no “pegarse” a bordes */
+    padding-right: 40px;
+  }
+  .diseno-texto h1{
+    text-align: center;
+    margin: 0 0 .75rem;
+  }
+  .diseno-desc .lead{
+    margin: 0 0 1rem;
+  }
+
+  /* La columna visual se muestra debajo, centrada y en bloque */
+  .diseno-visual{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 50px;
+    position: static !important;  /* nada de absolute en móvil */
+  }
+
+  .diseno-visual .cartabon {
+  width: 90px;
+  margin-top: -50px;   /* baja un poco el cartabón */
+  margin-bottom: 10px; /* espacio antes de la regla */
+  transform: rotate(90deg);
+  margin-right: 35px;
+
+
+}
+
+.diseno-visual .regla {
+  width: 58px;
+  transform: rotate(90deg);
+  margin-top: 170px;   /* súbela o bájala */
+  margin-left: 50px;
+}
+
+  /* Tamaños “amables” en móvil (centrados) */
+  .diseno-visual .cartabon{ width: 200px; }
+  .diseno-visual .regla{ width: 48px; transform: rotate(90deg); } /* horizontal bajo el cartabón, si quieres */
+}
+
+/* =========================
+   TABLET (600 – 899.98px)
+   - Título centrado arriba
+   - Dos columnas: izquierda ANCHA (texto), derecha ESTRECHA (SVGs)
+   - Añade margen lateral derecho para que el texto no quede pegado
+   ========================= */
+@media (min-width: 600px) and (max-width: 899.98px){
+
+  /* ===== TABLET (600–899.98px) ===== */
+@media (min-width: 600px) and (max-width: 899.98px){
+
+  /* Grid de dos columnas desiguales: izquierda (texto) más ancha */
+  .diseno-layout{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.8fr);
+    align-items: start;
+    gap: 28px;
+    padding: 56px 0 40px; /* recorto un poco el hueco inferior */
+  }
+
+  /* Truco para centrar el H1 sobre AMBAS columnas */
+  .diseno-texto{ display: contents; }
+
+  .diseno-texto h1{
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 0 0 .9rem;
+  }
+
+  .diseno-texto .lead{
+    grid-column: 1 / 2;
+    max-width: 75ch;
+    margin: 0 0 1.1rem;
+    padding-right: 14px;  /* aire a la derecha */
+    text-align: justify;
+  }
+
+  /* Columna derecha: visual fijo, más estrecho */
+  .diseno-visual{
+    grid-column: 2 / 3;
+    align-self: start;
+    justify-self: center;
+    width: 78%;
+    max-width: 260px;
+    /* si aún te queda mucho hueco debajo, puedes subir todo el bloque: */
+    /* margin-top: -20px; */
+  }
+
+  /* Tamaños y posiciones (combina transform en una sola línea) */
+  .diseno-visual .cartabon{
+    width: 200px;
+    transform: translateY(-700px);     /* súbelo un poco */
+    position: relative;               /* por si usas z-index */
+    z-index: 1;
+  }
+
+  .diseno-visual .regla{
+    width: 52px;
+    transform: rotate(-10deg) translateY(-500px); /* rota y sube */
+    position: relative;
+    z-index: 2; /* opcional, por encima del cartabón */
+  }
+}
+
+/* ===== Tablet compacta (opcional) 600–720 px ===== */
+@media (min-width: 600px) and (max-width: 720px){
+  .diseno-texto h1{ font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.4rem); }
+  .diseno-visual{ max-width: 220px; }
+  .diseno-visual .cartabon{ width: 180px; }
+  .diseno-visual .regla{ width: 48px; transform: rotate(90deg) translateY(-36px); }
+}
+
+/* Máscara negra instantánea y sin transición */
+#page-mask {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9998;
+  display: none;
+}
+
+body.navigating #page-mask { display: block; }
+
+/* Preloader oculto inicialmente */
+#preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* evita ver el fondo blanco por un frame */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 9999;
+}
+
+/* Collage: aparece TODO a la vez (bloque) */
+.collage{
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 1000 / 600;
+  margin: 110px auto 120px;
+  overflow: visible;
+  z-index: 10;
+
+  /* reveal en bloque */
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+  will-change: opacity, transform;
+  contain: layout paint;
+}
+
+.collage.is-in{
+  opacity: 1;
+  transform: none;
+}
+
+/* tiles */
+.collage a{
+  position: absolute;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  contain: layout paint size;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform .22s ease;
+}
+
+.collage a img{
+  display:block; width:100%; height:auto; object-fit:cover;
+  transition: transform .22s ease, filter .22s ease;
+}
+
+.collage a:hover img{
+  transform: translate3d(0,-2px,0) scale(1.005);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+}
+
+
+.posts{ contain: layout paint; }
+.posts .post{
+  will-change: transform;
+  transition: transform .22s ease;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.posts .post:hover{ transform: translate3d(0,-3px,0); }
+
+.posts .post img{
+  display:block; width:100%; height:auto;
+  aspect-ratio: 16/9; object-fit: cover;
+}
+
+/* El collage aparece TODO a la vez */
+.collage{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+  will-change: opacity, transform;
+  contain: layout paint;      /* aísla repaints del resto de la página */
+}
+
+.collage.is-in{
+  opacity: 1;
+  transform: none;
+}
+
+/* (opcional) hover ligero por tarjeta, sin tocar el reveal global */
+.collage a{ 
+  display:block; 
+  backface-visibility: hidden; 
+  transform: translateZ(0);
+}
+.collage a img{
+  display:block; width:100%; height:auto; object-fit:cover;
+  transition: transform .22s ease, filter .22s ease;
+}
+.collage a:hover img{
+  transform: translate3d(0,-2px,0) scale(1.005);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+}
+
+/* ===========================
+   Variables base + tipografía
+   =========================== */
+:root{
+  --bg: #fffdf8;
+  --ink: #101010;
+  --muted: #5a5a5a;
+  --line: #eaeaea;
+  --accent: #111;            /* borde/botón por defecto */
+  --accent-hover: #000;      /* hover sutil */
+  --brand: #fff88a;          /* amarillo ya usado */
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  /* escala tipográfica */
+  --step--1: clamp(0.90rem, 0.85rem + 0.3vw, 1.00rem);
+  --step-0:  clamp(1.00rem, 0.95rem + 0.4vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --step-2:  clamp(1.55rem, 1.3rem + 1.2vw, 2.0rem);
+  --step-3:  clamp(2.0rem,  1.6rem + 2.0vw, 2.75rem);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0d0d0d;
+    --ink: #f3f3f3;
+    --muted: #b8b8b8;
+    --line: #222;
+    --accent: #f3f3f3;
+    --accent-hover: #fff;
+    --brand: #8a7; /* amarillo verdoso sutil para dark */
+  }
+}
+
+/* Aplica a la página en general */
+html, body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+/* =======================
+   Encabezados y párrafos
+   ======================= */
+h1, h2, h3{
+  margin: 0 0 0.5em;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+h1{
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: var(--step-3);
+  letter-spacing: 0.02em;
+}
+.diseno-desc h1{ /* “Servicios de diseño” */
+  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.2rem);
+}
+h2{
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+h3{
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.lead{
+  font-size: var(--step-0);
+  color: var(--muted);
+  max-width: 70ch;
+}
+p{
+  margin: 0 0 1em;
+  max-width: 75ch;
+}
+strong{ font-weight: 700; }
+
+a{
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--ink) 30%, transparent);
+  text-underline-offset: 2px;
+  transition: text-decoration-color .15s ease, color .15s ease;
+}
+a:hover{ text-decoration-color: currentColor; }
+
+ul, ol{ padding-left: 1.1em; margin: 0 0 1em; }
+
+/* ==========================
+   Tarjetas que disparan panel
+   ========================== */
+.diseno-card{
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  transition: transform .18s ease, box-shadow .18s ease;
+  outline: none;
+}
+.diseno-card .diseno-figure{
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #000000;
+}
+.diseno-card img{
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.0);
+  transition: transform .35s ease;
+}
+.diseno-card .diseno-title{
+  display: block;
+  padding: 10px 8px 0;
+  font-weight: 700;
+}
+.diseno-card:hover{ transform: translateY(-2px); }
+.diseno-card:hover img{ transform: scale(1.03); }
+
+/* focus visible accesible */
+.diseno-card:focus-visible{
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 60%, transparent);
+}
+
+/* ===============================
+   Paneles desplegables (acordeón)
+   =============================== */
+.diseno-panels{
+  width: min(1100px, 92%);
+  margin: 24px auto 0;
+}
+.diseno-panel{
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  border-top: 1px solid var(--line);
+  transition: max-height 450ms ease, opacity 250ms ease;
+  will-change: max-height;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+.diseno-panel.open{ opacity: 1; }
+.panel-inner{
+  padding: clamp(16px, 2vw, 28px) 0 28px;
+  display: grid;
+  gap: 16px;
+}
+
+/* Galería dentro del panel */
+.panel-gallery{
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.panel-gallery img{
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  box-shadow: 0 1px 0 0 var(--line);
+}
+
+/* ===========================
+   Títulos dentro de paneles
+   =========================== */
+#diseno-panels h2{
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(3.3rem, 2.7rem + 2.2vw, 4.1rem);
+  letter-spacing: .02em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .4ch;
+}
+#diseno-panels h2::after{
+  content: "";
+  width: 36px;
+  height: 10px;
+  border-radius: 6px;
+  background: var(--brand);
+  display: inline-block;
+  translate: 0 2px;
+}
+
+/* Texto dentro del panel */
+#diseno-panels p{
+  color: var(--muted);
+  font-size: var(--step-0);
+}
+
+/* ===========================
+   Enlaces utilitarios
+   =========================== */
+.link-quiet{
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink) 30%, transparent);
+}
+.link-quiet:hover{
+  border-bottom-color: currentColor;
+}
+
+/* ===========================
+   Responsive tweaks
+   =========================== */
+@media (max-width: 900px){
+  .panel-gallery{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px){
+  .panel-gallery{ grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   Movimientos reducidos
+   =========================== */
+@media (prefers-reduced-motion: reduce){
+  .diseno-panel{ transition: none; }
+  .diseno-card,
+  .diseno-card img,
+  .btn-panel{ transition: none; }
+}
+
+/* ===========================
+   Modo impresión
+   =========================== */
+@media print{
+  .btn-panel{ display: none; }
+  .diseno-card{ break-inside: avoid; }
+  .diseno-panel{ max-height: none !important; opacity: 1 !important; }
+}
+
+/* ===========================
+   Botón de los paneles
+   =========================== */
+.btn-panel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1.6px solid #000;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    box-shadow .25s ease,
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease;
+}
+
+.btn-panel:hover {
+  background: var(--brand); /* amarillo del sitio */
+  color: #000;
+  border-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px -6px color-mix(in srgb, var(--brand) 40%, transparent);
+}
+
+.btn-panel:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-panel:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 55%, transparent);
+}
+
+<!-- Estilos extra para paneles (puedes mover a style.css) -->
+  <style>
+    /* Contenedor de paneles */
+    .diseno-panels {
+      width: min(1100px, 92%);
+      margin: 24px auto 0;
+    }
+    /* Panel colapsable */
+    .diseno-panel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 450ms ease, opacity 250ms ease;
+      opacity: 0;
+      border-top: 1px solid #eaeaea;
+    }
+    .diseno-panel.open { opacity: 1; }
+    .panel-inner {
+      padding: 20px 0 28px;
+      display: grid;
+      gap: 16px;
+    }
+    .panel-gallery {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .panel-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+      
+    .diseno-card { cursor: pointer; }
+    .diseno-card:focus, .diseno-card:focus-visible {
+      outline: 2px solid #111;
+      outline-offset: 4px;
+    }
+
+    /* ====== Canva embed – estilo revista ====== */
+.embed-block { width: 100%; display: grid; gap: 10px; }
+
+/* Marco con proporción fija y look “revista” */
+.mag-frame{
+  position: relative;
+  width: min(1100px, 100%);
+  margin-inline: auto;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow:
+    0 12px 30px -12px rgba(0,0,0,.25),
+    0 2px 10px rgba(0,0,0,.08);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Relaciones de aspecto listas para usar */
+.mag-frame.a4-portrait { aspect-ratio: 210 / 297; }  /* A4 vertical (revista) */
+.mag-frame.a4-landscape{ aspect-ratio: 297 / 210; }  /* A4 apaisado */
+.mag-frame.wide-16x9   { aspect-ratio: 16 / 9; }     /* Presentación 16:9 */
+
+/* Iframe ocupa todo el marco */
+.canva-embed{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+
+/* Skeleton/loader sutil mientras carga */
+.mag-frame::before{
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,0.04) 0%,
+      rgba(0,0,0,0.08) 35%,
+      rgba(0,0,0,0.04) 70%);
+  animation: shimmer 1.4s infinite linear;
+}
+.mag-frame.is-ready::before{ opacity: 0; transition: opacity .3s ease; }
+@keyframes shimmer { to { background-position: 120% 0; } }
+
+/* Acción secundaria (link a pantalla completa) */
+.embed-actions{
+  display: flex; justify-content: center;
+}
+.embed-link{
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  text-decoration: none;
+  font-weight: 600;
+  color: #111;
+}
+.embed-link:hover{
+  background: var(--brand, #fff88a);
+  border-color: var(--brand, #fff88a);
+}
+
+/* Modo oscuro: mantiene contraste del marco */
+@media (prefers-color-scheme: dark){
+  .mag-frame{ box-shadow:
+      0 12px 30px -12px rgba(0,0,0,.6),
+      0 2px 10px rgba(0,0,0,.4);
+  }
+}
+
+/* === Ajustes de color específicos para la página de diseño === */
+
+/* 1️⃣ Nombre "Lorena Gómez García" en el header solo en diseño.html */
+body.page-diseno #main-header .logo {
+  color: #000 !important;
+}
+
+/* Si el header tiene fondo transparente al inicio, damos contraste */
+body.page-diseno #main-header {
+  background: #fff !important;
+  box-shadow: 0 2px 20px -10px rgba(0,0,0,0.15);
+}
+
+/* Al hacer scroll, que vuelva a su modo negro translúcido si quieres */
+body.page-diseno #main-header.solid {
+  background: rgba(0,0,0,0.85) !important;
+  color: #fff !important;
+}
+body.page-diseno #main-header.solid .logo {
+  color: #fff !important;
+}
+
+/* 2️⃣ Título “Servicios de diseño” dentro del bloque amarillo */
+body.page-diseno .diseno-desc {
+  background: #fff88a; /* tu tono amarillo */
+  color: #000;
+}
+body.page-diseno .diseno-desc h1,
+body.page-diseno .diseno-desc p {
+  color: #000;
+}
+
+/* Aparición suave del collage */
+.collage {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(6px);
+  transition:
+    opacity 1.2s ease-out,
+    transform 1.4s cubic-bezier(.17,.84,.44,1),
+    filter 1s ease-out;
+  will-change: opacity, transform, filter;
+}
+.collage.ready {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@media (max-width: 1024px){
+  .hero .collage{
+    margin-top: 40px !important;
+    margin-bottom: 70px; /* Ajusta entre 60–100 según tu gusto */
+    margin-left: 60px;
+    margin-right: 20px;
+  }
+}
+
+/* ===== TABLET / MÓVIL ===== */
+@media (max-width: 1024px){
+
+  /* Ocultar las dos que quieres eliminar */
+  .collage .img3{
+    display: none !important;
+  }
+
+  /* Recalibrar la composición */
+  .collage .img1{
+    top: 5%;
+    left: -5%;
+    width: 80%;
+  }
+
+  /* PERFIL (img2) – que se vea completa */
+  .collage .img2{
+    top: 8%;
+    left: 2%;
+    width: 32%;
+  }
+
+  /* ESCULTURA (img4) se mantiene, pero la centramos un poco para equilibrio */
+  .collage .img4{
+    top: 48%;
+    left: 32%;
+    width: 21%;
+  }
+
+  /* PLAYA (img6) – más aire y centrada */
+  .collage .img6{
+    top: 31%;
+    left: 70%;
+    width: 26%;
+  }
+
+  /* MESA (img7) – se mantiene como capa protagonista */
+  .collage .img7{
+    top: 2%;
+    left: 43%;
+    width: 50%;
+  }
+}
+
+/* PINTURA (img5)*/
+  .collage .img5{
+    top: 62%;
+    left: 53%;
+    width: 18%;
+  }
+}
+
+@media (max-width: 1024px){
+
+  .collage {
+    overflow: hidden !important;
+    border-radius: 14px;
+  }
+
+  .collage .img1{
+    width: 100% !important;
+    height: 100% !important;     /* <-- Añadido */
+    top: 0 !important;
+    left: -5% !important;
+    object-fit: cover !important; /* <-- Añadido */
+    border-radius: 14px !important;
+  }
+
+}
+
+/* ===== MÓVIL (≤ 767px) — Versión vertical con márgenes ajustados ===== */
+@media (max-width: 767px){
+
+  .collage {
+    overflow: hidden !important;
+    border-radius: 14px;
+
+    /* NUEVO: márgenes más pequeños + laterales */
+    margin-top: 30px !important;   /* antes 160 */
+    margin-bottom: 30px !important; /* antes 120 */
+    margin-left: 110px !important;
+    margin-right:110px !important;
+
+    /* Mantiene proporción vertical */
+    aspect-ratio: 3 / 4 !important;
+  }
+
+  .collage .img1{
+    width: auto !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 767px){
+
+  /* Perfil (img2) más arriba y más grande */
+  .collage .img2{
+    top: 2% !important;
+    left: 2% !important;
+    width: 52% !important;
+  }
+
+  /* Mesa (img7) acompaña en la parte superior */
+  .collage .img7{
+    top: 6% !important;
+    left: 49% !important;
+    width: 50% !important;
+  }
+
+  /* Escultura (img4) queda centrada vertical */
+  .collage .img4{
+    top: 65% !important;
+    left: 32% !important;
+    width: 30% !important;
+  }
+
+  /* Cuadro rojo (img5) vuelve, colocado con aire */
+  .collage .img5{
+    top:60% !important;
+    left: 7% !important;
+    width: 28% !important;
+  }
+
+  /* Foto pareja (img6) abajo sosteniendo composición */
+  .collage .img6{
+    top: 28% !important;
+    left: 57% !important;
+    width: 35% !important;
+  }
+
+  /* img3 también vuelve */
+  .collage .img3{
+    display: block !important; /* no ocultar */
+    top: 73% !important;
+    left: 62% !important;
+    width: 36% !important;
+  }
+}
+
+/* Tablet → 1 columna */
+@media (min-width: 600px) and (max-width: 899.98px){
+  .posts {
+    display: block;       /* en vez de grid */
+  }
+  .posts .post {
+    margin-bottom: 2.5rem; /* separaciones bonitas */
+  }
+}
+.hero-slider{
+  width: 100%;
+  height: 100vh;              /* ocupa toda la altura de pantalla */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slider .slide{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 25s infinite;
+}
+
+/* 5 imágenes → 5 delays */
+.hero-slider .slide:nth-child(1){ animation-delay: 0s;  }
+.hero-slider .slide:nth-child(2){ animation-delay: 5s;  }
+.hero-slider .slide:nth-child(3){ animation-delay: 10s; }
+.hero-slider .slide:nth-child(4){ animation-delay: 15s; }
+.hero-slider .slide:nth-child(5){ animation-delay: 20s; }
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  20%  { opacity: 1; }
+  28%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ===== OBRAS ===== */
+
+.section-obras {
+  padding: 20px 8vw;
+}
+
+.section-obras h2 {
+  font-size: 3.6rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  
+}
+
+/* Grid de 3 columnas responsive */
+.obras-grid {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Mantener proporciones SIN deformar (vertical u horizontal) */
+.obra img {
+  width: 100%;
+  aspect-ratio: 4/5; /* si prefieres más cuadrado → usa 1/1 */
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Vendidas en gris suave */
+.obra.vendida img {
+  opacity: 0.90;
+}
+
+.obra p {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Enlace Volver a Diseño */
+.volver-top {
+  padding: 100px 8vw 20px; /* 100px = altura visual del header */
+}
+
+@media (max-width: 900px) {
+  .volver-top {
+    padding-top: 80px; /* más compacto en móvil */
+  }
+}
+
+.volver-top a {
+  color: #111 !important;
+  text-decoration: none !important;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+  transition: border-color .25s ease, opacity .25s ease;
+}
+
+.volver-top a:hover {
+  border-color: #111;
+  opacity: 0.7;
+}
+
+.obra-medidas {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-top: 0px;
+  display: block;
+  text-align: center;
+}
+
+.obra-sold {
+  font-size: 0.9rem;
+  font-weight: 600;           /* negrita */
+  text-transform: uppercase;  /* aspecto editorial */
+  margin-top: 4px;
+  display: block;
+  color: #111;                /* color neutro */
+  opacity: 0.85;
+  text-align: center;
+}
+
+.obras-grid + .obras-grid {
+  margin-top: 3rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}

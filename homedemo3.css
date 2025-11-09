@@ -1,0 +1,183 @@
+/* ==============================
+   DEMO 03 — Editorial / Brutalista
+   ============================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+html, body { height: 100%; }
+body {
+  background: #fff;
+  color: #111;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.45;
+}
+
+/* Utilidades */
+.container { width: min(1200px, 92vw); margin-inline: auto; }
+
+/* ==============================
+   Header superior
+   ============================== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 24px;
+  padding: 14px clamp(16px, 4vw, 30px);
+  background: #fff;
+  border-bottom: 3px solid #111;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.brand-box {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.35rem; line-height: 1;
+  padding: 6px 10px;
+  border: 3px solid #111;
+  background: #fff;
+}
+.brand-name {
+  font-family: "Space Mono", monospace;
+  font-weight: 700; letter-spacing: .04em;
+}
+.top-nav { display: flex; gap: clamp(10px, 2.6vw, 22px); }
+.top-nav a {
+  color: #111; text-decoration: none;
+  font-family: "Space Mono", monospace; font-size: .95rem;
+  padding: 8px 10px; border: 2px solid #111;
+  transition: transform .12s ease, background .12s ease;
+}
+.top-nav a:hover { background: #111; color: #fff; transform: translateY(-1px); }
+
+/* ==============================
+   Hero
+   ============================== */
+.hero {
+  border-block: 3px solid #111;
+  display: grid; place-items: center;
+  min-height: 72vh; padding: clamp(40px, 8vw, 90px) 24px;
+  position: relative; overflow: hidden;
+}
+.hero-inner { width: min(1100px, 90vw); margin-inline: auto; }
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.6rem, 2rem + 4vw, 5rem);
+  line-height: .96;
+  letter-spacing: .02em;
+  margin-bottom: 14px;
+}
+.hero-title u { text-decoration-thickness: .2em; text-underline-offset: .1em; }
+.hero-title span {
+  box-shadow: inset 0 -0.4em 0 #ffe66d; /* subrayado de bloque */
+}
+.hero-sub {
+  font-family: "Space Mono", monospace;
+  max-width: 62ch; color: #2b2b2b;
+  margin-bottom: 22px;
+}
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  text-decoration: none; cursor: pointer;
+  border: 3px solid #111; padding: 12px 18px;
+  font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  transition: transform .12s ease, background .12s ease, color .12s ease;
+}
+.btn-solid { background: #111; color: #fff; }
+.btn-solid:hover { transform: translateY(-2px); background: #000; }
+.btn-outline { background: #fff; color: #111; }
+.btn-outline:hover { background: #111; color: #fff; }
+.btn.big { font-size: 1.05rem; padding: 14px 22px; }
+
+.hero-stamp {
+  position: absolute; right: clamp(10px, 4vw, 40px); bottom: clamp(10px, 4vw, 40px);
+  font-family: "Space Mono", monospace;
+  border: 3px solid #111; padding: 8px 10px; background: #fff;
+}
+
+/* ==============================
+   Stripe separadora
+   ============================== */
+.stripe {
+  display: grid; grid-auto-flow: column; gap: 12px;
+  align-items: center; justify-content: center;
+  padding: 10px 14px; border-block: 3px solid #111;
+  background: #fff;
+}
+.stripe span {
+  font-family: "Space Mono", monospace; font-weight: 700;
+  border: 2px solid #111; padding: 6px 10px; white-space: nowrap;
+}
+
+/* ==============================
+   Kicker
+   ============================== */
+.kicker {
+  padding: 34px 20px; border-bottom: 3px solid #111;
+}
+.kicker p {
+  width: min(1000px, 90vw); margin: 0 auto;
+  font-family: "Inter", system-ui; font-size: clamp(1.05rem, .9rem + .6vw, 1.3rem);
+}
+
+/* ==============================
+   Editorial Grid
+   ============================== */
+.editorial-grid {
+  width: min(1200px, 92vw); margin: 36px auto 60px;
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.tile {
+  border: 3px solid #111; background: #fff; display: grid;
+  grid-template-rows: auto 1fr;
+  transition: transform .12s ease;
+}
+.tile:hover { transform: translate(-2px, -2px); }
+.tile .tile-media { border-bottom: 3px solid #111; background: #f0f0f0; }
+.tile .tile-media img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
+.tile .tile-media.invert { background: #111; }
+.tile .tile-media.invert img { mix-blend-mode: screen; opacity: .9; }
+.tile .tile-body { padding: 16px 16px 18px; }
+.tile .tile-body h3 {
+  font-family: "Bebas Neue", sans-serif; font-size: 1.8rem; line-height: 1;
+  margin-bottom: 6px;
+}
+.tile .tile-body p { font-family: "Space Mono", monospace; color: #2b2b2b; }
+
+/* Colocación */
+.tile { grid-column: span 4; }
+.tile.wide { grid-column: span 8; }
+.tile.tall .tile-media img { aspect-ratio: 3/4; }
+
+/* Responsive grid */
+@media (max-width: 980px) {
+  .editorial-grid { grid-template-columns: repeat(8, 1fr); }
+  .tile { grid-column: span 8; }
+  .tile.wide { grid-column: span 8; }
+}
+@media (max-width: 640px) {
+  .editorial-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .tile { grid-column: span 4; }
+}
+
+/* ==============================
+   CTA final
+   ============================== */
+.cta-band {
+  border-top: 3px solid #111; border-bottom: 3px solid #111;
+  text-align: center; padding: 40px 16px;
+}
+.cta-band h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 1.4rem + 3vw, 3.2rem);
+  margin-bottom: 14px;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+.site-footer {
+  text-align: center;
+  padding: 18px 12px;
+  border-top: 3px solid #111;
+  font-family: "Space Mono", monospace;
+  color: #2b2b2b;
+}

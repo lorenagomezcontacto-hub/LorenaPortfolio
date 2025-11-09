@@ -1,0 +1,710 @@
+/* =========================================================
+   Página DISEÑO — Scope total: body.page-diseno
+   ========================================================= */
+
+/* ---------- Animación overlay navegación ---------- */
+@keyframes navb {
+  0%, 80%, 100% { transform: scale(0.6); opacity: .6; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Base: fondo negro y tipografía clara ---------- */
+body.page-diseno {
+  background: #000;
+  color: #f5f5f5;
+  overflow-x: hidden;
+  padding: 0;
+  padding-top: 0;
+}
+
+/* ---------- Header (blanco) con logo/nav en negro ---------- */
+body.page-diseno #main-header{
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: 0 2px 20px -10px rgba(0,0,0,0.15);
+}
+body.page-diseno #main-header .logo{
+  color: #000 !important;
+}
+body.page-diseno #primary-nav a{
+  color: #000 !important;
+}
+body.page-diseno #primary-nav a:hover{
+  color: #111 !important;
+}
+
+/* Botón contacto en header */
+body.page-diseno .btn-contacto{
+  border: 1.5px solid #111;
+  background-color: #FFEE58;
+  color: #000;
+}
+body.page-diseno .btn-contacto:hover{
+  background:#111; color:#fff;
+}
+
+/* Móvil: asegura contraste */
+@media (max-width: 899.98px){
+  body.page-diseno #main-header{
+    background:#fff !important; color:#000 !important; border-bottom:1px solid #eee;
+  }
+  body.page-diseno #primary-nav a{ color:#111 !important; }
+}
+
+/* ---------- Sección “Servicios de diseño” (bloque amarillo) ---------- */
+body.page-diseno .diseno-desc{
+  background: var(--brand, #fff88a);
+  color: #000;
+}
+body.page-diseno .diseno-desc h1,
+body.page-diseno .diseno-desc p{
+  color: #000;
+}
+
+/* ---------- Títulos/Texto por defecto en esta página ---------- */
+body.page-diseno h1,
+body.page-diseno h2,
+body.page-diseno h3{ color: #fff; }
+body.page-diseno p,
+body.page-diseno .lead{ color:#e2e2e2; }
+
+/* ---------- Redes e iconografía ---------- */
+body.page-diseno .iconos-redes svg{
+  stroke:#fff; color:#fff; opacity:.9; transition: transform .25s ease, opacity .25s ease;
+}
+body.page-diseno .iconos-redes a:hover svg{
+  transform: scale(1.1); opacity:1;
+}
+
+/* ---------- Links ---------- */
+body.page-diseno a{
+  color:#fff; text-decoration-color: rgba(255,255,255,.35);
+}
+body.page-diseno a:hover{ text-decoration-color: currentColor; }
+
+/* ---------- Footer ---------- */
+body.page-diseno footer{
+  background: transparent;
+  color:#cfcfcf;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* =========================================================
+   HERO 3D
+   ========================================================= */
+.d3-hero{
+  position: relative;
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+#scene3d{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+/* =========================================================
+   DESCRIPCIÓN DE DISEÑO
+   ========================================================= */
+.diseno-desc .container{ max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.diseno-layout{ display:flex; align-items:center; justify-content:space-between; gap:60px; width:100%; }
+.diseno-texto{ flex:1.1; text-align: justify; }
+.diseno-texto h1{
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 3rem);
+  margin-bottom: .6rem;
+}
+.diseno-desc .lead{
+  margin:0 0 1.4em; max-width:70ch; line-height:1.6;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.6rem);
+  letter-spacing:.02em; font-weight: 500; color:#111;
+}
+
+/* Visual derecha (regla + cartabón) */
+.diseno-visual{ flex:1; display:flex; justify-content:flex-end; align-items:center; position:relative; z-index:1; }
+.diseno-texto{ position:relative; z-index:2; }
+.instrumentos{
+  --w: 520px; --h: 320px;
+  position:relative; width:var(--w); height:var(--h);
+  margin-left:auto; overflow:visible; perspective:800px;
+  --r-final-x: 91px; --r-final-y: -150px;
+  --c-final-x: -210px; --c-final-y: -72px;
+}
+.regla, .cartabon{
+  position:absolute; transform-origin:center; transform-box:fill-box;
+  transition: transform .85s cubic-bezier(.25,.8,.25,1);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+  pointer-events:none;
+}
+.regla{ left:100px; bottom:-100px; width:72px; transform: rotate(-8deg) translate(0,0); }
+.cartabon{ right:6px; top:24px; width:270px; transform: rotate(18deg) translate(0,0); }
+
+/* Hover solo escritorio grande */
+@media (min-width:1024px) and (hover:hover) and (pointer:fine){
+  .instrumentos:hover .regla{
+    transform: rotate(90deg) translate(var(--r-final-x), var(--r-final-y));
+  }
+  .instrumentos:hover .cartabon{
+    transform: rotate(0deg) translate(var(--c-final-x), var(--c-final-y));
+  }
+}
+/* Táctiles sin hover */
+@media (max-width:1023.98px), (hover:none), (pointer:coarse){
+  .instrumentos{ pointer-events:none; }
+}
+
+/* Responsive instrumentos */
+@media (max-width:900px){
+  .instrumentos{ --w:380px; --h:270px; }
+  .cartabon{ width:230px; }
+  .instrumentos{
+    --r-final-x: 128px; --r-final-y: 100px;
+    --c-final-x: -20px; --c-final-y: -4px;
+  }
+}
+/* Mobile layout */
+@media (max-width:599.98px){
+  .diseno-layout{ flex-direction:column; align-items:center; gap:18px; padding:48px 0 56px; }
+  .diseno-texto{ max-width:72ch; margin:0 auto; padding: 0 16px 0 16px; }
+  .diseno-texto h1{ text-align:center; margin:0 0 .75rem; }
+  .diseno-visual{ display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:12px; width:100%; margin-top:50px; position: static !important; }
+  .diseno-visual .cartabon{ width:200px; transform: rotate(90deg); }
+  .diseno-visual .regla{ width:48px; transform: rotate(90deg); }
+}
+
+/* =========================================================
+   TRES TARJETAS (grid de disparo)
+   ========================================================= */
+.diseno-triad{ margin:0; padding:0; }
+.diseno-triad .container{ max-width:100%; padding:0; }
+.diseno-triad .grid-3{
+  display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:0;
+}
+.diseno-card{ position:relative; cursor:pointer; border-radius:16px; transition: transform .18s ease, box-shadow .18s ease; outline:none; }
+.diseno-figure{
+  position:relative; margin:0; aspect-ratio: 2 / 3; overflow:hidden; border-radius:16px; background:#000;
+}
+.diseno-figure img{
+  width:100%; height:100%; object-fit:cover; display:block; transform:scale(1); transition: transform .45s ease, filter .45s ease;
+}
+.diseno-figure::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.05));
+  opacity:.85; transition: opacity .35s ease;
+}
+.diseno-title{
+  position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+  margin:0; color:#fff; font-family:'Bebas Neue', sans-serif;
+  text-transform:uppercase; letter-spacing:.06em; font-weight:400;
+  font-size: clamp(1.9rem, 1.5rem + 1.5vw, 3.3rem);
+  text-align:center; text-shadow: 0 3px 10px rgba(0,0,0,.4);
+  pointer-events:none; user-select:none;
+  transition: transform .4s ease, letter-spacing .4s ease;
+}
+.diseno-card:hover .diseno-figure img{ transform:scale(1.06); filter: brightness(1.05); }
+.diseno-card:hover .diseno-figure::after{ opacity: 1; }
+.diseno-card:hover .diseno-title{ transform:translate(-50%, -50%) scale(1.05); letter-spacing:.1em; }
+
+/* Responsive tarjetas */
+@media (min-width:601px) and (max-width:980px){
+  .diseno-triad .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .diseno-title{ font-size: clamp(1.4rem, 1rem + 1.2vw, 2.4rem); }
+}
+@media (max-width:600px){
+  .diseno-triad .grid-3{ grid-template-columns: 1fr; }
+  .diseno-figure{ aspect-ratio: 2 / 3; }
+  .diseno-title{ font-size: clamp(1.2rem, 1rem + 2.5vw, 2rem); }
+}
+
+/* =========================================================
+   PANELES DESPLEGABLES
+   ========================================================= */
+.diseno-panels{
+  width: min(1100px, 92vw);
+  margin: 32px auto 0;
+}
+.diseno-panel{
+  background:#000; color:#f5f5f5;
+  overflow:hidden; max-height:0; opacity:0; visibility:hidden; border:0;
+  border-radius:16px; box-shadow: 0 16px 40px -14px rgba(0,0,0,.5);
+  transition: max-height 600ms cubic-bezier(.4,0,.2,1), opacity 350ms ease, visibility 350ms ease, background-color 350ms ease;
+}
+.diseno-panel.open{
+  max-height: 4000px;
+  opacity: 1; visibility: visible;
+}
+.panel-inner{
+  padding: clamp(24px, 4vw, 40px) clamp(14px, 3vw, 28px);
+  display:grid; gap:18px;
+  justify-items: stretch;        /* <- importante */
+
+}
+.panel-inner h2{
+  color:#fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.6rem, 1.9rem + 2.2vw, 3.3rem);
+  letter-spacing:.02em; margin:0 0 .3rem; text-align:left;
+  text-shadow: 0 3px 5px rgba(255, 255, 255, 0.45); /* sombra sutil y suave */
+
+}
+.panel-inner p{
+  color:#e2e2e2; line-height:1.45; font-size:1.3rem; max-width:850px; text-align:justify; margin:0; width: 100%;   
+  text-justify: inter-word;      /* apoyo (soporte parcial) */
+  
+
+}
+.panel-inner a:not(.btn-panel){
+  color:#fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.35);
+}
+.panel-inner a:not(.btn-panel):hover{ text-decoration-color: currentColor; }
+
+.panel-gallery{
+  display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top:.4rem;
+}
+.panel-gallery img{
+  width:100%; height:auto; display:block; border-radius:12px;
+  box-shadow: 0 2px 10px rgba(255,255,255,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.panel-gallery img:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px -8px rgba(255,255,255,.12);
+}
+
+/* Botón grande centrado */
+.btn-panel {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 40px;
+  border-radius: 999px;
+  border: 2px solid #fff88a;
+  background: #fff88a;
+  color: #000 !important;  /* 🔸 fuerza el texto negro */
+  font-weight: 600;
+  font-size: 1.12rem;
+  letter-spacing: .02em;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+  box-shadow: none; /* sin sombras */
+}
+
+.btn-panel:hover {
+  background: var(--brand, #fffcd2); /* amarillo más claro */
+  color: #000 !important;
+  border-color: var(--brand, #fffcd2);
+  transform: scale(1.05);
+  box-shadow: none;
+}
+
+.btn-panel:active {
+  transform: scale(1);
+}
+
+.btn-panel:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand, #fff88a) 45%, transparent);
+}
+
+
+/* Chevron de cierre (si lo añades) */
+.panel-collapse{
+  display:flex; justify-content:center; margin-top:22px; background:none; border:none; color:#fff; opacity:.85; cursor:pointer;
+  transition: opacity .25s ease, transform .2s ease;
+}
+.panel-collapse:hover{ opacity:1; transform: translateY(-2px); }
+.panel-collapse .chev-icon{ width:42px; height:auto; }
+
+/* Responsive panel */
+@media (max-width:700px){
+  .panel-inner{ gap:16px; }
+  .btn-panel{ font-size:1.05rem; padding:14px 34px; }
+}
+
+/* =========================================================
+   VISOR “REVISTA” (flip horizontal, respeta proporción)
+   ========================================================= */
+/* =========================================================
+   VISOR “REVISTA” — versión estable y suave
+   ========================================================= */
+.magazine{
+  --page-w: min(1100px, 94vw);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  margin-block: 2.2rem 1rem;
+}
+
+/* Contenedor del visor */
+.mag-viewport{
+  width: var(--page-w);
+  min-height: 60vh;          /* asegura que nunca se colapse */
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 30px -12px rgba(0,0,0,.25),
+              0 2px 10px rgba(0,0,0,.08);
+  overflow: hidden;
+  position: relative;
+  overscroll-behavior-x: none;
+}
+
+/* Track de páginas */
+.mag-track{
+  display: flex;
+  height: 100%;
+  background: #fff;
+  transform: translateX(0);  /* estado inicial */
+  transition: transform .65s cubic-bezier(.16, .8, .3, 1); /* deslizamiento suave premium */
+  will-change: transform;
+}
+
+/* Cada página ocupa todo el visor */
+.mag-page{
+  flex: 0 0 100%;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+/* Imágenes adaptadas, sin aplastar */
+.mag-page img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.mag-controls{
+  display:grid; grid-auto-flow:column; gap:12px; align-items:center; font-family:"Urbanist", sans-serif;
+}
+.mag-count{ font-weight:600; font-size:1rem; }
+.mag-btn{
+  width:46px; height:46px; border-radius:50%;
+  border:2px solid #111; background:#fff; color:#111;
+  font-size:26px; line-height:1; cursor:pointer;
+  transition: transform .15s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.mag-btn:hover{ background: var(--brand, #fff88a); color:#000; border-color: var(--brand, #fff88a); transform: translateY(-1px); }
+
+
+
+/* Móvil: swipe natural */
+@media (max-width:700px){
+  .mag-track{ overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; transition:none; }
+  .mag-page{ scroll-snap-align:center; }
+}
+
+/* =========================================================
+   COLOR ROTOR (banda final)
+   ========================================================= */
+.rotor-wrap{
+  position:relative; height:50vh; min-height:320px; max-height:620px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.rotor{
+  --speed: 22s;
+  position:absolute; inset:50% auto auto 50%;
+  width:140vmax; height:140vmax; transform:translate(-50%,-50%); border-radius:50%;
+  background: conic-gradient(#F7C948,#F9A825,#F57F17,#EF5350,#AB47BC,#5C6BC0,#26A69A,#9CCC65,#FFEE58);
+  animation: rotor-spin var(--speed) linear infinite;
+  will-change: transform;
+}
+@keyframes rotor-spin{ to { transform: translate(-50%,-50%) rotate(360deg); } }
+.color-rotor h2{
+  position:relative; z-index:1; color:#111; border-radius:10px;
+  font-family:'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 1.8rem + 2.1vw, 8rem);
+  font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+}
+@media (max-width:600px){
+  .rotor-wrap{ height:42vh; min-height:260px; }
+}
+
+/* =========================================================
+   Preloader (puntos amarillos, ya lo usas global)
+   ========================================================= */
+#preloader{ position: fixed; inset:0; z-index:9999; display:grid; place-items:center; background:#000; transition: opacity .6s ease, visibility .6s ease; }
+#preloader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+.dots{ display:inline-flex; gap:.6rem; }
+.dot{
+  width:12px; height:12px; border-radius:50%;
+  background:#FFEE58; transform: scale(0.6); animation: dotPulse 1s infinite ease-in-out;
+}
+.dot:nth-child(2){ animation-delay: .15s; }
+.dot:nth-child(3){ animation-delay: .3s; }
+@keyframes dotPulse{ 0%, 80%, 100% { transform: scale(0.6); opacity: .6; } 40% { transform: scale(1); opacity: 1; } }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip: rect(1px,1px,1px,1px); white-space:nowrap; }
+
+/* =========================================================
+   Accesibilidad / reduce motion
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .dot{ animation:none; }
+  #preloader{ transition:none; }
+  .diseno-panel, .diseno-card, .diseno-card img, .btn-panel, .mag-track{ transition:none !important; }
+}
+
+/* ==== FIX MÁRGENES DESIGUALES EN PANEL ==== */
+/* 1) Panel bien centrado y simétrico */
+.diseno-panels{
+  max-width: 1100px;        /* mantén tope */
+  width: 100%;
+  margin: 32px auto 0;
+  padding-inline: 20px;     /* margen igual a ambos lados */
+  box-sizing: border-box;   /* incluye padding en el ancho */
+}
+
+/* 2) Padding interno simétrico */
+.panel-inner{
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 28px);
+  box-sizing: border-box;
+  padding-bottom: 72px;   /* ajusta a tu gusto */
+
+}
+
+/* 3) La revista debe ajustarse al contenedor, no al viewport */
+.magazine{
+  --page-w: 100% !important;     /* antes: min(1100px, 94vw) */
+}
+.mag-viewport{
+  width: 100% !important;        /* fuerza a respetar el contenedor */
+}
+
+/* 4) Seguridad: evita que nada “sume ancho” dentro del panel */
+.diseno-panel,
+.diseno-panel *{
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* 5) Si aún ves clip a la derecha, da un pelín más de aire */
+@media (max-width: 1200px){
+  .diseno-panels{ padding-inline: 24px; }
+}
+
+/* =========================================================
+   FULL-BLEED imágenes + revista
+   Columna de texto más estrecha y centrada
+   ========================================================= */
+
+.panel-inner{
+  --padX: clamp(12px, 2vw, 18px);
+  padding: clamp(22px, 3.6vw, 36px) var(--padX);
+  display: grid;
+  gap: 1.6rem;
+  justify-items: center;        /* centra los hijos por defecto */
+  box-sizing: border-box;
+}
+
+/* texto tipo columna centrada */
+.panel-inner h2,
+.panel-inner p{
+  max-width: 800px;             /* más estrecho que antes */
+  width: 100%;
+  text-align: left;
+  margin-inline: auto;          /* centra la columna */
+}
+
+/* galería y revista más anchas, fuera del padding */
+.panel-inner > .panel-gallery,
+.panel-inner > .magazine{
+  margin-left: calc(var(--padX) * -1);
+  margin-right: calc(var(--padX) * -1);
+  width: calc(100% + calc(var(--padX) * 2));
+  justify-self: stretch;        /* ocupan todo el ancho del panel */
+}
+
+/* galería con miniaturas más grandes */
+.panel-gallery{
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+@media (max-width: 720px){
+  .panel-gallery{
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* revista ocupa todo el ancho */
+.magazine{ width: 100% !important; }
+.mag-viewport{ width: 100% !important; }
+
+/* panel algo más amplio globalmente */
+.diseno-panels{
+  padding-inline: 10px;
+  max-width: 1220px;
+}
+
+.metodo {
+  --brand: #cec32e;
+  --base: #444;
+  --ink: #fff;
+  width: min(620px, 90%);
+  margin: 20px auto;
+  text-align: center;
+}
+
+.metodo-svg {
+  width: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.metodo-line-base {
+  stroke: var(--base);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.metodo-line-progress {
+  stroke: var(--brand);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawLine 2.8s linear infinite;
+}
+
+.metodo-dot {
+  fill: var(--brand);
+  stroke: var(--brand);
+  stroke-width: 2;
+}
+
+/* Animación: pinta la línea y reinicia */
+@keyframes drawLine {
+  0%   { stroke-dashoffset: 500; }
+  60%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Etiquetas arriba */
+.metodo-labels {
+  position: relative;
+  height: 28px;
+  margin-bottom: px;
+}
+.metodo-label {
+  position: absolute;
+  top: 0;
+  left: var(--x);
+  transform: translateX(-50%);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: .3px;
+}
+
+/* Botón de cierre (chevrón arriba) */
+.panel-collapse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: none;
+  border: none;
+  color: #fff;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity .25s ease, transform .2s ease;
+}
+
+.panel-collapse:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.panel-collapse .chev-icon {
+  width: 40px;
+  height: auto;
+  stroke: #fff;
+}
+
+/* Chevrón decorativo en tarjetas */
+.diseno-figure {
+  position: relative; /* ya lo tienes, pero por si acaso */
+}
+
+.diseno-figure .card-chevron{
+  position: absolute;
+  left: 50%;
+  bottom: 12px;                 /* ajusta si lo quieres más pegado */
+  transform: translateX(-50%);
+  color: #fff;                  /* stroke = currentColor → blanco */
+  opacity: .95;
+  pointer-events: none;         /* no bloquea el click de la tarjeta */
+  z-index: 2;                   /* por encima del gradiente ::after */
+}
+
+.diseno-figure .card-chevron svg{
+  width: 36px;                  /* mismo tamaño que el chevrón existente */
+  height: 12px;
+  display: block;
+}
+
+/* ===== RESPONSIVE AJUSTES ===== */
+
+@media (max-width: 1024px) { /* tablet + móvil */
+  .panel-inner,
+  .diseno-panel,
+  .panel-gallery,
+  .magazine,
+  .metodo,
+  .metodo-svg,
+  .metodo-labels {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .panel-gallery {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .panel-gallery img {
+    scroll-snap-align: center;
+    border-radius: 6px;
+  }
+}
+
+/* Corrección: Método en tablet y móvil */
+@media (max-width: 1024px) {
+  .metodo-label {
+    font-size: 0.9rem;      /* más compacto */
+    letter-spacing: 0.2px;
+  }
+
+  /* Reposicionar etiquetas para pantallas pequeñas */
+  .metodo-label:nth-child(1) { left: 15%; }
+  .metodo-label:nth-child(2) { left: 50%; }
+  .metodo-label:nth-child(3) { left: 85%; }
+}
+
+@media (max-width: 600px) {
+  .metodo-label {
+    font-size: 0.8rem;      /* aún más compacto en móvil */
+  }
+  .metodo-label:nth-child(1) { left: 18%; }
+  .metodo-label:nth-child(2) { left: 50%; }
+  .metodo-label:nth-child(3) { left: 82%; }
+}
+
+/* Mostrar revista solo en escritorio */
+@media (max-width: 1024px) {
+  .magazine {
+    display: none !important;
+  }
+}

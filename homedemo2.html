@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VANLOR — Demo Futurista 02</title>
+
+  <!-- Fuentes sugeridas (puedes cambiarlas en tu CSS) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS de esta demo -->
+  <link rel="stylesheet" href="homedemo2.css" />
+</head>
+<body class="theme-futurista nav-left" data-cursor="laser-lg">
+  <!-- Botón global para abrir/cerrar la barra lateral en móvil -->
+  <button class="nav-toggle" aria-controls="side-nav" aria-expanded="false" aria-label="Abrir menú">
+    <span class="nav-toggle-icon" aria-hidden="true">≡</span>
+  </button>
+
+  <!-- Navegación lateral izquierda -->
+  <aside id="side-nav" class="side-nav" aria-label="Navegación principal">
+    <a href="#" class="brand" aria-label="Inicio">
+      <span class="brand-mark">VL</span>
+      <span class="brand-name">VANLOR</span>
+    </a>
+
+    <nav class="primary-nav">
+      <a href="#hero" class="is-active">Inicio</a>
+      <a href="#features">Capacidades</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#process">Proceso</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+
+    <div class="side-meta">
+      <div class="status">
+        <span class="dot"></span> Disponible para proyectos
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/vanlor.studio" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.linkedin.com/in/lorena-gomez-garcia" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo">✉</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main id="main" class="site-main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <h1 class="glow-title">
+          Diseño digital de alto voltaje
+        </h1>
+        <p class="hero-sub">
+          Interfaces limpias, micro-interacciones precisas y una dirección visual audaz.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#showcase">Ver proyectos</a>
+          <a class="btn btn-ghost" href="#contact">Hablemos</a>
+        </div>
+
+        <!-- Decor: líneas / grid animable (estílalo en CSS) -->
+        <div class="hero-grid" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- FEATURES / CAPACIDADES -->
+    <section id="features" class="features section">
+      <header class="section-head">
+        <h2>Capacidades</h2>
+        <p>UX limpia, UI precisa y visual craft con foco en detalle.</p>
+      </header>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>UI Sistemas</h3>
+          <p>Tokens, componentes y patrones escalables para productos vivos.</p>
+        </article>
+        <article class="feature">
+          <h3>Motion & Micro-UX</h3>
+          <p>Animaciones sutiles que comunican jerarquía y estado.</p>
+        </article>
+        <article class="feature">
+          <h3>Dirección Visual</h3>
+          <p>Paleta, tipografía y ritmo visual alineados con la marca.</p>
+        </article>
+        <article class="feature">
+          <h3>Prototipos</h3>
+          <p>Flows navegables y pruebas rápidas con usuarios.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section id="showcase" class="showcase section">
+      <header class="section-head">
+        <h2>Showcase</h2>
+        <p>Tres estéticas: mínima, editorial y futurista.</p>
+      </header>
+
+      <div class="cards">
+        <!-- Cada tarjeta puede enlazar a tu HTML de demo -->
+        <a class="card" href="homedemo1.html">
+          <figure class="card-media">
+            <img src="images/demos/minimal.jpg" alt="Home minimalista" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h3>Demo — Minimal</h3>
+            <p>Arquitectónica, luz, blanco & espacios.</p>
+          </div>
+        </a>
+
+        <a class="card" href="homedemo2.html" aria-current="page">
+          <figure class="card-media">
+            <img src="images/demos/futurista.jpg" alt="Home futurista" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h3>Demo — Futurista</h3>
+            <p>Oscura, neón, tipografía cinética.</p>
+          </div>
+        </a>
+
+        <a class="card" href="homedemo3.html">
+          <figure class="card-media">
+            <img src="images/demos/editorial.jpg" alt="Home editorial" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h3>Demo — Editorial</h3>
+            <p>Grids, serif & ritmo tipográfico.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROCESO (línea Idea → Boceto → Prototipo) -->
+    <section id="process" class="process section">
+      <header class="section-head">
+        <h2>Proceso</h2>
+        <p>De la chispa a la validación visual.</p>
+      </header>
+
+      <div class="timeline" aria-label="Metodología">
+        <div class="t-item">
+          <span class="t-label">Idea</span>
+          <span class="t-dot" aria-hidden="true"></span>
+        </div>
+        <div class="t-line" aria-hidden="true"></div>
+        <div class="t-item">
+          <span class="t-label">Boceto</span>
+          <span class="t-dot" aria-hidden="true"></span>
+        </div>
+        <div class="t-line" aria-hidden="true"></div>
+        <div class="t-item">
+          <span class="t-label">Prototipo</span>
+          <span class="t-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+      <!-- Nota: la animación de “pintado” de la línea la haces en CSS/JS del archivo de estilos -->
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="contact section">
+      <header class="section-head">
+        <h2>Contacto</h2>
+        <p>Cuéntame tu idea — preparo una propuesta visual inicial.</p>
+      </header>
+
+      <div class="contact-cta">
+        <a class="btn btn-primary" href="mailto:lorenagomezcontacto@gmail.com">Escríbeme</a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Ver CV</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© 2025 VANLOR Studio — Hecho con ⚡</p>
+    </footer>
+  </main>
+
+  <!-- JS mínimo: toggle de la barra lateral en móvil y activar link actual -->
+  <script>
+    (function(){
+      const btn  = document.querySelector('.nav-toggle');
+      const nav  = document.getElementById('side-nav');
+      const main = document.getElementById('main');
+
+      function setOpen(open){
+        document.body.classList.toggle('nav-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', () => {
+        setOpen(!document.body.classList.contains('nav-open'));
+      });
+
+      // Cerrar al pulsar en el contenido (en móvil), opcional:
+      main.addEventListener('click', () => {
+        if (document.body.classList.contains('nav-open')) setOpen(false);
+      });
+
+      // Marcar enlace activo por hash
+      const links = [...document.querySelectorAll('.primary-nav a')];
+      function markActive(){
+        const h = location.hash || '#hero';
+        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === h));
+      }
+      window.addEventListener('hashchange', markActive);
+      markActive();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Del sueño al diseño — Blog · Lorena Gómez García</title>
+
+  <!-- Tipografía y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylealbum.css" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at 60% 45%, #ffffff 0%, #f3f3f3 40%, #e6e6e6 75%, #ffffff 100%);
+      font-family: 'Urbanist', sans-serif;
+      color: #111;
+      line-height: 1.6;
+      padding-top: 90px;
+    }
+
+    /* Caja principal */
+    main.post-page {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      padding: 40px 20px 80px;
+    }
+
+    .article-box {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 40px 48px;
+    }
+
+    .article-box img.portada {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.6rem;
+      object-fit: cover;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: .8rem;
+    }
+    .cat {
+      background: #111;
+      color: #fff;
+      font-size: .8rem;
+      padding: .3rem .7rem;
+      border-radius: 999px;
+    }
+
+    .article-box h1 {
+      font-size: clamp(2rem, 1.2rem + 2vw, 3rem);
+      margin: 0 0 .5rem;
+      font-weight: 700;
+    }
+
+    .article-meta {
+      font-size: .9rem;
+      color: #777;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-box p {
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 1.3rem;
+    }
+
+    .volver-blog {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      background: #FFEE58;
+      border: 1.5px solid #000;
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: .6rem 1.2rem;
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+    .volver-blog:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ASIDE */
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .aside-box {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 28px 24px;
+    }
+
+    .aside-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    /* Compartir */
+    .share-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+
+    .share-buttons a {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform .25s ease;
+    }
+    .share-buttons a:hover { transform: translateX(4px); }
+
+    .share-buttons svg {
+      width: 20px;
+      height: 20px;
+      stroke: #000;
+    }
+
+    /* Lo más leído */
+    .most-read-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: #111;
+      transition: transform .25s ease;
+    }
+    .most-read-item:hover { transform: translateX(4px); }
+
+    .most-read-item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .most-read-item span {
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    /* Navegación */
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1150px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+    }
+
+    .article-nav a {
+      background: #FFEE58;
+      color: #000;
+      font-weight: 700;
+      border: 1.5px solid #000;
+      padding: .7rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+
+    .article-nav a:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Medium */
+    .leer-mas-medium {
+      text-align: center;
+      margin: 80px auto 50px;
+    }
+    .leer-mas-texto {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .medium-link svg {
+      width: 60px;
+      height: auto;
+    }
+
+    /* Footer transparente */
+    footer {
+      background: transparent !important;
+      border: none;
+      text-align: center;
+      color: #333;
+      padding: 1rem;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      main.post-page { grid-template-columns: 1fr; padding: 20px; }
+      .article-box { padding: 28px 24px; }
+      .article-nav { flex-direction: column; gap: 16px; align-items: center; }
+    }
+  </style>
+</head>
+
+<body class="page-blog">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="dots">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-header">
+    <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <span class="menu-icon" aria-hidden="true">+</span>
+    </button>
+    <nav id="primary-nav" aria-label="Menú principal" hidden>
+      <a href="index.html">Home</a>
+      <a href="redacción.html">Redacción</a>
+      <a href="diseño.html">Diseño</a>
+      <a href="fotografía.html">Fotografía</a>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="post-page">
+    <article class="article-box">
+      <a href="blog.html" class="volver-blog">← Volver al blog</a>
+
+      <img src="images/imgblog_designfurniture.png" alt="Portada del artículo Del sueño al diseño" class="portada"/>
+
+      <div class="categories">
+        <span class="cat">Diseño</span>
+        <span class="cat">IA</span>
+        <span class="cat">Creatividad</span>
+      </div>
+
+      <h1>Del sueño al diseño</h1>
+      <div class="article-meta">Por Lorena Gómez García · 5 min de lectura</div>
+
+      <p>La línea entre la imaginación y la creación se ha vuelto más difusa que nunca. En este artículo exploro cómo el diseño contemporáneo dialoga con la inteligencia artificial, la intuición humana y la sensibilidad estética que emerge cuando los límites se desdibujan.</p>
+
+      <p>Soñamos ideas, pero diseñar es darles estructura, ritmo y materia. En el proceso, la tecnología se convierte en cómplice, no sustituto: una extensión de la mirada creativa. Este texto es una reflexión sobre esa alianza.</p>
+    </article>
+
+    <aside>
+      <div class="aside-box">
+        <h3>Compartir</h3>
+        <div class="share-buttons">
+          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 4s-1.5.6-2.3.8c-.8-.9-2.2-1.2-3.3-.6-1.1.6-1.8 1.9-1.6 3.1-3.2-.1-6.3-1.7-8.2-4.2C6.3 5 6.5 6.7 7.6 7.7c-.6 0-1.2-.2-1.8-.4v.1c0 1.7 1.1 3.1 2.7 3.5-.5.1-1 .1-1.5 0 .4 1.3 1.6 2.2 3 2.3-1.2.9-2.7 1.4-4.2 1.4-.3 0-.6 0-.9-.1 1.6 1 3.5 1.5 5.4 1.5 6.5 0 10-5.4 10-10V6c.7-.5 1.3-1.1 1.8-1.8Z"/></svg> Twitter</a>
+          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
+          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><polyline points="22,6 12,13 2,6"/></svg> Correo</a>
+        </div>
+      </div>
+
+      <div class="aside-box">
+        <h3>Lo más leído</h3>
+        <a href="#" class="most-read-item">
+          <img src="images/imgblog_intimidad.png" alt="">
+          <span>Cuando el algoritmo inspira</span>
+        </a>
+        <a href="#" class="most-read-item">
+          <img src="images/imgblog_italia.jpg" alt="">
+          <span>Arquitectura emocional</span>
+        </a>
+        <a href="#" class="most-read-item">
+          <img src="images/imgblog_muerte.JPG" alt="">
+          <span>Diseñar con alma</span>
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <div class="article-nav">
+    <a href="#">← Artículo anterior</a>
+    <a href="#">Artículo siguiente →</a>
+  </div>
+
+  <section class="leer-mas-medium">
+    <p class="leer-mas-texto">Más artículos</p>
+    <a href="https://medium.com/@Litlorg" target="_blank" class="medium-link" aria-label="Leer más en Medium">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71" fill="#fff"><path d="M588.67 296.36c0 163.68-131.58 296.35-294.33 296.35S0 460 0 296.36 131.58 0 294.34 0s294.33 132.67 294.33 296.36zm173.53 0c0 154.12-65.79 279.12-146.97 279.12s-146.97-125-146.97-279.12 65.79-279.11 146.97-279.11 146.97 124.99 146.97 279.11zm281.43 0c0 145.49-26.31 263.47-58.78 263.47s-58.78-117.98-58.78-263.47 26.31-263.46 58.78-263.46 58.78 117.97 58.78 263.46z"/></svg>
+    </a>
+  </section>
+
+  <div class="redes-contacto">
+    <div class="iconos-redes">
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
+      <a href="https://www.linkedin.com/in/lorena-gomez-garcia" target="_blank" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    </div>
+  </div>
+
+  <footer>© 2025 · Lorena Gómez García</footer>
+
+  <script>
+    window.addEventListener('load',()=>{document.getElementById('preloader').classList.add('hide')});
+    (function(){const h=document.getElementById('main-header');let y0=window.scrollY;
+      window.addEventListener('scroll',()=>{const y=window.scrollY;if(y>y0)h.classList.add('hide');else h.classList.remove('hide');if(y>60)h.classList.add('solid');else h.classList.remove('solid');y0=y<0?0:y;},{passive:true});})();
+  </script>
+</body>
+</html>

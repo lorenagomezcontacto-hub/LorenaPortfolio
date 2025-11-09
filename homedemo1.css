@@ -1,0 +1,326 @@
+/* ============================
+   HOM Minimal / Arquitectura
+   ============================ */
+
+/* Paleta & escala */
+:root{
+  --bg: #faf8f2;           /* beige muy claro (lienzo) */
+  --paper: #ffffff;        /* blanco papel */
+  --ink: #101010;          /* tinta */
+  --muted: #6b6b6b;        /* texto secundario */
+  --line: #e7e3db;         /* líneas finas/beige */
+  --accent: #c9c3b6;       /* acento cálido muy suave */
+  --radius: 14px;
+
+  --step--1: clamp(.92rem, .88rem + .2vw, 1rem);
+  --step-0: clamp(1rem, .95rem + .35vw, 1.125rem);
+  --step-1: clamp(1.4rem, 1.2rem + 1.2vw, 1.9rem);
+  --step-2: clamp(2.1rem, 1.6rem + 2.6vw, 3rem);
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.55 "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Contenedor */
+.container{
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-inline: 28px;
+}
+
+/* ---------------- Header ---------------- */
+.site-header{
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding-block: 18px;
+}
+
+.brand{
+  display: inline-flex; align-items: center; gap: 10px;
+  letter-spacing: .02em;
+}
+.brand-mark{
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--ink); opacity: .9;
+}
+.brand-name{
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.main-nav{ display: inline-flex; gap: 22px; }
+.nav-link{
+  display: inline-block;
+  font-size: 0.92rem;
+  color: var(--ink);
+  opacity: .8;
+  cursor: default;                 /* no es link real */
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: opacity .2s ease, border-color .2s ease;
+}
+.nav-link:hover{ opacity: 1; border-color: var(--accent); }
+.nav-link.accent{
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+/* ---------------- Hero ---------------- */
+.hero{
+  padding: clamp(56px, 6vw, 90px) 0 clamp(36px, 4vw, 60px);
+}
+.hero-title{
+  margin: 0 0 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 70px;
+  line-height: 1.05;
+  letter-spacing: .005em;
+  color: var(--muted);
+
+}
+.hero-sub{
+  margin: 0;
+  max-width: 64ch;
+  color: var(--muted);
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+
+}
+.hero-cta{ margin-top: 22px; }
+.btn-ghost{
+  appearance: none; border: 1px solid var(--line);
+  background: var(--paper); color: var(--ink);
+  padding: 10px 18px; border-radius: 999px;
+  font-weight: 500; letter-spacing: .01em;
+  transition: transform .15s ease, background .25s ease, border-color .25s ease;
+}
+.btn-ghost:hover{
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--paper) 85%, var(--bg));
+  border-color: color-mix(in srgb, var(--line) 60%, var(--ink) 10%);
+}
+
+/* ---------------- Imagen destacada ---------------- */
+.fade-slider {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px -20px rgba(0,0,0,.2);
+}
+
+.fade-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: fade 15s infinite;
+}
+
+.fade-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Duración del ciclo para cada imagen */
+.fade-slider .slide:nth-child(1) { animation-delay: 0s; }
+.fade-slider .slide:nth-child(2) { animation-delay: 5s; }
+.fade-slider .slide:nth-child(3) { animation-delay: 10s; }
+
+/* Efecto de desvanecido */
+@keyframes fade {
+  0%, 33%, 100% { opacity: 0; }
+  5%, 28% { opacity: 1; }
+}
+
+/* ---------------- Grid de trabajos ---------------- */
+.grid-works{ padding: 8px 0 64px; }
+.works{
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 900px){
+  .works{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px){
+  .works{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: clip;
+  transition: transform .18s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 26px 44px -30px rgba(0,0,0,.25);
+  border-color: color-mix(in srgb, var(--line) 60%, var(--ink) 12%);
+}
+.card-media{ margin: 0; }
+.card-media .ph-img{
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+}
+.card-title{
+  margin: 16px 16px 6px;
+  font-size: 1.05rem;
+  letter-spacing: .01em;
+}
+.card-meta{
+  margin: 0 16px 18px;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* ---------------- Cita ---------------- */
+.quote{
+  padding: 28px 0 60px;
+}
+.quote blockquote{
+  margin: 0;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.quote p{
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: var(--step-1);
+  font-style: italic;
+  letter-spacing: .01em;
+}
+
+/* ---------------- Footer ---------------- */
+.site-footer{
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+}
+.site-footer .container{
+  padding-block: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* Accesibilidad ligera */
+:focus-visible{
+  outline: 2px solid color-mix(in srgb, var(--ink) 40%, transparent);
+  outline-offset: 4px;
+}
+
+
+
+
+/* =========================
+   Base común para demos HOM
+   ========================= */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  font: 400 16px/1.55 "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* contenedor */
+.container{
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-inline: 28px;
+}
+
+/* Estructura compartida */
+.site-header{ position: sticky; top:0; z-index: 10; }
+.site-header .container{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding-block: 16px;
+}
+.brand{ display: inline-flex; align-items: center; gap: 10px; }
+.brand-name{ letter-spacing: .08em; font-weight: 700; text-transform: uppercase; }
+.main-nav{ display: inline-flex; gap: 20px; }
+.nav-link{ font-size: .95rem; letter-spacing: .06em; text-transform: uppercase; cursor: default; }
+
+.hero{ position: relative; padding: clamp(56px, 6vw, 90px) 0 clamp(36px, 4vw, 60px); }
+.hero-title{ margin:0 0 10px; line-height: 1.04; }
+.hero-sub{ margin:0; max-width: 64ch; opacity:.88; }
+.hero-cta{ margin-top: 20px; }
+
+.feature-image{ padding: 10px 0 42px; }
+.frame{ margin:0; padding:16px; border-radius: 16px; }
+.frame figcaption{ margin-top:10px; font-size:.9rem; opacity:.8; }
+
+.ph-img{ width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; }
+
+.grid-works{ padding: 8px 0 64px; }
+.works{
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 900px){ .works{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .works{ grid-template-columns: 1fr; } }
+
+.card{ border-radius: 16px; overflow: clip; transition: transform .18s ease, box-shadow .25s ease; }
+.card:hover{ transform: translateY(-4px); }
+.card-media{ margin:0; }
+.card-media .ph-img{ aspect-ratio: 4 / 3; border-radius: 0; }
+
+.card-title{ margin: 16px 16px 6px; font-weight: 600; letter-spacing:.02em; }
+.card-meta{ margin: 0 16px 18px; font-size: .92rem; opacity: .8; }
+
+.quote{ padding: 28px 0 60px; }
+.quote blockquote{ margin:0; padding: 26px 0; text-align:center; }
+.quote p{ margin:0; font-weight: 600; letter-spacing:.02em; }
+
+.site-footer .container{ text-align:center; padding-block: 16px; font-size: .9rem; opacity:.85; }
+
+/* Importar la fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+
+/* Estilo base de la web */
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #222; /* gris oscuro elegante */
+  background-color: #faf9f7; /* fondo neutro cálido */
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(images/fondodemo1.jpg); /* ← reemplaza con la URL o ruta de tu imagen */
+  background-size: cover;        /* La imagen cubre toda la pantalla */
+  background-position: center;   /* Centra la imagen */
+  background-repeat: no-repeat;  /* Evita que se repita */
+  background-attachment: fixed;  /* Hace que el fondo se mantenga fijo al hacer scroll */
+}

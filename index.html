@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lorena Gómez García | Redactora y creativa</title>
+  <link rel="icon" href="images/favicon.png.png" type="image/png">
+
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Fonts rápidas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @font-face{font-display:swap;}
+  </style>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Refuerzo mínimo para que el preloader y el collage transicionen sí o sí -->
+  <style>
+    /* Si ya lo tienes en style.css, no pasa nada por repetir */
+    #preloader{
+      position: fixed; inset: 0; z-index: 9999;
+      display: grid; place-items: center;
+      background: #000; 
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #preloader.hide{ opacity: 0; visibility: hidden; pointer-events: none; }
+
+    /* Collage: aparece TODO a la vez (bloque) */
+    .collage{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .55s ease, transform .55s ease;
+      will-change: opacity, transform;
+    }
+    .collage.ready{
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- OVERLAY INSTANTÁNEO (autónomo) -->
+  <div id="nav-overlay"
+      style="position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:2147483647;">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .15s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .3s infinite ease-in-out;"></span>
+    </div>
+    <style>
+      @keyframes navb {
+        0%, 80%, 100% { transform: scale(0.6); opacity: .6; }
+        40% { transform: scale(1); opacity: 1; }
+      }
+    </style>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-busy="true">
+    <div class="dots" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <span class="sr">Cargando…</span>
+  </div>
+
+  <!-- Encabezado -->
+  <header id="main-header">
+    <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+
+    <!-- Botón móvil -->
+    <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+      <span class="menu-icon">+</span>
+    </button>
+
+    <nav id="primary-nav" class="mobile-menu" aria-label="Menú principal">
+      <a href="redaccion.html">Redacción</a>
+      <a href="diseno.html">Diseño</a>
+      <a href="fotografia.html">Fotografía</a>
+      <a href="about.html">About</a>
+      <a href="#contacto" class="btn-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Portada -->
+  <section class="hero" id="inicio">
+    <section class="collage">
+      <img class="img2" src="images/image2_perfil.jpg" alt="Perfil" decoding="async" fetchpriority="high">
+      <img class="img1" src="images/image1_huellas.JPG" alt="Huellas en la arena" loading="lazy" decoding="async">
+      <img class="img3" src="images/image3_lampvulcan.png" alt="Lámpara volcán" loading="lazy" decoding="async">
+      <img class="img4" src="images/image4_lamphabitat.png" alt="Lámpara verde" loading="lazy" decoding="async">
+      <img class="img5" src="images/pintura1.png" alt="Cuadro rojo" loading="lazy" decoding="async">
+      <img class="img6" src="images/albumf1.JPG" alt="Fotografía de pareja en el mar" loading="lazy" decoding="async">
+      <img class="img7" src="images/mesaportada.png" alt="Mesa de piedra" loading="lazy" decoding="async">
+    </section>
+  </section>
+
+  <!-- Cita -->
+  <section class="quote">
+    <p><em>“Crea con el corazón, construye con la mente”</em></p>
+    <span>— Criss Jami</span>
+  </section>
+
+  <!-- Video -->
+  <section class="fullvideo" aria-label="Vídeo destacado"></section>
+
+  <section class="video-fullwidth">
+    <video autoplay muted loop playsinline preload="metadata" poster="images/horsesbn_poster.jpg">
+      <source src="images/horsesbn.mp4" type="video/mp4">
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog" id="blog">
+    <h2>Redacciones más leídas</h2>
+    <div class="posts">
+
+      <article class="post">
+        <img src="images/imgblog_intimidad.png" alt="Portada Post Intimidad" loading="lazy" decoding="async" width="640" height="360">
+        <h3>Vivir sin espectadores: la intimidad como resistencia</h3>
+        <p>¿Fuiste a ese concierto si no publicaste al menos un vídeo de su canción más mítica? ¿Se casaron tus amigos si no subiste una foto del cáterin? ¿Cumplió años tu abuelo si no le felicitaste en tu perfil? ¿Fuiste feliz si no te mostraste sonriendo? ¿Tu trabajo te hace sentir bien sin añadir adjetivos anglosajones que lo hagan parecer más complicado en plataformas laborales?</p>
+        <a href="https://medium.com/@Litlorg/vivir-sin-espectadores-la-intimidad-como-resistencia-ec6485bc52c8" target="_blank" rel="noopener noreferrer">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_saber.JPG" alt="Portada post Curiosidad" loading="lazy" decoding="async" width="640" height="360">
+        <h3>Hay que saber más cosas</h3>
+        <p>¿Se puede querer a alguien que no te genera curiosidad o que no te empuja a cuestionar? Una vez alguien astuto me dijo que le impedía conectar la ausencia de preguntas en el otro. (...) Se esconde un gran placer en preguntarse por alguien o en sentirse averiguado. Pensándolo bien: las personas a las que más he querido son aquellas con las que siempre he deseado seguir hablando.</p>
+        <a href="https://medium.com/@Litlorg/hay-que-saber-más-cosas-4efa31b22aba" target="_blank" rel="noopener noreferrer">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_muerte.JPG" alt="Portada post Muerte" loading="lazy" decoding="async" width="640" height="360">
+        <h3>La muerte de al lado</h3>
+        <p>Mucho antes de una gran barbarie tiene lugar un click mucho más pequeño en nosotros mismos. Una desconexión sutil, silenciosa y corrosiva. Dejamos de mirarnos los unos a los otros, olvidamos agradecer, evitamos que lo vulnerable se vea, invalidamos el sufrimiento —propio y ajeno—, negamos la existencia de la ética para no sentirnos culpables y dejamos de pedir perdón a quien dañamos.</p>
+        <a href="https://medium.com/@Litlorg/la-muerte-de-al-lado-becc02919c24" target="_blank" rel="noopener noreferrer">Leer más →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Sección: Leer más en Medium -->
+  <section class="leer-mas-medium">
+    <p class="leer-mas-texto">Más artículos</p>
+    <a href="https://medium.com/@tuusuario" target="_blank" class="medium-link" aria-label="Leer más en Medium">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71" fill="#fff" class="medium-icon">
+        <path d="M588.67 296.36c0 163.68-131.58 296.35-294.33 296.35S0 460 0 296.36 131.58 0 294.34 0s294.33 132.67 294.33 296.36zm173.53 0c0 154.12-65.79 279.12-146.97 279.12s-146.97-125-146.97-279.12 65.79-279.11 146.97-279.11 146.97 124.99 146.97 279.11zm281.43 0c0 145.49-26.31 263.47-58.78 263.47s-58.78-117.98-58.78-263.47 26.31-263.46 58.78-263.46 58.78 117.97 58.78 263.46z"/>
+      </svg>
+    </a>
+  </section>
+  
+  <!-- Sección Conectamos -->
+  <section class="contacto" id="contacto">
+    <h2>¿Conectamos?</h2>
+    <p>Me gusta trabajar con ideas que nacen de la <strong>sensibilidad</strong> y se construyen con <strong>coherencia</strong>. 
+    Creo en los proyectos que cuentan algo real y que transmiten emoción.</p>
+
+    <p>Si tienes una propuesta entre manos —ya sea un proyecto creativo, una colaboración, un encargo de redacción o diseño— estaré encantada de escucharte. También puedes escribirme si solo quieres compartir inspiración.</p>
+    <p><strong>Todo empieza con una conversación.</strong></p>
+
+    <form class="formulario-contacto" action="https://formspree.io/f/tu_endpoint" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" rows="4" placeholder="Tu mensaje..." required></textarea>
+      <button type="submit">¡Enviar!</button>
+    </form>
+  </section>
+
+  <section class="hero-slider">
+  <div class="slide" style="background-image:url('images/espacios3.png')"></div>
+  <div class="slide" style="background-image:url('images/texturas4.png')"></div>
+  <div class="slide" style="background-image:url('images/espacios2.png')"></div>
+  <div class="slide" style="background-image:url('images/texturas9.png')"></div>
+  <div class="slide" style="background-image:url('images/texturas3.png')"></div>
+  </section>
+
+  <div class="redes-contacto">
+    <div class="iconos-redes">
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <a href="https://www.linkedin.com/in/lorena-gómez-garcía" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      
+      <a href="https://medium.com/@litlorg" target="_blank" aria-label="Medium">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1043.63 592.71" fill="#000">
+    <path d="M588.67 296.35c0 163.72-131.02 296.36-293.84 296.36S1 460.07 1 296.35 132 0 294.83 0s293.84 132.63 293.84 296.35zm291.06 0c0 154.86-65.51 280.53-146.4 280.53s-146.41-125.67-146.41-280.53S611.4 15.82 732.29 15.82s147.44 125.67 147.44 280.53zM1043.63 296.35c0 142.84-20.9 258.69-46.66 258.69s-46.66-115.85-46.66-258.69 20.9-258.69 46.66-258.69 46.66 115.85 46.66 258.69z"/>
+  </svg>
+</a>
+
+
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>© 2025 Lorena Gómez García. Created with 💛.</p>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+
+  <!-- Encabezado: ocultar al hacer scroll + fondo sólido tras desplazamiento -->
+  <script>
+  (function(){
+    const header = document.getElementById('main-header');
+    const menuBtn = header?.querySelector('.menu-toggle');
+    if(!header) return;
+
+    let lastY = window.scrollY || 0;
+    window.addEventListener('scroll', function(){
+      if (menuBtn && menuBtn.getAttribute('aria-expanded') === 'true') return;
+      const y = window.scrollY || 0;
+      if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+      lastY = y < 0 ? 0 : y;
+      if (y > 60) header.classList.add('solid'); else header.classList.remove('solid');
+    }, {passive:true});
+  })();
+  </script>
+
+  <!-- Navegación móvil (accesible) -->
+  <script>
+  (function(){
+    const btn = document.querySelector('#main-header .menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const icon = btn?.querySelector('.menu-icon');
+    if(!btn || !nav) return;
+
+    const lockScroll = (lock) => {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overscrollBehavior = lock ? 'contain' : '';
+    };
+    const setIcon = (open) => { if (icon) icon.textContent = open ? '×' : '+'; };
+
+    const openNav = (open) => {
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      setIcon(open);
+
+      if (open) {
+        nav.style.maxHeight = '0px';
+        nav.hidden = false;
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = nav.scrollHeight + 'px';
+          nav.classList.add('open');
+        });
+        lockScroll(true);
+      } else {
+        nav.style.maxHeight = nav.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = '0px';
+          nav.classList.remove('open');
+        });
+        const onEnd = (e) => {
+          if (e.propertyName !== 'max-height') return;
+          if (!nav.classList.contains('open')) {
+            nav.hidden = true;
+            nav.removeEventListener('transitionend', onEnd);
+          }
+        };
+        nav.addEventListener('transitionend', onEnd);
+        lockScroll(false);
+      }
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      openNav(!isOpen);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        openNav(false); btn.focus();
+      }
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return; openNav(false);
+    });
+
+    const mql = window.matchMedia('(min-width: 900px)');
+    const handleChange = () => {
+      if (mql.matches) {
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+        nav.hidden = false; nav.style.maxHeight = ''; nav.classList.remove('open'); lockScroll(false);
+      } else {
+        nav.hidden = true; nav.style.maxHeight = '0px';
+        btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menú'); setIcon(false);
+      }
+    };
+    mql.addEventListener ? mql.addEventListener('change', handleChange) : mql.addListener(handleChange);
+    handleChange();
+  })();
+  </script>
+
+  <!-- Preloader + navegación interna (AJUSTADO) -->
+  <script>
+  (function () {
+    const pre = document.getElementById('preloader');
+
+    // ❗ Quitamos cualquier ocultación temprana: solo cuando TODO esté cargado
+    window.addEventListener('load', () => {
+      // pequeño delay opcional para que el fade sea visible
+      setTimeout(() => pre.classList.add('hide'), 150);
+    });
+
+    // Overlay de navegación entre páginas internas (lo dejamos igual)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      const url = a.getAttribute('href') || '';
+      const isHash = url.startsWith('#');
+      const isExternal = a.target === '_blank' || a.hasAttribute('download') ||
+                        /^mailto:|^tel:|^https?:\/\//i.test(url) && new URL(url, location.href).origin !== location.origin;
+      if (isHash || isExternal) return;
+      e.preventDefault();
+      pre.classList.remove('hide');
+      setTimeout(() => { window.location.href = url; }, 500);
+    });
+
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) pre.classList.add('hide');
+    });
+  })();
+  </script>
+
+  <!-- Collage: esperar a que TODAS las imágenes estén decodificadas y entrar suave -->
+  <script>
+  (function(){
+    const collage = document.querySelector('.collage');
+    if(!collage) return;
+
+    const imgs = Array.from(collage.querySelectorAll('img'));
+
+    // Espera a que TODAS las imágenes se decodifiquen (sin parpadeo)
+    Promise.all(
+      imgs.map(img => img.decode ? img.decode().catch(()=>{}) : Promise.resolve())
+    ).then(() => {
+  setTimeout(() => collage.classList.add('ready'), 180); /* 180–350ms queda precioso */
+});
+  })();
+  </script>
+
+  <!-- Overlay navegación instantánea -->
+  <script>
+  (function () {
+    const overlay = document.getElementById('nav-overlay');
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+      if (/^mailto:|^tel:/i.test(href)) return;
+      const url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
+      e.preventDefault();
+      overlay.style.display = 'flex';
+      requestAnimationFrame(() => { requestAnimationFrame(() => { location.href = url.href; }); });
+    });
+    window.addEventListener('pageshow', () => { overlay.style.display = 'none'; });
+  })();
+  </script>
+
+  <!-- Reveal posts (igual) -->
+  <script>
+  (function(){
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealEls = [...document.querySelectorAll('.posts .post')];
+    revealEls.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .45s ease, transform .45s ease';
+    });
+    if (reduce){ revealEls.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); return; }
+    const io = new IntersectionObserver(async (entries, obs)=>{
+      for (const en of entries){
+        if (!en.isIntersecting) continue;
+        const el = en.target;
+        const imgs = el.matches('img') ? [el] : [...el.querySelectorAll('img')];
+        await Promise.all(imgs.map(i => i.decode?.().catch(()=>{})));
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        obs.unobserve(el);
+      }
+    }, {rootMargin: '0px 0px -10% 0px', threshold: .12});
+    revealEls.forEach(el => io.observe(el));
+  })();
+  </script>
+</body>
+</html>

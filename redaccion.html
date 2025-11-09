@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorena Gómez García | Redacción</title>
+  <link rel="icon" href="images/favicon.png.png" type="image/png">
+
+
+  <!-- Fuente (igual que en tu sitio) -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+
+  <!-- Tus estilos globales -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <body>
+<!-- OVERLAY INSTANTÁNEO (autónomo) -->
+<div id="nav-overlay"
+     style="position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:2147483647;">
+  <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
+    <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s infinite ease-in-out;"></span>
+    <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .15s infinite ease-in-out;"></span>
+    <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .3s infinite ease-in-out;"></span>
+  </div>
+  <style>
+    @keyframes navb {
+      0%, 80%, 100% { transform: scale(0.6); opacity: .6; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</div>
+
+<!-- Preloader -->
+<div id="preloader" role="status" aria-live="polite" aria-busy="true">
+  <div class="dots" aria-hidden="true">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <span class="sr">Cargando…</span>
+</div>
+
+<!-- Encabezado -->
+<header id="main-header">
+  <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+
+  <!-- Botón móvil -->
+  <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+    <span class="menu-icon" aria-hidden="true">+</span>
+  </button>
+
+  <nav id="primary-nav" aria-label="Menú principal" hidden>
+    <a href="index.html">Home</a>
+    <a href="diseno.html">Diseño</a>
+    <a href="fotografia.html">Fotografía</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+  </nav>
+</header>
+
+<!-- Sección 1: Presentación de Redacción -->
+<section class="redaccion-hero" id="Redacción">
+  <div class="decorativa-g" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="150" font-family="Times New Roman, serif" font-size="180" font-weight="400" fill="#111">G</text>
+    </svg>
+  </div>
+  <div class="decorativa-derecha" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="150" font-family="Times New Roman, serif" font-size="180" font-weight="400" fill="#111">R</text>
+    </svg>
+  </div>
+  <div class="container">
+    <h1>Servicios de redacción</h1>
+
+    <div class="typewriter">
+      <p class="tw-line">
+        La redacción es la base de cualquier proyecto que quiera comunicar con eficacia.
+        Un texto bien escrito define el tono, refuerza la identidad y genera confianza.
+      </p>
+      <p class="tw-line">
+        Ofrezco servicios de escritura creativa, corporativa y digital, con experiencia en distintos sectores y formatos:
+        desde artículos y campañas hasta contenido web y comunicación interna.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Sección 2: 4 servicios en columnas -->
+<section class="servicios" id="Servicios">
+  <div class="container">
+    <div class="servicios-grid">
+      <article class="servicio">
+        <h3>Redacción creativa</h3>
+        <p>Textos originales que combinan imaginación, emoción y propósito. Utilizo la palabra para dar identidad y conectar con el lector a través de la sensibilidad.</p>
+        <p>Este tipo de escritura sirve para dotar de personalidad a marcas, proyectos culturales o piezas editoriales, logrando que el mensaje se recuerde.</p>
+      </article>
+      <article class="servicio">
+        <h3>Copywriting corporativo</h3>
+        <p>Mensajes claros, estratégicos y alineados con la identidad de tu marca que guiarán al cliente hacia la acción.</p>
+        <p>Este tipo de redacción fortalece la presencia profesional de empresas y proyectos, ayudando a transmitir lo que hacen y por qué importa, de forma coherente y atractiva.</p>
+      </article>
+      <article class="servicio">
+        <h3>SEO</h3>
+        <p>Contenido optimizado para buscadores sin perder fluidez ni autenticidad. Combino técnica y estilo para mejorar el posicionamiento orgánico y la experiencia de lectura.</p>
+        <p>Este tipo de texto permite que las marcas sean más visibles y relevantes, atrayendo al público adecuado con un lenguaje de valor.</p>
+      </article>
+      <article class="servicio">
+        <h3>Social content</h3>
+        <p>Piezas breves, dinámicas y con intención narrativa para redes sociales. Escribo mensajes que captan la atención en pocos segundos y mantienen la voz de marca.</p>
+        <p>Este tipo de contenido fomenta la interacción y refuerza la identidad digital, generando conversación y cercanía con la comunidad.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Sección 3: Blog -->
+<section class="blog-redaccion" id="Blog">
+  <div class="container">
+    <h2>Algunos artículos del blog</h2>
+    <p class="intro">Ideas corporativas y escrituras recientes.</p>
+
+    <div class="posts">
+      <!-- Ejemplos (sustituye por tus entradas reales) -->
+      <article class="post">
+        <img src="images/imgblog_designfurniture.png" alt="Blog intimidad">
+        <h3>Del sueño al diseño</h3>
+        <p>Creatividad, diseño e inteligencia artificial generativa: cómo pasar de la idea al proyecto final con métodos, herramientas y enfoque profesional. Explora el proceso creativo desde la fase conceptual hasta la ejecución, mostrando cómo la técnica y la IA pueden potenciar la originalidad, agilizar la producción y abrir nuevas posibilidades estéticas. Un enfoque para diseñar sin límites, donde soñar también es construir.</p>
+        <a href="#">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_intimidad.png" alt="Blog intimidad">
+        <h3>Vivir sin espectadores: la intimidad como resistencia</h3>
+        <p>¿Fuiste a ese concierto si no publicaste al menos un vídeo de su canción más mítica? ¿Se casaron tus amigos si no subiste una foto del cáterin? ¿Cumplió años tu abuelo si no le felicitaste en tu perfil? ¿Fuiste feliz si no te mostraste sonriendo? ¿Tu trabajo te hace sentir bien sin añadir adjetivos anglosajones que lo hagan parecer más complicado en plataformas laborales?</p>
+        <a href="https://medium.com/@Litlorg/vivir-sin-espectadores-la-intimidad-como-resistencia-ec6485bc52c8">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_webdesign.png" alt="Microcopy">
+        <h3>Diez claves para blindar tu marca</h3>
+        <p>Descubre cómo fortalecer la identidad de tu marca desde la base: definición del posicionamiento, construcción de una narrativa coherente, diseño visual estratégico y gestión consciente de la reputación.</p>
+        <a href="#">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_saber.JPG" alt="Estructura y ritmo">
+        <h3>Hay que saber más cosas</h3>
+        <p>¿Se puede querer a alguien que no te genera curiosidad o que no te empuja a cuestionar? Una vez alguien astuto me dijo que le impedía conectar la ausencia de preguntas en el otro. (...) Se esconde un gran placer en preguntarse por alguien o en sentirse averiguado. Pensándolo bien: las personas a las que más he querido son aquellas con las que siempre he deseado seguir hablando.</p>
+        <a href="https://medium.com/@Litlorg/hay-que-saber-más-cosas-4efa31b22aba">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_muerte.JPG" alt="Microcopy">
+        <h3>La muerte de al lado</h3>
+        <p>Mucho antes de una gran barbarie tiene lugar un click mucho más pequeño en nosotros mismos. Una desconexión sutil, silenciosa y corrosiva. Dejamos de mirarnos los unos a los otros, olvidamos agradecer, evitamos que lo vulnerable se vea, invalidamos el sufrimiento —propio y ajeno—, negamos la existencia de la ética para no sentirnos culpables y dejamos de pedir perdón a quien dañamos.</p>
+        <a href="https://medium.com/@Litlorg/la-muerte-de-al-lado-becc02919c24">Leer más →</a>
+      </article>
+
+      <article class="post">
+        <img src="images/imgblog_italia.jpg" alt="Microcopy">
+        <h3>Las obras ocultas del imperio romano</h3>
+        <p>Este artículo revela cómo el legado romano se expandió y transformó más allá de sus fronteras, mostrando testimonios culturales que conectan pasado y presente. Un recorrido para descubrir la historia que no siempre se ve, pero que sigue viva en detalles, fragmentos y silencios.</p>
+        <a href="#">Leer más →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Leer más en Medium -->
+<section class="leer-mas-medium">
+  <p class="leer-mas-texto">Más artículos</p>
+  <a href="https://medium.com/@Litlorg" target="_blank" class="medium-link" aria-label="Leer más en Medium">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71" fill="#fff" class="medium-icon">
+      <path d="M588.67 296.36c0 163.68-131.58 296.35-294.33 296.35S0 460 0 296.36 131.58 0 294.34 0s294.33 132.67 294.33 296.36zm173.53 0c0 154.12-65.79 279.12-146.97 279.12s-146.97-125-146.97-279.12 65.79-279.11 146.97-279.11 146.97 124.99 146.97 279.11zm281.43 0c0 145.49-26.31 263.47-58.78 263.47s-58.78-117.98-58.78-263.47 26.31-263.46 58.78-263.46 58.78 117.97 58.78 263.46z"/>
+    </svg>
+  </a>
+</section>
+
+
+<!-- Redes (al final, antes del footer) -->
+<section class="container redes-final">
+  <div class="redes-contacto">
+    <div class="iconos-redes">
+      <!-- Perfil personal -->
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+      <!-- Instagram estudio -->
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/lorena-gomez-garcia" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      
+      <!-- Medium -->
+      <a href="https://medium.com/@litlorg" target="_blank" aria-label="Medium">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1043.63 592.71" fill="#000">
+    <path d="M588.67 296.35c0 163.72-131.02 296.36-293.84 296.36S1 460.07 1 296.35 132 0 294.83 0s293.84 132.63 293.84 296.35zm291.06 0c0 154.86-65.51 280.53-146.4 280.53s-146.41-125.67-146.41-280.53S611.4 15.82 732.29 15.82s147.44 125.67 147.44 280.53zM1043.63 296.35c0 142.84-20.9 258.69-46.66 258.69s-46.66-115.85-46.66-258.69 20.9-258.69 46.66-258.69 46.66 115.85 46.66 258.69z"/>
+  </svg>
+</a>
+
+
+      <!-- Correo -->
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Pie de página -->
+<footer>
+  <p>© 2025 Lorena Gómez García. Made with 💛.</p>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Header hide on scroll + solid
+  (function(){
+    const header = document.getElementById('main-header');
+    if(!header) return;
+    let lastY = window.scrollY || 0;
+    window.addEventListener('scroll', function(){
+      const y = window.scrollY || 0;
+      if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+      lastY = y < 0 ? 0 : y;
+      if (y > 60) header.classList.add('solid'); else header.classList.remove('solid');
+    }, {passive:true});
+  })();
+</script>
+
+<script>
+  // Typewriter
+  (function(){
+    const CPS = 65;                 // caracteres por segundo
+    const PAUSA_ENTRE_LINEAS = 600; // ms entre párrafos
+
+    const lines = document.querySelectorAll('.typewriter .tw-line');
+    if (!lines.length) return;
+
+    const textos = Array.from(lines).map(el => el.textContent.replace(/\s+\n/g, ' ').trim());
+    lines.forEach(el => { el.textContent = ''; el.classList.remove('cursor'); });
+
+    let linea = 0;
+
+    function escribirSiguienteLinea(){
+      if (linea >= lines.length) return;
+      lines.forEach(el => el.classList.remove('cursor'));
+      const el = lines[linea];
+      el.classList.add('cursor');
+
+      const full = textos[linea];
+      let i = 0;
+
+      const timer = setInterval(() => {
+        el.textContent = full.slice(0, i++);
+        if (i > full.length) {
+          clearInterval(timer);
+          el.classList.remove('cursor');
+          linea++;
+          if (linea < lines.length) {
+            setTimeout(escribirSiguienteLinea, PAUSA_ENTRE_LINEAS);
+          }
+        }
+      }, 1000 / CPS);
+    }
+
+    escribirSiguienteLinea();
+  })();
+</script>
+
+<script>
+  // Preloader (única instancia)
+  (function () {
+    const pre = document.getElementById('preloader');
+
+    // Ocultar cuando la página termina de cargar
+    window.addEventListener('load', () => {
+      pre.classList.add('hide');
+    });
+
+    // Mostrar al navegar a enlaces internos (misma pestaña)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+
+      const url = a.getAttribute('href') || '';
+      const isHash = url.startsWith('#');
+      const isExternal = a.target === '_blank' || a.hasAttribute('download') ||
+                         /^mailto:|^tel:|^https?:\/\//i.test(url) && new URL(url, location.href).origin !== location.origin;
+
+      if (isHash || isExternal) return; // no interceptar anclas ni externos
+      e.preventDefault();
+
+      pre.classList.remove('hide'); // mostrar
+      setTimeout(() => { window.location.href = url; }, 900);
+    });
+
+    // Si volvemos con bfcache, asegurarse de que esté oculto
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) pre.classList.add('hide');
+    });
+  })();
+</script>
+
+<script>
+  // Reveal on scroll para las tarjetas del blog
+  (function(){
+    const cards = document.querySelectorAll('.blog-redaccion .post');
+    if(!cards.length) return;
+
+    cards.forEach((el, i) => {
+      el.style.setProperty('--d', `${(i % 2) * 100}ms`);
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    cards.forEach(el => io.observe(el));
+  })();
+</script>
+
+<script>
+  // Menú móvil + / ×
+  (function(){
+    const btn = document.querySelector('#main-header .menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const icon = btn?.querySelector('.menu-icon'); // debe empezar como '+'
+    if(!btn || !nav) return;
+
+    const lockScroll = (lock) => {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overscrollBehavior = lock ? 'contain' : '';
+    };
+
+    const setIcon = (open) => {
+      if (!icon) return;
+      icon.textContent = open ? '×' : '+';
+    };
+
+    const openNav = (open) => {
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      setIcon(open);
+
+      if (open) {
+        nav.style.maxHeight = '0px';
+        nav.hidden = false;
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = nav.scrollHeight + 'px';
+          nav.classList.add('open');
+        });
+        lockScroll(true);
+      } else {
+        nav.style.maxHeight = nav.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = '0px';
+          nav.classList.remove('open');
+        });
+        const onEnd = (e) => {
+          if (e.propertyName !== 'max-height') return;
+          if (!nav.classList.contains('open')) {
+            nav.hidden = true;
+            nav.removeEventListener('transitionend', onEnd);
+          }
+        };
+        nav.addEventListener('transitionend', onEnd);
+        lockScroll(false);
+      }
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      openNav(!isOpen);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        openNav(false);
+        btn.focus();
+      }
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      openNav(false);
+    });
+
+    const mql = window.matchMedia('(min-width: 900px)');
+    const handleChange = () => {
+      if (mql.matches) {
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+        nav.hidden = false;
+        nav.style.maxHeight = '';
+        nav.classList.remove('open');
+        lockScroll(false);
+      } else {
+        nav.hidden = true;
+        nav.style.maxHeight = '0px';
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+      }
+    };
+    mql.addEventListener ? mql.addEventListener('change', handleChange) : mql.addListener(handleChange);
+    handleChange();
+
+    // Si usas “hide on scroll”, no lo apliques con el menú abierto
+    const header = document.getElementById('main-header');
+    if (header) {
+      let lastY = window.scrollY || 0;
+      window.addEventListener('scroll', function(){
+        if (btn.getAttribute('aria-expanded') === 'true') return;
+        const y = window.scrollY || 0;
+        if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+        lastY = y < 0 ? 0 : y;
+        if (y > 60) header.classList.add('solid'); else header.classList.remove('solid');
+      }, {passive:true});
+    }
+  })();
+</script>
+
+<script>
+(function () {
+  const overlay = document.getElementById('nav-overlay');
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+
+    const href = a.getAttribute('href') || '';
+    if (!href || href.startsWith('#')) return;                         // anclas internas
+    if (a.target === '_blank' || a.hasAttribute('download')) return;   // nueva pestaña/descarga
+    if (/^mailto:|^tel:/i.test(href)) return;                          // mail/tel
+
+    const url = new URL(href, location.href);
+    if (url.origin !== location.origin) return;                        // externos
+
+    // Tapar INSTANTÁNEO y navegar
+    e.preventDefault();
+
+    // Mostrar overlay ya (sin depender de CSS externo)
+    overlay.style.display = 'flex';
+
+    // Forzar reflow y garantizar al menos un frame pintado
+    void document.body.offsetWidth;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        location.href = url.href;
+      });
+    });
+  });
+
+  // Al cargar/volver (bfcache), ocultar overlay
+  window.addEventListener('pageshow', () => {
+    overlay.style.display = 'none';
+  });
+})();
+</script>
+
+<script>
+(function() {
+  // Selecciona todos los enlaces dentro de .blog-redaccion
+  const blogLinks = document.querySelectorAll('.blog-redaccion a[href]');
+  const currentOrigin = location.origin;
+
+  blogLinks.forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#')) return; // Ignora enlaces vacíos o anclas
+
+    const url = new URL(href, currentOrigin);
+    const isExternal =
+      url.origin !== currentOrigin || /^mailto:|^tel:/i.test(href);
+
+    if (isExternal) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+
+      // Opcional: añade un pequeño icono 🔗 visual
+      a.classList.add('external-link');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

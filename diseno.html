@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lorena Gómez García | Diseño</title>
+  <link rel="icon" href="images/favicon.png.png" type="image/png">
+
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS global + CSS específico de diseño -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="diseno.css?v=1">
+</head>
+
+<body class="page-diseno">
+  <!-- OVERLAY INSTANTÁNEO (autónomo) -->
+  <div id="nav-overlay" style="position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:2147483647;">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
+      <span class="navb-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s infinite ease-in-out;"></span>
+      <span class="navb-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .15s infinite ease-in-out;"></span>
+      <span class="navb-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .3s infinite ease-in-out;"></span>
+    </div>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-busy="true">
+    <div class="dots" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <span class="sr">Cargando…</span>
+  </div>
+
+  <!-- Encabezado -->
+  <header id="main-header">
+    <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+
+    <!-- Botón móvil -->
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <span class="menu-icon" aria-hidden="true">+</span>
+    </button>
+
+   <nav id="primary-nav" class="mobile-menu" aria-label="Menú principal" hidden>
+      <a href="index.html">Home</a>
+      <a href="redaccion.html">Redacción</a>
+      <a href="fotografia.html">Fotografía</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Bloque 1: Interactivo 3D -->
+  <section class="d3-hero" id="interactivo-3D" aria-label="Escena interactiva 3D">
+    <canvas id="scene3d" aria-hidden="true"></canvas>
+    <noscript>Activa JavaScript para ver la escena interactiva.</noscript>
+  </section>
+
+  <!-- Bloque 2: Sección amarilla — Descripción de Diseño -->
+  <section class="diseno-desc" id="diseno-desc">
+    <div class="container">
+      <div class="diseno-layout">
+        <!-- TEXTO A LA IZQUIERDA -->
+        <div class="diseno-texto">
+          <h1>Servicios de diseño</h1>
+          <p class="lead">
+            <strong>Diseño multidisciplinar con enfoque estratégico.</strong> Desarrollo soluciones visuales coherentes en diferentes ámbitos —producto, interiorismo, branding y entorno digital— asegurando consistencia, detalle y valor duradero.
+          </p>
+          <p class="lead">
+            Mi trabajo <strong>conecta la funcionalidad con la emoción</strong> para construir identidades sólidas, donde cada decisión estética responde a un propósito. Este servicio es recomendable tanto para proyectos personales como portfolios como para propuestas empresariales.
+          </p>
+          <p class="lead">
+            <strong>Recuerda: el diseño es fundamental en una buena estrategia.</strong>
+          </p>
+        </div>
+
+        <!-- VISUAL A LA DERECHA -->
+        <div class="diseno-visual">
+          <div class="instrumentos">
+            <!-- Regla -->
+            <svg class="regla" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 420" aria-label="Regla">
+              <rect x="0" y="0" width="60" height="420" fill="#111"/>
+              <g stroke="#fff" stroke-width="2">
+                <line x1="0" y1="0"   x2="22" y2="0"/>
+                <line x1="0" y1="50"  x2="22" y2="50"/>
+                <line x1="0" y1="100" x2="22" y2="100"/>
+                <line x1="0" y1="150" x2="22" y2="150"/>
+                <line x1="0" y1="200" x2="22" y2="200"/>
+                <line x1="0" y1="250" x2="22" y2="250"/>
+                <line x1="0" y1="300" x2="22" y2="300"/>
+                <line x1="0" y1="350" x2="22" y2="350"/>
+                <line x1="0" y1="400" x2="22" y2="400"/>
+                <g stroke-width="1.6">
+                  <line x1="0" y1="10" x2="14" y2="10"/><line x1="0" y1="20" x2="14" y2="20"/><line x1="0" y1="30" x2="14" y2="30"/><line x1="0" y1="40" x2="14" y2="40"/>
+                  <line x1="0" y1="60" x2="14" y2="60"/><line x1="0" y1="70" x2="14" y2="70"/><line x1="0" y1="80" x2="14" y2="80"/><line x1="0" y1="90" x2="14" y2="90"/>
+                  <line x1="0" y1="110" x2="14" y2="110"/><line x1="0" y1="120" x2="14" y2="120"/><line x1="0" y1="130" x2="14" y2="130"/><line x1="0" y1="140" x2="14" y2="140"/>
+                  <line x1="0" y1="160" x2="14" y2="160"/><line x1="0" y1="170" x2="14" y2="170"/><line x1="0" y1="180" x2="14" y2="180"/><line x1="0" y1="190" x2="14" y2="190"/>
+                  <line x1="0" y1="210" x2="14" y2="210"/><line x1="0" y1="220" x2="14" y2="220"/><line x1="0" y1="230" x2="14" y2="230"/><line x1="0" y1="240" x2="14" y2="240"/>
+                  <line x1="0" y1="260" x2="14" y2="260"/><line x1="0" y1="270" x2="14" y2="270"/><line x1="0" y1="280" x2="14" y2="280"/><line x1="0" y1="290" x2="14" y2="290"/>
+                  <line x1="0" y1="310" x2="14" y2="310"/><line x1="0" y1="320" x2="14" y2="320"/><line x1="0" y1="330" x2="14" y2="330"/><line x1="0" y1="340" x2="14" y2="340"/>
+                  <line x1="0" y1="360" x2="14" y2="360"/><line x1="0" y1="370" x2="14" y2="370"/><line x1="0" y1="380" x2="14" y2="380"/><line x1="0" y1="390" x2="14" y2="390"/>
+                </g>
+              </g>
+            </svg>
+
+            <!-- Cartabón -->
+            <svg class="cartabon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" aria-label="Cartabón">
+              <defs>
+                <clipPath id="clip-banda" clipPathUnits="userSpaceOnUse">
+                  <path d="M0,240 240,240 240,0 Z
+                           M50,210 210,210 210,50 Z"
+                        fill="#000" fill-rule="evenodd"/>
+                </clipPath>
+              </defs>
+              <polygon points="0,240 240,240 240,0" fill="#111"/>
+              <polygon points="50,210 210,210 210,50" fill="#fff88a"/>
+              <g clip-path="url(#clip-banda)" stroke="#fff" stroke-linecap="butt">
+                <g stroke-width="4" transform="translate(52,188) rotate(-45)">
+                  <line x1="0"   y1="0" x2="0"   y2="-18"/>
+                  <line x1="28"  y1="0" x2="28"  y2="-18"/>
+                  <line x1="56"  y1="0" x2="56"  y2="-18"/>
+                  <line x1="84"  y1="0" x2="84"  y2="-18"/>
+                  <line x1="112" y1="0" x2="112" y2="-18"/>
+                  <line x1="140" y1="0" x2="140"  y2="-18"/>
+                </g>
+                <g stroke-width="2.6" transform="translate(52,188) rotate(-45)">
+                  <line x1="14"  y1="0" x2="14"  y2="-10"/>
+                  <line x1="42"  y1="0" x2="42"  y2="-10"/>
+                  <line x1="70"  y1="0" x2="70"  y2="-10"/>
+                  <line x1="98"  y1="0" x2="98"  y2="-10"/>
+                  <line x1="126" y1="0" x2="126" y2="-10"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 3: Tres columnas con imagen + título (disparan paneles) -->
+  <section class="diseno-triad" id="diseno-triad" aria-label="Áreas de trabajo en diseño">
+    <div class="container grid-3">
+
+      <!-- Columna 1 -->
+      <article class="diseno-card" data-target="#panel-furniture" aria-controls="panel-furniture" aria-expanded="false" tabindex="0">
+        <figure class="diseno-figure">
+          <img src="images/image8_habitatdiseño.png" alt="Mobiliario diseñado" loading="lazy">
+          <figcaption class="diseno-title">Product Design</figcaption>
+          <span class="card-chevron" aria-hidden="true">
+          <svg viewBox="0 0 36 12">
+          <!-- chevrón hacia abajo -->
+          <path d="M2 2 L18 10 L34 2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          </span>
+        </figure>
+      </article>
+
+      <!-- Columna 2 -->
+      <article class="diseno-card" data-target="#panel-web" aria-controls="panel-web" aria-expanded="false" tabindex="0">
+        <figure class="diseno-figure">
+          <img src="images/image7_webdesign.png" alt="Diseño web" loading="lazy">
+          <figcaption class="diseno-title">Diseño Web</figcaption>
+          <span class="card-chevron" aria-hidden="true">
+          <svg viewBox="0 0 36 12">
+          <!-- chevrón hacia abajo -->
+          <path d="M2 2 L18 10 L34 2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          </span>
+        </figure>
+      </article>
+
+      <!-- Columna 3 -->
+      <article class="diseno-card" data-target="#panel-pintura" aria-controls="panel-pintura" aria-expanded="false" tabindex="0">
+        <figure class="diseno-figure">
+          <img src="images/image5_cuadroportada.png" alt="Pintura" loading="lazy">
+          <figcaption class="diseno-title">Pintura</figcaption>
+          <span class="card-chevron" aria-hidden="true">
+          <svg viewBox="0 0 36 12">
+          <!-- chevrón hacia abajo -->
+          <path d="M2 2 L18 10 L34 2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          </span>
+        </figure>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Paneles expandibles -->
+  <section id="diseno-panels" class="diseno-panels" aria-label="Detalles de áreas de diseño">
+
+    <!-- Panel: Product Design -->
+    <div id="panel-furniture" class="diseno-panel" role="region" aria-labelledby="heading-furniture" hidden>
+      <div class="panel-inner">
+        <h2 id="heading-furniture">PRODUCT DESIGN</h2>
+        <p><strong>Diseño de producto</strong> desde la imaginación y la intuición visual.</p>
+        <p>Exploro ideas que nacen del <strong>boceto</strong> y evolucionan mediante <strong>herramientas digitales e inteligencia artificial</strong>, creando objetos que combinan <strong>equilibrio formal</strong>, <strong>emoción</strong> y <strong>concepto</strong>.</p>
+        <p>Se trata de un método ágil e intuitivo que garantiza rapidez y calidad. Cada propuesta busca <strong>contar una historia a través de la forma</strong> y conectar con una estética coherente, contemporánea y personal.</p>
+
+        <!-- MÉTODO — Línea animada -->
+       <section class="metodo">
+       <div class="metodo-labels">
+        <span class="metodo-label" style="--x: 50px">Idea</span>
+        <span class="metodo-label" style="--x: 300px">Boceto</span>
+        <span class="metodo-label" style="--x: 550px">Prototipo</span>
+       </div>
+
+       <svg class="metodo-svg" viewBox="0 0 600 80" preserveAspectRatio="xMidYMid meet">
+       <!-- Línea base gris -->
+       <line class="metodo-line-base" x1="50" y1="40" x2="550" y2="40" />
+
+       <!-- Línea de progreso amarilla -->
+       <line class="metodo-line-progress" x1="50" y1="40" x2="550" y2="40" />
+
+       <!-- Tres puntos -->
+        <circle class="metodo-dot" cx="50"  cy="40" r="5" />
+        <circle class="metodo-dot" cx="300" cy="40" r="5" />
+        <circle class="metodo-dot" cx="550" cy="40" r="5" />
+        </svg>
+  </section>
+
+        <div class="panel-gallery">
+          <img src="images/modalproduct1.png" alt="Producto de diseño contemporáneo">
+          <img src="images/modalproduct2.jpeg" alt="Detalle de diseño industrial">
+          <img src="images/modalproduct3.png" alt="Prototipo o maqueta de producto">
+        </div>
+
+        <!-- REVISTA -->
+        <div class="magazine">
+          <div class="mag-viewport">
+            <div class="mag-track">
+              <figure class="mag-page"><img src="images/presentacion/1.png" alt="Página 1"></figure>
+              <figure class="mag-page"><img src="images/presentacion/2.png" alt="Página 2"></figure>
+              <figure class="mag-page"><img src="images/presentacion/3.png" alt="Página 3"></figure>
+              <figure class="mag-page"><img src="images/presentacion/4.png" alt="Página 4"></figure>
+              <figure class="mag-page"><img src="images/presentacion/5.png" alt="Página 5"></figure>
+              <figure class="mag-page"><img src="images/presentacion/6.png" alt="Página 6"></figure>
+              <figure class="mag-page"><img src="images/presentacion/7.png" alt="Página 7"></figure>
+              <figure class="mag-page"><img src="images/presentacion/8.png" alt="Página 8"></figure>
+              <figure class="mag-page"><img src="images/presentacion/9.png" alt="Página 9"></figure>
+              <figure class="mag-page"><img src="images/presentacion/10.png" alt="Página 10"></figure>
+            </div>
+          </div>
+          <div class="mag-controls">
+            <button class="mag-btn" data-dir="-1" aria-label="Página anterior">‹</button>
+            <span class="mag-count"><b id="magCur">1</b>/<span id="magTot">10</span></span>
+            <button class="mag-btn" data-dir="1" aria-label="Página siguiente">›</button>
+            <button id="mag-fullscreen" class="mag-btn" aria-label="Pantalla completa">⛶</button>
+          </div>
+        </div>
+
+        <a href="https://www.instagram.com/vanlor.studio" class="btn-panel">Ver colecciones</a>
+    
+    <!-- Botón chevrón para cerrar -->
+  <button class="panel-collapse" type="button" aria-label="Cerrar sección" data-collapse-parent>
+  <svg class="chev-icon" viewBox="0 0 36 12" aria-hidden="true">
+    <path d="M2 10 L18 2 L34 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+  </div>
+    </div>
+
+
+    <!-- Panel: Diseño Web -->
+    <div id="panel-web" class="diseno-panel" role="region" aria-labelledby="heading-web" hidden>
+      <div class="panel-inner">
+        <h2 id="heading-web">DISEÑO WEB</h2>
+        <p>Desarrollo sitios web <strong>estéticos, funcionales y coherentes con la identidad visual</strong> de cada proyecto.</p>
+        <p>Ya sea para un portfolio personal, una web de negocio o una marca creativa, cuido la experiencia, el ritmo y la claridad del diseño. Estos son ingredientes básicos para atraer a tu audiencia y ofrecer tus productos con éxito.</p>
+        <p><strong>El mejor ejemplo de este trabajo es este propio portfolio, cuya creación ha supuesto <strong>una duración de dos semanas</strong>.</strong></p>
+
+        <div class="panel-gallery">
+          <img src="images/modalweb1.png" alt="Diseño web ejemplo 1">
+        </div>
+
+        <a href="index.html#contacto" class="btn-panel">Quiero información</a>
+         <!-- Chevrón de cierre DENTRO del panel -->
+    <button class="panel-collapse" type="button" aria-label="Cerrar sección" data-collapse-parent>
+      <svg class="chev-icon" viewBox="0 0 36 12" aria-hidden="true">
+        <path d="M2 10 L18 2 L34 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+      </div>
+    </div>
+
+    <!-- Panel: Pintura -->
+    <div id="panel-pintura" class="diseno-panel" role="region" aria-labelledby="heading-pintura" hidden>
+      <div class="panel-inner">
+        <h2 id="heading-pintura">PINTURA ACRÍLICA</h2>
+        <p><strong>Obras decorativas hechas a mano</strong> que combinan color, relieve y composición para generar atmósferas visuales únicas.</p>
+        <p>Cada pieza explora texturas que evocan <strong>materias orgánicas y paisajes marítimos</strong>, aportando calidez al espacio.</p>
+
+        <div class="panel-gallery">
+          <img src="images/pintura1.png" alt="Pintura contemporánea">
+          <img src="images/pintura2.png" alt="Detalle de textura pictórica">
+          <img src="images/pintura3.jpg" alt="Obra en proceso de estudio">
+        </div>
+
+        <a href="obras_disponibles.html" class="btn-panel">Obras disponibles</a>
+       <!-- Chevrón de cierre DENTRO del panel -->
+    <button class="panel-collapse" type="button" aria-label="Cerrar sección" data-collapse-parent>
+      <svg class="chev-icon" viewBox="0 0 36 12" aria-hidden="true">
+        <path d="M2 10 L18 2 L34 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Sección final: paleta rotatoria -->
+  <section class="color-rotor" aria-label="Cierre visual de diseño">
+    <div class="rotor-wrap">
+      <div class="rotor" aria-hidden="true"></div>
+      <h2>What color is your aura?</h2>
+    </div>
+  </section>
+
+  <!-- Redes -->
+  <section class="redes-contacto">
+    <div class="iconos-redes">
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/lorena-gomez-garcia" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+     <a href="https://medium.com/@litlorg" target="_blank" aria-label="Medium">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1043.63 592.71" fill="currentColor">
+    <path d="M588.67 296.35c0 163.72-131.02 296.36-293.84 296.36S1 460.07 1 296.35 132 0 294.83 0s293.84 132.63 293.84 296.35zm291.06 0c0 154.86-65.51 280.53-146.4 280.53s-146.41-125.67-146.41-280.53S611.4 15.82 732.29 15.82s147.44 125.67 147.44 280.53zM1043.63 296.35c0 142.84-20.9 258.69-46.66 258.69s-46.66-115.85-46.66-258.69 20.9-258.69 46.66-258.69 46.66 115.85 46.66 258.69z"/>
+  </svg>
+</a>
+
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Lorena Gómez García. Created with 💛.</p>
+  </footer>
+
+  <!-- Scripts (igual que tenías) -->
+  <script>
+  // Header ocultable al hacer scroll
+  (function(){
+    const header = document.getElementById('main-header');
+    if(!header) return;
+    let lastY = window.scrollY || 0;
+    window.addEventListener('scroll', function(){
+      const y = window.scrollY || 0;
+      if (y > lastY) header.classList.add('hide');
+      else header.classList.remove('hide');
+      lastY = y < 0 ? 0 : y;
+    }, {passive:true});
+  })();
+  </script>
+
+  <script>
+    // Header sólido tras scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) header.classList.add('solid');
+      else header.classList.remove('solid');
+    });
+  </script>
+
+  <!-- Preloader con duración mínima -->
+  <script>
+  (function () {
+    const pre = document.getElementById('preloader');
+    const MIN_SHOW = 400; // ms
+
+    (function ensureMinShow(){
+      try {
+        const start = Number(sessionStorage.getItem('preloaderStart') || 0);
+        const elapsed = start ? (Date.now() - start) : 0;
+        const remain = Math.max(0, MIN_SHOW - elapsed);
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            pre?.classList.add('hide');
+            sessionStorage.removeItem('preloaderStart');
+          }, remain);
+        });
+        window.addEventListener('pageshow', (e) => {
+          if (e.persisted) pre?.classList.add('hide');
+        });
+      } catch(e){}
+    })();
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+
+      const url = a.getAttribute('href') || '';
+      const isHash = url.startsWith('#');
+      const isExternal = a.target === '_blank' || a.hasAttribute('download') ||
+                         (/^mailto:|^tel:/i.test(url)) ||
+                         (/^https?:\/\//i.test(url) && new URL(url, location.href).origin !== location.origin);
+      if (isHash || isExternal) return;
+
+      e.preventDefault();
+      sessionStorage.setItem('preloaderStart', String(Date.now()));
+      pre?.classList.remove('hide');
+      setTimeout(() => { window.location.href = url; }, 100);
+    });
+  })();
+  </script>
+
+  <!-- Escena 3D -->
+  <script type="module">
+  import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+  const wrap = document.querySelector('.d3-hero');
+  const canvas = document.getElementById('scene3d');
+  if (!wrap || !canvas) { console.warn('Faltan .d3-hero o #scene3d'); }
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas, antialias: true, alpha: true, powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 1.9, 4.2);
+  camera.lookAt(0, 0, 0);
+
+  function makeEdge(geo, color = 0xeeeeee){
+    const mat = new THREE.LineBasicMaterial({ color });
+    return new THREE.LineSegments(new THREE.EdgesGeometry(geo), mat);
+  }
+
+  const group = new THREE.Group();
+  scene.add(group);
+  group.scale.set(1.40, 1.40, 1.40);
+
+  const cube = makeEdge(new THREE.BoxGeometry(1, 1, 1)); group.add(cube);
+  const cyl  = makeEdge(new THREE.CylinderGeometry(0.45, 0.45, 1.2, 24)); cyl.rotation.z = Math.PI/6; group.add(cyl);
+  const ico  = makeEdge(new THREE.IcosahedronGeometry(0.65)); group.add(ico);
+  const pyr  = makeEdge(new THREE.ConeGeometry(0.55, 1.0, 4)); pyr.rotation.y = Math.PI/4; group.add(pyr);
+
+  const mesa = new THREE.Group();
+  const tablero = makeEdge(new THREE.BoxGeometry(1.5, 0.1, 1.0)); mesa.add(tablero);
+  const pataGeo = new THREE.CylinderGeometry(0.05,0.05,0.8,8);
+  [[ -0.65,-0.45,-0.45],[ 0.65,-0.45,-0.45],[ -0.65,-0.45, 0.45],[ 0.65,-0.45, 0.45]]
+  .forEach(([x,y,z])=>{ const p=makeEdge(pataGeo); p.position.set(x,y,z); mesa.add(p);});
+  group.add(mesa);
+
+  const butaca = new THREE.Group();
+  const asiento = makeEdge(new THREE.BoxGeometry(0.9,0.15,0.9)); asiento.position.set(0,-0.2,0); butaca.add(asiento);
+  const respaldo = makeEdge(new THREE.BoxGeometry(0.9,0.7,0.1)); respaldo.position.set(0,0.15,-0.4); butaca.add(respaldo);
+  const pataGeoB = new THREE.CylinderGeometry(0.05,0.05,0.4,8);
+  [[ -0.38,-0.4,-0.38],[ 0.38,-0.4,-0.38],[ -0.38,-0.4,0.38],[ 0.38,-0.4,0.38]]
+  .forEach(([x,y,z])=>{ const p=makeEdge(pataGeoB); p.position.set(x,y,z); butaca.add(p);});
+  butaca.rotation.y = Math.PI/5; group.add(butaca);
+
+  const estanteria = new THREE.Group();
+  const marco = makeEdge(new THREE.BoxGeometry(1.2,1.8,0.3)); estanteria.add(marco);
+  const baldaGeo = new THREE.BoxGeometry(1.1,0.06,0.28);
+  [-0.6,-0.1,0.4].forEach(y=>{ const b=makeEdge(baldaGeo); b.position.y=y; estanteria.add(b);});
+  estanteria.rotation.y = -Math.PI/8; group.add(estanteria);
+
+  function layout() {
+    const w = wrap.clientWidth || window.innerWidth;
+    let S;
+    if (w >= 1600) S = 2.2;
+    else if (w >= 1400) S = 2.0;
+    else if (w >= 1100) S = 1.7;
+    else if (w >= 900)  S = 1.35;
+    else if (w >= 700)  S = 1.05;
+    else                S = 0.8;
+
+    const slots = [-2.6*S, -1.8*S, -1.0*S, -0.2*S, 0.8*S, 1.7*S, 2.6*S];
+    const z     = [-0.5, 0.2, -0.6, 0.0, 0.5, -0.3, 0.2];
+
+    cube.position.set(slots[0], 0.0, z[0]);
+    butaca.position.set(slots[1], -0.2, z[1]);
+    pyr.position.set(slots[2], 0.1, z[2]);
+    mesa.position.set(slots[3], -0.3, z[3]);
+    ico.position.set(slots[4], 0.15, z[4]);
+    cyl.position.set(slots[5], -0.05, z[5]);
+    estanteria.position.set(slots[6], -0.2, z[6]);
+
+    items.forEach(it => { it.baseX = it.mesh.position.x; it.baseZ = it.mesh.position.z; });
+
+    camera.position.z = (w >= 1400) ? 5.0 : (w >= 1100) ? 4.6 : (w >= 800) ? 4.3 : 4.0;
+    camera.lookAt(0,0,0);
+  }
+
+  const items = [
+    { mesh: cube,       baseY: 0.0,   ampY: 0.12, phase: 0.0,  radX: 0.20, radZ: 0.35, spd: 0.35 },
+    { mesh: butaca,     baseY: -0.2,  ampY: 0.09, phase: 0.8,  radX: 0.25, radZ: 0.25, spd: 0.28 },
+    { mesh: pyr,        baseY: 0.1,   ampY: 0.11, phase: 1.6,  radX: 0.22, radZ: 0.22, spd: 0.32 },
+    { mesh: mesa,       baseY: -0.3,  ampY: 0.08, phase: 2.4,  radX: 0.18, radZ: 0.28, spd: 0.26 },
+    { mesh: ico,        baseY: 0.15,  ampY: 0.14, phase: 3.2,  radX: 0.30, radZ: 0.20, spd: 0.30 },
+    { mesh: cyl,        baseY: -0.05, ampY: 0.10, phase: 4.0,  radX: 0.26, radZ: 0.26, spd: 0.33 },
+    { mesh: estanteria, baseY: -0.2,  ampY: 0.07, phase: 4.6,  radX: 0.20, radZ: 0.18, spd: 0.24 },
+  ];
+  layout();
+
+  const parallax = { x: 0, y: 0 };
+  window.addEventListener('pointermove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width  * 2 - 1;
+    const ny = (e.clientY - rect.top)  / rect.height * 2 - 1;
+    parallax.x = nx * 0.10;
+    parallax.y = ny * 0.06;
+  }, { passive: true });
+
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2(999, 999);
+  let hovered = null;
+  const HOVER_COLOR = 0xFFEE58;
+
+  function setCursor(state){ canvas.style.cursor = state ? 'pointer' : 'default'; }
+  window.addEventListener('pointermove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+  }, { passive: true });
+
+  function updateHover(){
+    raycaster.setFromCamera(mouse, camera);
+    const hits = raycaster.intersectObjects(items.map(i=>i.mesh), true);
+    const hit = hits.length ? hits[0].object : null;
+    if (hovered && hit !== hovered) {
+      hovered.scale.set(1,1,1);
+      hovered.material.color.setHex(0xeeeeee);
+      hovered = null; setCursor(false);
+    }
+    if (!hovered && hit) {
+      hovered = hit;
+      hovered.scale.set(1.08,1.08,1.08);
+      hovered.material.color.setHex(HOVER_COLOR);
+      setCursor(true);
+    }
+  }
+
+  const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  function tick(t){
+    const time = (t || performance.now()) * 0.001;
+
+    if (!reduceMotion) {
+      for (const it of items){
+        it.mesh.position.x = it.baseX + Math.sin(time * it.spd + it.phase) * it.radX;
+        it.mesh.position.z = it.baseZ + Math.cos(time * it.spd + it.phase) * it.radZ;
+        it.mesh.position.y = it.baseY + Math.sin(time * 1.3 + it.phase) * it.ampY;
+      }
+      cube.rotation.y += 0.002; cyl.rotation.x += 0.0015; ico.rotation.z += 0.001;
+      pyr.rotation.y  += 0.0012; mesa.rotation.y += 0.0008; butaca.rotation.y += 0.0009; estanteria.rotation.y += 0.0006;
+    }
+
+    const cx = 0 + parallax.x, cy = 1.9 - parallax.y;
+    camera.position.x += (cx - camera.position.x) * 0.06;
+    camera.position.y += (cy - camera.position.y) * 0.06;
+    camera.lookAt(0,0,0);
+
+    updateHover();
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  function fit(){
+    const w = wrap.clientWidth || window.innerWidth;
+    const h = wrap.clientHeight || window.innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    layout();
+  }
+  new ResizeObserver(fit).observe(wrap);
+  fit();
+
+  try {
+    const gl = renderer.getContext();
+    if (!gl) throw new Error('WebGL no disponible');
+  } catch (e) {
+    console.warn('Sin WebGL: mostrar imagen estática.');
+    canvas.style.display = 'none';
+  }
+  </script>
+
+  <!-- Menú móvil + overlay instantáneo -->
+  <script>
+  (function(){
+    const btn = document.querySelector('#main-header .menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const icon = btn?.querySelector('.menu-icon');
+    if(!btn || !nav) return;
+
+    const lockScroll = (lock) => {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overscrollBehavior = lock ? 'contain' : '';
+    };
+
+    const setIcon = (open) => { if (icon) icon.textContent = open ? '×' : '+'; };
+
+    const openNav = (open) => {
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      setIcon(open);
+
+      if (open) {
+        nav.style.maxHeight = '0px';
+        nav.hidden = false;
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = nav.scrollHeight + 'px';
+          nav.classList.add('open');
+        });
+        lockScroll(true);
+      } else {
+        nav.style.maxHeight = nav.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = '0px';
+          nav.classList.remove('open');
+        });
+        const onEnd = (e) => {
+          if (e.propertyName !== 'max-height') return;
+          if (!nav.classList.contains('open')) {
+            nav.hidden = true;
+            nav.removeEventListener('transitionend', onEnd);
+          }
+        };
+        nav.addEventListener('transitionend', onEnd);
+        lockScroll(false);
+      }
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      openNav(!isOpen);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        openNav(false);
+        btn.focus();
+      }
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      openNav(false);
+    });
+
+    const mql = window.matchMedia('(min-width: 900px)');
+    const handleChange = () => {
+      if (mql.matches) {
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+        nav.hidden = false;
+        nav.style.maxHeight = '';
+        nav.classList.remove('open');
+        lockScroll(false);
+      } else {
+        nav.hidden = true;
+        nav.style.maxHeight = '0px';
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+      }
+    };
+    mql.addEventListener ? mql.addEventListener('change', handleChange) : mql.addListener(handleChange);
+    handleChange();
+
+    const header = document.getElementById('main-header');
+    if (header) {
+      let lastY = window.scrollY || 0;
+      window.addEventListener('scroll', function(){
+        if (btn.getAttribute('aria-expanded') === 'true') return;
+        const y = window.scrollY || 0;
+        if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+        lastY = y < 0 ? 0 : y;
+        if (y > 60) header.classList.add('solid'); else header.classList.remove('solid');
+      }, {passive:true});
+    }
+  })();
+  </script>
+
+  <script>
+  (function () {
+    const overlay = document.getElementById('nav-overlay');
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+
+      const href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+      if (/^mailto:|^tel:/i.test(href)) return;
+
+      const url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
+
+      e.preventDefault();
+      overlay.style.display = 'flex';
+      void document.body.offsetWidth;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          location.href = url.href;
+        });
+      });
+    });
+
+    window.addEventListener('pageshow', () => {
+      overlay.style.display = 'none';
+    });
+  })();
+  </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards  = document.querySelectorAll('.diseno-card[data-target]');
+  const panels = document.querySelectorAll('.diseno-panel');
+
+  // Anima altura y devuelve una Promesa cuando termina
+  function setPanelHeight(panel, open){
+    return new Promise(resolve => {
+      const done = (e) => {
+        if (!e || e.propertyName === 'max-height') {
+          panel.removeEventListener('transitionend', done);
+          if (!open) panel.hidden = true;
+          resolve();
+        }
+      };
+
+      if (open) {
+        panel.hidden = false;
+        panel.classList.add('open');
+        // forzamos reflow para que la transición parta del estado actual
+        panel.style.maxHeight = '0px';
+        void panel.offsetHeight;
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        panel.addEventListener('transitionend', done);
+      } else {
+        if (panel.hidden && !panel.classList.contains('open')) return resolve();
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          panel.classList.remove('open');
+          panel.style.maxHeight = '0px';
+          panel.addEventListener('transitionend', done);
+        });
+      }
+    });
+  }
+
+  // Abre sólo el target: cierra otros, espera, abre target, espera y scroll
+  async function openOnly(targetSelector, fromHash = false) {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+
+    // 1) Cerrar los otros y esperar
+    const closers = [];
+    panels.forEach(p => {
+      const isOpenish = p.classList.contains('open') || !p.hidden;
+      if (p !== target && isOpenish) closers.push(setPanelHeight(p, false));
+    });
+    await Promise.all(closers);
+
+    // 2) Abrir el objetivo y esperar
+    await setPanelHeight(target, true);
+
+    // 3) Ajuste final de max-height (por si cambió el contenido interno)
+    target.style.maxHeight = target.scrollHeight + 'px';
+
+    // 4) Scroll preciso (después de que el layout ya está estable)
+    if (!fromHash) {
+      const header = document.getElementById('main-header');
+      const offset = (header ? header.offsetHeight : 60) + 10; // margen extra
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    // 5) Sincroniza aria-expanded en las tarjetas
+    cards.forEach(c => c.setAttribute('aria-expanded', c.getAttribute('data-target') === targetSelector ? 'true' : 'false'));
+  }
+
+  // Click / teclado en tarjetas
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const sel = card.getAttribute('data-target');
+      const panel = document.querySelector(sel);
+      const isOpen = panel && panel.classList.contains('open') && !panel.hidden && panel.style.maxHeight !== '0px';
+
+      if (isOpen) {
+        setPanelHeight(panel, false).then(() => {
+          card.setAttribute('aria-expanded', 'false');
+          history.replaceState({}, '', location.pathname + location.search);
+        });
+      } else {
+        openOnly(sel);
+        const id = sel.replace('#panel-', '');
+        history.replaceState({}, '', '#' + id);
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  // Hash deep-link (/#web, /#pintura, etc.)
+  const hashMap = {
+    'web': '#panel-web',
+    'furniture': '#panel-furniture',
+    'producto': '#panel-furniture',
+    'pintura': '#panel-pintura'
+  };
+  function handleHashOpen() {
+    const h = (location.hash || '').replace('#','');
+    if (hashMap[h]) openOnly(hashMap[h], true);
+  }
+  window.addEventListener('hashchange', handleHashOpen);
+  handleHashOpen();
+
+  // Recalcula alturas si cambia el viewport
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.querySelectorAll('.diseno-panel.open').forEach(p => {
+        p.style.maxHeight = p.scrollHeight + 'px';
+      });
+    }, 120);
+  });
+});
+</script>
+
+  <!-- Cierre con botón/chevron dentro de panel (si lo añades) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.panel-collapse[data-collapse-parent]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.closest('.diseno-panel');
+        if (!panel) return;
+        const selector = '#' + panel.id;
+        const card = document.querySelector(`.diseno-card[data-target="${selector}"]`);
+        if (card) card.click();
+        const triad = document.getElementById('diseno-triad');
+        if (triad) {
+          const y = triad.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  });
+  </script>
+<!-- Lógica del visor “revista” -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const mag = document.querySelector('.magazine');
+  if (!mag) return;
+
+  const track = mag.querySelector('.mag-track');
+  const pages = [...mag.querySelectorAll('.mag-page')];
+  const prev = mag.querySelector('.mag-btn[data-dir="-1"]');
+  const next = mag.querySelector('.mag-btn[data-dir="1"]');
+  const curEl = mag.querySelector('#magCur');
+  const totEl = mag.querySelector('#magTot');
+
+  let i = 0;
+  const N = pages.length;
+  if (totEl) totEl.textContent = N;
+
+  function go(n){
+    i = Math.max(0, Math.min(N-1, n));
+    track.style.transform = `translateX(${-i * 100}%)`;
+    if (curEl) curEl.textContent = i+1;
+  }
+
+  prev && prev.addEventListener('click', () => go(i-1));
+  next && next.addEventListener('click', () => go(i+1));
+
+  // Navegación con flechas
+  mag.tabIndex = 0;
+  mag.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') go(i+1);
+    if (e.key === 'ArrowLeft')  go(i-1);
+  });
+
+  // SWIPE en móvil
+  let startX = 0;
+  mag.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+  mag.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx > 40) go(i-1);
+    if (dx < -40) go(i+1);
+  }, {passive:true});
+
+  go(0);
+});
+</script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Cerrar panel al pulsar el chevrón con data-collapse-parent
+  document.querySelectorAll('.panel-collapse[data-collapse-parent]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const panel = btn.closest('.diseno-panel');
+      if (!panel) return;
+
+      // 1) prepara animación de cierre (desde altura actual → 0)
+      const current = panel.scrollHeight;
+      panel.style.maxHeight = current + 'px';
+      // Sincroniza un frame para que el cambio a 0 anime correctamente
+      requestAnimationFrame(() => {
+        panel.classList.remove('open');                // estado visual
+        panel.style.maxHeight = '0px';                 // dispara transición
+      });
+
+      // 2) cuando termine la transición, oculta el panel
+      const onEnd = (ev) => {
+        if (ev.propertyName !== 'max-height') return;
+        panel.hidden = true;                           // accesible fuera del flujo
+        panel.removeEventListener('transitionend', onEnd);
+      };
+      panel.addEventListener('transitionend', onEnd);
+
+      // 3) sincroniza la tarjeta vinculada (aria-expanded)
+      const sel   = '#' + panel.id;
+      const card  = document.querySelector(`.diseno-card[data-target="${sel}"]`);
+      if (card) card.setAttribute('aria-expanded', 'false');
+
+      // 4) limpia el hash de la URL (sin recargar)
+      history.replaceState({}, '', location.pathname + location.search);
+
+      // 5) scroll suave a las tarjetas
+      const triad = document.getElementById('diseno-triad');
+      if (triad) {
+        const y = triad.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+
+      // (opcional) focus de vuelta a la tarjeta tras el cierre
+      if (card) {
+        setTimeout(() => { try { card.focus({ preventScroll: true }); } catch(_){} }, 320);
+      }
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".mag-track");
+  const pages = document.querySelectorAll(".mag-page");
+  const curEl = document.getElementById("magCur");
+  const totEl = document.getElementById("magTot");
+  const btns = document.querySelectorAll(".mag-btn[data-dir]");
+  const fsBtn = document.getElementById("mag-fullscreen");
+  const magazine = document.querySelector(".magazine");
+
+  let current = 0;
+  const total = pages.length;
+  totEl.textContent = total;
+
+  function updateView() {
+    track.style.transform = `translateX(${-current * 100}%)`;
+    curEl.textContent = current + 1;
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const dir = Number(btn.dataset.dir);
+      current = Math.min(Math.max(current + dir, 0), total - 1);
+      updateView();
+    });
+  });
+
+  // Flechas del teclado ← →
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      current = Math.min(current + 1, total - 1);
+      updateView();
+    }
+    if (e.key === "ArrowLeft") {
+      current = Math.min(current - 1, total - 1);
+      updateView();
+    }
+  });
+
+  // Pantalla completa
+  fsBtn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      magazine.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  updateView();
+});
+</script>
+
+</body>
+</html>

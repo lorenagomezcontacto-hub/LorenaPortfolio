@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Lorena Gómez García</title>
+  <link rel="icon" href="images/favicon.png.png" type="image/png">
+
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="stylealbum.css"/>
+
+  <!-- Estilos específicos About -->
+  <style>
+    :root{
+      --bg:#000; --fg:#fff; --card:#fff; --ink:#111; --muted:#6b6b6b;
+      --accent:#FFEE58; --radius:16px; --shadow:0 25px 60px rgba(0,0,0,.65);
+    }
+    body{ background:#000; color:#fff; }
+
+    /* ---------------- HERO ---------------- */
+    .about-hero{
+      position: relative; z-index: 2;
+      min-height: 70svh;
+      display:grid; grid-template-columns: 1.1fr .9fr;
+      gap: clamp(20px, 4vw, 48px);
+      align-items:center;
+      padding: clamp(18px, 3.5vw, 40px) clamp(18px, 4vw, 56px);
+    }
+    .about-hero .photo{
+      border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow);
+      background:#111; aspect-ratio: 4 / 5; display:flex; align-items:center; justify-content:center;
+    }
+    .about-hero .photo img{ width:100%; height:100%; object-fit: cover; object-position: center; display:block; }
+    .about-hero .intro h1{
+      font-family: 'Urbanist', system-ui, sans-serif; font-weight: 800;
+      font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.2rem);
+      margin: 0 0 .6rem 0; letter-spacing: .5px;
+    }
+    .about-hero .intro h1 .dot{
+      display:inline-block;width:.6rem;height:.6rem;background:var(--accent);border-radius:2px;margin-left:.45rem;vertical-align:middle;
+    }
+    .about-hero .intro p.lead{
+      color:#ddd; line-height:1.5; font-size: clamp(1.05rem, .95rem + .35vw, 1.25rem);
+      margin:0 0 1.1rem 0;
+    }
+    .chips{ display:flex; flex-wrap:wrap; gap:.5rem .6rem; }
+    .chip{ background:#111; border:1px solid rgba(255,255,255,.12); color:#eee; padding:.35rem .7rem; border-radius:999px; font-size:.9rem; }
+    .cta{ margin-top: clamp(8px, 2vw, 16px); display:flex; gap:.6rem; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:#fff; color:#111; border:1px solid rgba(0,0,0,.08);
+      padding:.65rem 1rem; border-radius:12px; text-decoration:none; font-weight:700;
+      transition: transform .12s ease, background .2s ease, color .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background:#f6f6f6; }
+
+    /* Reveal */
+    .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible{ opacity:1; transform: translateY(0); }
+
+    @media (max-width: 1000px){ .about-hero{ grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce){ .reveal{ transition:none; opacity:1; transform:none; } }
+
+    /* --------------- TRAYECTORIA EN S --------------- */
+    .trayectoria-s{
+      position: relative; z-index: 1;
+      background:#000; color:#fff;
+      padding: clamp(16px,3vw,24px) 0;
+      padding-top: clamp(24px, 4vh, 80px);
+      margin-bottom: 20%;
+    }
+    .trayectoria-s .s-wrap{
+      position: relative; width: 100%;
+      height: min(1600px, 160svh);
+      overflow: hidden;
+    }
+    .trayectoria-s .s-svg{ position:absolute; inset:0; z-index:0; width:100%; height:100%; display:block; }
+    .trayectoria-s .milestone{ position:absolute; z-index:1; }
+
+    .milestone{
+      transform: translate(-50%, -50%);
+      opacity:0; filter: blur(6px);
+      transition: opacity .4s ease, filter .4s ease, transform .25s ease;
+    }
+    .milestone.visible{ opacity:1; filter: none; }
+
+    .milestone .dot{
+      width:16px; height:16px; border-radius:999px;
+      background:#FFEE58; box-shadow:0 0 0 0 rgba(255,238,88,.55);
+      display:block; margin:auto; animation: pulseDot 1.3s ease-in-out infinite;
+    }
+    @keyframes pulseDot{
+      0%{ box-shadow:0 0 0 0 rgba(255,238,88,.55) }
+      70%{ box-shadow:0 0 0 14px rgba(255,238,88,0) }
+      100%{ box-shadow:0 0 0 0 rgba(255,238,88,0) }
+    }
+
+    .milestone .card{
+      margin-top:.65rem; background:#fff; color:#111;
+      border-radius:14px; padding:.9rem 1rem; border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      width: clamp(240px, 26vw, 360px);
+    }
+    .milestone .card h4{
+      margin:0 0 .35rem 0; font-weight:800; font-size: clamp(1rem, .9rem + .4vw, 1.15rem);
+    }
+    .milestone .card h4::after{
+      content:""; display:inline-block; width:.55rem; height:.55rem; margin-left:.4rem;
+      background:#FFEE58; border-radius:2px; vertical-align:middle;
+    }
+    .milestone .card p{ margin:0; line-height:1.45; color:#333; }
+
+    .milestone:nth-child(odd) .card{ transform: translateX(-8px) }
+    .milestone:nth-child(even) .card{ transform: translateX(8px) }
+
+    @media (max-width: 900px){
+      .trayectoria-s .s-wrap{ height: 140svh; }
+      .milestone .card{ width: min(82vw, 360px); }
+    }
+
+    .trayectoria-s.debug .milestone{ opacity:1 !important; filter:none !important; }
+  </style>
+</head>
+
+<body>
+
+  <!-- OVERLAY INSTANTÁNEO (pantalla negra al navegar interno) -->
+  <div id="nav-overlay"
+       style="position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:2147483647;">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .15s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .3s infinite ease-in-out;"></span>
+    </div>
+    <style>@keyframes navb{0%,80%,100%{transform:scale(.6);opacity:.6}40%{transform:scale(1);opacity:1}}</style>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-busy="true">
+    <div class="dots" aria-hidden="true">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <span class="sr">Cargando…</span>
+  </div>
+
+  <!-- Header -->
+  <header id="main-header">
+    <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <span class="menu-icon" aria-hidden="true">+</span>
+    </button>
+
+    <nav id="primary-nav" aria-label="Menú principal" hidden>
+      <a href="index.html">Home</a>
+      <a href="redaccion.html">Redacción</a>
+      <a href="diseno.html">Diseño</a>
+      <a href="fotografia.html">Fotografía</a>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- HERO ABOUT -->
+  <section class="about-hero reveal">
+    <div class="photo">
+      <img src="images/image2_perfil.jpg" alt="Retrato de Lorena Gómez García"/>
+    </div>
+    <div class="intro">
+      <h1>Hola, soy Lorena <span class="dot"></span></h1>
+      <p class="lead">
+      <strong>Redactora | Comunicadora | Creativa</strong></p>
+      <p>Me muevo entre la narrativa, el diseño y la dirección de arte. Busco la <strong>coherencia visual</strong> y la emoción justa para equilibrar <strong>sensibilidad y técnica</strong>. 
+      </p>
+      <div class="chips">
+        <span class="chip">Redacción estratégica</span>
+        <span class="chip">Periodismo</span>
+        <span class="chip">Dirección de arte</span>
+        <span class="chip">Creación IA</span>
+        <span class="chip">Fotografía</span>
+        <span class="chip">Traducción</span>
+        <span class="chip">Marketing</span>  
+        <span class="chip">Diseño de producto</span>
+
+
+      </div>
+      <div class="cta">
+        <a class="btn" href="fotografía.html#ia">PROYECTO VISUAL</a>
+        <a class="btn" href="redacción.html#Blog">LECTURAS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRAYECTORIA EN S (scroll reveal) ========== -->
+  <section class="trayectoria-s" aria-label="Trayectoria">
+    <div class="s-wrap">
+      <!-- SVG en S como path CONTINUO (sin 'M' intermedio) -->
+      <svg class="s-svg" viewBox="0 0 1200 1400" preserveAspectRatio="none" aria-hidden="true">
+        <path id="s-path"
+              d="M 80 160
+                 C 360 40, 360 400, 600 400
+                 S 840 760, 1120 600
+                 C 880 500, 880 1020, 600 1020
+                 S 320 1140, 80 1320"
+              fill="none" stroke="rgba(255,255,255,.18)" stroke-width="8" />
+        <path id="s-path-active"
+              d="M 80 160
+                 C 360 40, 360 400, 600 400
+                 S 840 760, 1120 600
+                 C 880 500, 880 1020, 600 1020
+                 S 320 1140, 80 1320"
+              fill="none" stroke="#FFEE58" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="0 1" />
+      </svg>
+
+      <!-- Hitos -->
+      <div class="milestone" data-at="6">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h4>2021</h4>
+          <p>Grado en Periodismo.<br/>Grado en Comunicación Audiovisual.</p>
+        </article>
+      </div>
+
+      <div class="milestone" data-at="20" data-dx="-40" data-dy="20">
+        <span class="dot"></span>
+        <article class="card">
+          <h4>2020 — 2022</h4>
+          <p>Periodista | Editora en medio digital de ámbito nacional "LUH Noticias".</p>
+        </article>
+      </div>
+
+      <div class="milestone" data-at="35" data-dx="150" data-dy="-50">
+        <span class="dot"></span>
+        <article class="card">
+          <h4>2023</h4>
+          <p>Traductora e Intérprete Inglés ↔ Español.</p>
+        </article>
+      </div>
+
+      <div class="milestone" data-at="40" data-dx="-15" data-dy="80">
+        <span class="dot"></span>
+        <article class="card">
+          <h4>2020 — 2024</h4>
+          <p>Social Media Manager | Creadora de contenido.</p>
+        </article>
+      </div>
+
+      <div class="milestone" data-at="67" data-dx="-120" data-dy="60">
+        <span class="dot"></span>
+        <article class="card">
+          <h4>2023 — 2025</h4>
+          <p>Asistente de ventas en Inditex.</p>
+        </article>
+      </div>
+
+      <div class="milestone" data-at="79" data-dx="-230" data-dy="80">
+        <span class="dot"></span>
+        <article class="card">
+          <h4>2025 — actualidad</h4>
+          <p>Escritora independiente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<section class="certificados reveal" aria-label="Certificaciones">
+  <div class="cert-grid">
+    <div class="cert-item">
+      <img src="images/logourj.jpeg" alt="Logo Cert 1" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>Grado en Periodismo</h4>
+        <p>Expedición: 2021</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="cert-item">
+      <img src="images/logourj.jpeg" alt="Logo Cert 2" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>Grado en Comunicación Audiovisual</h4>
+        <p>Expedición: 2021</p>
+      </div>
+    </div>
+
+        <!-- 3 -->
+    <div class="cert-item">
+      <img src="images/microsoft_logo.jpg" alt="Logo Microsoft" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>IA Generativa — Microsoft</h4>
+        <p>Expedición: 2025</p>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="cert-item">
+      <img src="images/domestika_logo.jpg" alt="Logo Domestika" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>Dirección de Arte — Domestika</h4>
+        <p>Expedición: 2025</p>
+      </div>
+    </div>
+
+       <!-- 5 -->
+    <div class="cert-item">
+      <img src="images/logogoogle.png" alt="Logo Cert 5" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>UX Design Professional Certificate</h4>
+        <p>Expedición: 2024</p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="cert-item">
+      <img src="images/logocambridge.png" alt="Logo Cert 6" class="cert-logo"/>
+      <div class="cert-info">
+        <h4>English C1</h4>
+        <p>Expedición: 2021</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pilares" aria-label="Pilares éticos">
+  <div class="pilares-wrap"> <!-- mismo ancho que FAQ -->
+    <h3 class="pilares-title">Pilares éticos</h3>
+
+    <div class="pilares-grid">
+      <div class="pilar-box">
+        <h4>Accesibilidad</h4>
+        <p>Diseñar y comunicar para que todos puedan comprender, sentir y participar.</p> 
+        <p>Claridad en cada entrega, sin barreras innecesarias.</p>
+      </div>
+
+      <div class="pilar-box">
+        <h4>Coherencia visual</h4>
+        <p>Cada pieza debe resonar con la identidad de quien la encarga.</p> 
+        <p>La forma y el fondo avanzan juntas; la estética solo tiene sentido si comunica.</p>
+      </div>
+
+      <div class="pilar-box">
+        <h4>Responsabilidad</h4>
+        <p>Valoro los procesos sostenibles: tiempo justo, IA usada con criterio, crédito a las fuentes y respeto por la autoría y las audiencias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section reveal" aria-label="Preguntas frecuentes">
+  <div class="faq-wrap">
+    <h3 class="faq-title">Preguntas frecuentes</h3>
+
+
+
+    <details class="faq-item">
+  <summary>¿Plazos habituales?</summary>
+  <div class="answer">
+    Los tiempos varían según el tipo de proyecto, pero mantengo un ritmo ágil y realista:  
+    <br><br>
+    — <strong>Textos y redacción estratégica:</strong> entre <strong>3 y 7 días laborables</strong>, dependiendo de la extensión y la fase de documentación.<br>
+    — <strong>Dirección de arte y creación con IA:</strong> entre <strong>1 y 2 semanas</strong>, incluyendo concepto visual, generación de piezas y ajustes finales.<br>
+    — <strong>Campañas o proyectos de marketing:</strong> entre <strong>3 y 6 semanas</strong>, según la temporalidad y la cantidad de entregables.<br>
+    — <strong>Diseño web:</strong> plazos a consultar según complejidad, estructura y necesidades técnicas.<br><br>
+    Siempre priorizo la <strong>claridad en la comunicación</strong> y la <strong>entrega a tiempo</strong>, sin sacrificar detalle ni coherencia visual.
+  </div>
+</details>
+
+<details class="faq-item">
+  <summary>¿Cómo presupuestas?</summary>
+  <div class="answer">
+    Trabajo con <strong>presupuesto cerrado por proyecto</strong>, adaptado a las necesidades y alcance de cada cliente.<br><br>
+    Cada propuesta incluye los <strong>entregables definidos</strong>, <strong>dos rondas de cambios</strong> y una estimación de tiempos realista.<br><br>
+    Mantengo un enfoque transparente y sostenible: <strong>precios accesibles y justos</strong> pensados para garantizar calidad.
+  </div>
+</details>
+
+<details class="faq-item">
+  <summary>¿Derechos de uso de los trabajos?</summary>
+  <div class="answer">
+    Los proyectos se entregan con <strong>derechos de uso completos</strong> para los fines acordados en el presupuesto, sin limitaciones ocultas.<br><br>
+    El cliente puede utilizar las piezas en sus plataformas, campañas o materiales de marca de forma libre y permanente.<br><br>
+    Yo conservo únicamente los <strong>derechos de autoría</strong>, lo que me permite mostrar el trabajo en mi portfolio o redes como muestra profesional —siempre que lo permita el contexto y la confidencialidad del proyecto—.
+  </div>
+</details>
+
+  </div>
+</section>
+
+<section class="about-section reveal" aria-label="Últimas publicaciones (Instagram)">
+  <div class="card">
+
+    <!-- Grid limpio -->
+    <div id="ig-clean" class="ig-clean-grid" aria-live="polite"></div>
+
+    <div class="cta ig-follow">
+      <a class="btn btn--accent" href="https://www.instagram.com/vanlor.studio" target="_blank" rel="noopener">
+        Seguir @vanlor.studio
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Redes -->
+  <div class="redes-contacto">
+    <div class="iconos-redes">
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        </svg>
+      </a>
+      <a href="www.linkedin.com/in/lorena-gomez-garcia" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      <a href="https://medium.com/@litlorg" target="_blank" aria-label="Medium">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1043.63 592.71" fill="currentColor">
+    <path d="M588.67 296.35c0 163.72-131.02 296.36-293.84 296.36S1 460.07 1 296.35 132 0 294.83 0s293.84 132.63 293.84 296.35zm291.06 0c0 154.86-65.51 280.53-146.4 280.53s-146.41-125.67-146.41-280.53S611.4 15.82 732.29 15.82s147.44 125.67 147.44 280.53zM1043.63 296.35c0 142.84-20.9 258.69-46.66 258.69s-46.66-115.85-46.66-258.69 20.9-258.69 46.66-258.69 46.66 115.85 46.66 258.69z"/>
+  </svg>
+</a>
+
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Lorena Gómez García. Created with 💛.</p>
+  </footer>
+
+  <!-- ===== Scripts globales ===== -->
+  <script>
+  // Encabezado ocultable al hacer scroll
+  (function(){
+    const header = document.getElementById('main-header');
+    if(!header){ console.log('No se encontró #main-header'); return; }
+    let lastY = window.scrollY || document.documentElement.scrollTop || 0;
+    window.addEventListener('scroll', function(){
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+      lastY = y < 0 ? 0 : y;
+    }, {passive:true});
+  })();
+  </script>
+
+  <script>
+    const headerEl = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) headerEl.classList.add('solid');
+      else headerEl.classList.remove('solid');
+    });
+  </script>
+
+  <script>
+  (function () {
+    const pre = document.getElementById('preloader');
+    window.addEventListener('load', () => { pre.classList.add('hide'); });
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      const url = a.getAttribute('href') || '';
+      const isHash = url.startsWith('#');
+      const isExternal = a.target === '_blank' || a.hasAttribute('download') ||
+                         /^mailto:|^tel:|^https?:\/\//i.test(url) && new URL(url, location.href).origin !== location.origin;
+      if (isHash || isExternal) return;
+      e.preventDefault();
+      pre.classList.remove('hide');
+      setTimeout(() => { window.location.href = url; }, 700);
+    });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) pre.classList.add('hide'); });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    const btn = document.querySelector('#main-header .menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const icon = btn?.querySelector('.menu-icon');
+    if(!btn || !nav) return;
+
+    const lockScroll = (lock) => {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overscrollBehavior = lock ? 'contain' : '';
+    };
+    const setIcon = (open) => { if(icon) icon.textContent = open ? '×' : '+'; };
+
+    const openNav = (open) => {
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      setIcon(open);
+      if (open) {
+        nav.style.maxHeight = '0px';
+        nav.hidden = false;
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = nav.scrollHeight + 'px';
+          nav.classList.add('open');
+        });
+        lockScroll(true);
+      } else {
+        nav.style.maxHeight = nav.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          nav.style.maxHeight = '0px';
+          nav.classList.remove('open');
+        });
+        const onEnd = (e) => {
+          if (e.propertyName !== 'max-height') return;
+          if (!nav.classList.contains('open')) {
+            nav.hidden = true;
+            nav.removeEventListener('transitionend', onEnd);
+          }
+        };
+        nav.addEventListener('transitionend', onEnd);
+        lockScroll(false);
+      }
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      openNav(!isOpen);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        openNav(false); btn.focus();
+      }
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return; openNav(false);
+    });
+
+    const mql = window.matchMedia('(min-width: 900px)');
+    const handleChange = () => {
+      if (mql.matches) {
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Abrir menú');
+        setIcon(false);
+        nav.hidden = false; nav.style.maxHeight = ''; nav.classList.remove('open'); lockScroll(false);
+      } else {
+        nav.hidden = true; nav.style.maxHeight = '0px';
+        btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menú'); setIcon(false);
+      }
+    };
+    mql.addEventListener ? mql.addEventListener('change', handleChange) : mql.addListener(handleChange);
+    handleChange();
+
+    const header = document.getElementById('main-header');
+    if (header) {
+      let lastY = window.scrollY || 0;
+      window.addEventListener('scroll', function(){
+        if (btn.getAttribute('aria-expanded') === 'true') return;
+        const y = window.scrollY || 0;
+        if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+        lastY = y < 0 ? 0 : y;
+        if (y > 60) header.classList.add('solid'); else header.classList.remove('solid');
+      }, {passive:true});
+    }
+  })();
+  </script>
+
+  <!-- ===== Trayectoria en S — Script con debug ===== -->
+  <script>
+  /*
+    Trayectoria en S — v4 (con path continuo)
+    - data-at (0–100) + data-dx/dy (px)
+    - Dibujo con scroll
+    - Clamp top/left para no invadir otras secciones
+    - DEBUG para forzar visibilidad si algo falla
+  */
+  (function(){
+    const DEBUG = true; // pon a false cuando verifiques que todo ok
+
+    const wrap  = document.querySelector('.trayectoria-s .s-wrap');
+    if (!wrap) { console.error('[Trayectoria S] Falta .s-wrap'); return; }
+    if (DEBUG) wrap.closest('.trayectoria-s')?.classList.add('debug');
+
+    const svg    = wrap.querySelector('.s-svg');
+    const path   = wrap.querySelector('#s-path');
+    const active = wrap.querySelector('#s-path-active');
+    const items  = Array.from(wrap.querySelectorAll('.milestone'));
+
+    if (!svg)    console.error('[Trayectoria S] Falta .s-svg');
+    if (!path)   console.error('[Trayectoria S] Falta #s-path');
+    if (!active) console.error('[Trayectoria S] Falta #s-path-active');
+    if (items.length === 0) console.warn('[Trayectoria S] No hay .milestone');
+
+    let pathLen = 0;
+    const clampNum = (v,min,max) => Math.max(min, Math.min(max, v));
+    const clampCss = (min, val, max) => `clamp(${min}, ${val}, ${max})`;
+
+    function layout(){
+      if (!path || !active) return;
+
+      const wrapRect = wrap.getBoundingClientRect();
+      if (wrapRect.height < 200) {
+        wrap.style.height = '100svh';
+        if (DEBUG) console.warn('[Trayectoria S] Se fuerza height a 100svh.');
+      }
+
+      pathLen = path.getTotalLength();
+      active.style.strokeDasharray = `${pathLen} ${pathLen}`;
+      active.style.strokeDashoffset = pathLen;
+
+      const vb = svg.viewBox && svg.viewBox.baseVal
+        ? svg.viewBox.baseVal
+        : { x: 0, y: 0, width: svg.getBoundingClientRect().width, height: svg.getBoundingClientRect().height };
+
+      items.forEach((el, i)=>{
+        const at = clampNum(parseFloat(el.dataset.at || 0), 0, 100) / 100;
+        const pt = path.getPointAtLength(pathLen * at);
+
+        const topPct  = ((pt.y - vb.y) / vb.height) * 100;
+        const leftPct = ((pt.x - vb.x) / vb.width)  * 100;
+
+        const dx = parseFloat(el.dataset.dx || 0);
+        const dy = parseFloat(el.dataset.dy || 0);
+
+        el.style.top  = clampCss('2%',  `calc(${topPct}% + ${dy}px)`,  '98%');
+        el.style.left = clampCss('2%', `calc(${leftPct}% + ${dx}px)`, '98%');
+
+        if (DEBUG && i === 0) {
+          console.log('[Trayectoria S] Ej pos:', { at: el.dataset.at, dx, dy, top: el.style.top, left: el.style.left });
+        }
+      });
+
+      onScroll();
+    }
+
+    function getProgress(){
+      const r  = wrap.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const start = vh * 0.80, end = vh * 0.20;
+      const total = r.height + start - end;
+      const passed = clampNum(start - r.top, 0, total);
+      return total ? passed / total : 0;
+    }
+
+    function onScroll(){
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { active && (active.style.strokeDashoffset = 0); items.forEach(el => el.classList.add('visible')); return; }
+
+      const p = clampNum(getProgress(), 0, 1);
+      const drawn = pathLen * p;
+      if (active) active.style.strokeDashoffset = clampNum(pathLen - drawn, 0, pathLen);
+
+      items.forEach(el=>{
+        const at = clampNum(parseFloat(el.dataset.at || 0), 0, 100) / 100;
+        if (p >= at - 0.02) el.classList.add('visible'); else el.classList.remove('visible');
+      });
+
+      if (DEBUG && p < 0.01) {
+        clearTimeout(onScroll._t);
+        onScroll._t = setTimeout(()=>{ items.forEach(el => el.classList.add('visible')); if (active) active.style.strokeDashoffset = 0; }, 600);
+      }
+    }
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          layout();
+          window.addEventListener('scroll', onScroll, {passive:true});
+          window.addEventListener('resize', layout, {passive:true});
+          window.addEventListener('orientationchange', layout);
+        }else{
+          window.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', layout);
+          window.removeEventListener('orientationchange', layout);
+        }
+      });
+    }, {threshold: 0.05});
+    io.observe(wrap);
+
+    window.addEventListener('load', layout);
+    window.timelineLayout = layout;
+    window.timeline = (function(itemsRef){
+      return {
+        items: itemsRef,
+        nudge(i, {dx=0, dy=0}={}){ const el = itemsRef[i]; if(!el) return; el.dataset.dx = (parseFloat(el.dataset.dx||0)+dx); el.dataset.dy = (parseFloat(el.dataset.dy||0)+dy); layout(); },
+        set(i, {at, dx, dy}={}){ const el = itemsRef[i]; if(!el) return; if(at!=null) el.dataset.at = at; if(dx!=null) el.dataset.dx = dx; if(dy!=null) el.dataset.dy = dy; layout(); }
+      };
+    })(items);
+  })();
+  </script>
+
+  <!-- Reveal on scroll (hero) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.reveal');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { els.forEach(e => e.classList.add('is-visible')); return; }
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('is-visible'); obs.unobserve(en.target); }});
+      }, { threshold: .15 });
+      els.forEach(e => io.observe(e));
+    });
+  </script>
+
+  <!-- Overlay navegación instantánea -->
+  <script>
+  (function () {
+    const overlay = document.getElementById('nav-overlay');
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+      if (/^mailto:|^tel:/i.test(href)) return;
+      const url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
+      e.preventDefault();
+      overlay.style.display = 'flex';
+      void document.body.offsetWidth;
+      requestAnimationFrame(() => { requestAnimationFrame(() => { location.href = url.href; }); });
+    });
+    window.addEventListener('pageshow', () => { overlay.style.display = 'none'; });
+  })();
+  </script>
+
+<script>
+/*
+  IG Clean Cards
+  - Sin iframes. Tarjetas cuadradas con overlay y badge.
+  - Usa miniaturas locales para estética y rendimiento.
+  - Edita las rutas 'img' si cambian los nombres.
+*/
+(function(){
+  const grid = document.getElementById('ig-clean');
+  if(!grid) return;
+
+  const posts = [
+    {
+      url: 'https://www.instagram.com/p/DQeVPu9DLv5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      img: 'images/instagram1.png'
+    },
+    {
+      url: 'https://www.instagram.com/p/DQeU_nUDHaK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      img: 'images/instagram2.png'
+    },
+    {
+      url: 'https://www.instagram.com/p/DQeUbiJDDlf/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      img: 'images/instagram3.png'
+    }
+  ];
+
+  // Render
+  grid.innerHTML = posts.map(p => `
+    <figure class="ig-card">
+      <img src="${p.img}" alt="Publicación @vanlor.studio" loading="lazy" decoding="async"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+      <div class="ph" style="display:none">Cargando…</div>
+      <a href="${p.url}" target="_blank" rel="noopener" aria-label="Abrir publicación de Instagram"></a>
+      <span class="ig-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        </svg>
+        @vanlor.studio
+      </span>
+    </figure>
+  `).join('');
+})();
+</script>
+
+</body>
+</html>

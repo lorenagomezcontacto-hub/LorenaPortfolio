@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lorena Gómez García | Fotografía</title>
+  <link rel="icon" href="images/favicon.png.png" type="image/png">
+  <meta name="theme-color" content="#FFEE58">
+
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="stylealbum.css">
+
+  <!-- Correcciones puntuales (lightbox + carrusel touch + título vertical editorial) -->
+  <style>
+    /* Lightbox */
+    .lightbox{
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.88);
+      z-index: 2147483000; padding: 4vh 4vw;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-img{
+      max-width: min(1200px, 92vw);
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+      object-fit: contain;
+    }
+    .lightbox-close{
+      position: absolute; top: 12px; right: 12px;
+      width: 44px; height: 44px; border-radius: 999px;
+      background: rgba(0,0,0,.5);
+      border: 1px solid rgba(255,255,255,.45);
+      color: #fff; font-size: 28px; line-height: 1;
+      display: grid; place-items: center; cursor: pointer;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    .lightbox-close:hover{ transform: scale(1.05); background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.6); }
+
+    /* Carrusel: gesto horizontal nativo (touchpad) + snap centrado */
+    .album .viewport{
+      overflow-x: auto; overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .album .viewport::-webkit-scrollbar{ display:none; }
+    .album figure{ scroll-snap-align: center; }
+
+    /* Título vertical en EDITORIAL: margen izq del slideshow + centrado vertical + 1 línea */
+    .editorial { position: relative; }
+    .editorial h2{
+      position: absolute;
+      left: calc(50% - min(600px, 46vw)); /* margen izquierdo del slideshow (min(92vw,1200px)) */
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      transform-origin: center;
+      writing-mode: vertical-rl;
+      white-space: nowrap; /* evita que parta en 2 líneas */
+      margin: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="fotografia-page">
+  <!-- OVERLAY INSTANTÁNEO (autónomo) -->
+  <div id="nav-overlay"
+      style="position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:2147483647;">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .15s infinite ease-in-out;"></span>
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.9;animation:navb 1s .3s infinite ease-in-out;"></span>
+    </div>
+    <style>
+      @keyframes navb { 0%,80%,100%{transform:scale(0.6);opacity:.6;} 40%{transform:scale(1);opacity:1;} }
+    </style>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-busy="true">
+    <div class="dots" aria-hidden="true">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <span class="sr">Cargando…</span>
+  </div> 
+
+  <!-- Encabezado -->
+  <header id="main-header">
+    <h1 class="logo" data-short="Lorena Gómez">Lorena Gómez García</h1>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <span class="menu-icon" aria-hidden="true">+</span>
+    </button>
+    <nav id="primary-nav" aria-label="Menú principal" hidden>
+      <a href="index.html">Home</a>
+      <a href="redaccion.html">Redacción</a>
+      <a href="diseno.html">Diseño</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contacto" class="btn-contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- ===== SECCIÓN 2: Estilo editorial (slideshow 16:9) ===== -->
+  <section class="editorial" aria-label="Estilo editorial">
+    <div class="slideshow" id="slideshow">
+      <img src="images/editorial1.png" alt="Editorial 1" class="active">
+      <img src="images/editorial2.png" alt="Editorial 2">
+      <img src="images/editorial3.png" alt="Editorial 3">
+      <img src="images/editorial4.png" alt="Editorial 4">
+      <img src="images/editorial5.png" alt="Editorial 5">
+      <img src="images/editorial6.png" alt="Editorial 6">
+      <img src="images/editorial7.png" alt="Editorial 7">
+      <img src="images/editorial8.png" alt="Editorial 8">
+      <img src="images/editorial9.png" alt="Editorial 9">
+    </div>
+    <h2>Estilo editorial</h2>
+  </section>
+
+<!-- ===== SECCIÓN 3: IA Zigzag ===== -->
+<section class="ia ia-zigzag" id="ia" aria-label="IA generativa (serie en zigzag)">
+  <h2 class="ia-title">IA generativa</h2>
+  <div class="typewriter">
+  <p class="tw-line">Exploración visual de luz, materia y lenguaje a través de modelos generativos.</p>
+  <p class="tw-line">Cada imagen es el resultado de una dirección: la mirada humana que guía, corrige y decide.</p>
+  <p class="tw-line">La IA amplía las posibilidades, pero es el criterio quien define el estilo y la coherencia visual.</p>
+  </div>
+
+ <!-- IZQUIERDA → tarjeta a la derecha (con varias tomas) -->
+<article class="ia-shot left has-multi" role="group" aria-label="Pieza 4">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">
+      <img src="images/texturas4.png" alt="Serie: texturas realistas" loading="lazy">
+      <img src="images/texturas9.png" alt="Serie: texturas realistas" loading="lazy">
+      <img src="images/texturas3.png" alt="Serie: texturas realistas" loading="lazy">
+      <img src="images/texturas1.png" alt="Serie: texturas realistas" loading="lazy">
+      <img src="images/texturas2.png" alt="Serie: texturas realistas" loading="lazy">
+      <img src="images/texturas5.png" alt="Serie: texturas realistas" loading="lazy">
+
+
+
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 3</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>TEXTURAS REALISTAS</h3>
+    <p class="prompt">Recreación avanzada de materiales y superficies con precisión fotográfica. La inteligencia generativa permite ajustar el nivel de detalle, reflejos y rugosidad para que cada textura aporte verosimilitud e identidad a la imagen.</p>
+    <ul class="meta">
+      <li>raw</li><li>stylize 50</li><li>ar 16:9</li>
+    </ul>
+  </aside>
+</article>
+
+ <!-- DERECHA → tarjeta a la izquierda -->
+<article class="ia-shot right" role="group" aria-label="Pieza 2">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">
+      <img src="images/iaproduct1.png" alt="Retrato barroco con flores — toma A" loading="lazy">
+      <img src="images/estilos3.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/estilos7.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/estilos5.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/estilos6.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/estilos2.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+
+
+
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 2</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>ESTILOS ESPECÍFICOS</h3>
+    <p class="prompt">
+      Adaptación visual a cualquier lenguaje estético —minimalista, orgánico, editorial, contemporáneo o clásico— mediante prompts controlados y dirección artística guiada. Ideal para mantener coherencia en campañas o líneas de producto.
+    </p>
+    <ul class="meta">
+      <li>–style raw</li>
+      <li>f/ 2.8</li>
+      <li>ISO 100</li>
+    </ul>
+  </aside>
+</article>
+
+<!-- IZQUIERDA → tarjeta a la derecha -->
+<article class="ia-shot left" role="group" aria-label="Pieza 3">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">
+      <img src="images/ia3.png" alt="Arquitectura brutalista en niebla — toma A" loading="lazy">
+      <img src="images/productos2.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/producto4.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/producto5.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/producto3.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+      <img src="images/producto6.png" alt="Retrato barroco con flores — toma B" loading="lazy">
+
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 2</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>PRODUCTOS QUE ATRAEN</h3>
+    <p class="prompt">
+      Creación de visuales con alto impacto comercial y emocional. Cada composición está diseñada para maximizar la atención y el deseo, optimizando factores como ángulo, iluminación, fondo y storytelling visual.
+    </p>
+    <ul class="meta">
+      <li>–style raw</li>
+    </ul>
+  </aside>
+</article>
+
+ <!-- DERECHA → tarjeta a la izquierda -->
+<article class="ia-shot right" role="group" aria-label="Pieza 2">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">
+      <img src="images/espacios2.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/espacios.png" alt="Retrato barroco con flores — toma A" loading="lazy">
+      <img src="images/espacios1.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/espacios3.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/espacios4.png" alt="Serie: espacios IA" loading="lazy"> 
+      <img src="images/espacios5.png" alt="Serie: espacios IA" loading="lazy">
+        
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 2</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>AMBIENTES INMERSIVOS</h3>
+    <p class="prompt">
+      Diseño de escenarios que evocan sensaciones y contexto, combinando iluminación ambiental, escala y atmósfera para generar profundidad visual. Perfecto para renders publicitarios, catálogos o experiencias virtuales.
+    </p>
+    <ul class="meta">
+      <li>–style raw</li>
+      <li>–v 7</li>
+    </ul>
+  </aside>
+</article>
+  
+ <!-- IZQUIERDA → tarjeta a la derecha (con varias tomas) -->
+<article class="ia-shot left has-multi" role="group" aria-label="Pieza 4">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">          
+      <img src="images/marca2.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/marca6.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/marca3.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/marca4.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/marca7.png" alt="Serie: espacios IA" loading="lazy">
+      <img src="images/marca5.png" alt="Serie: espacios IA" loading="lazy">
+
+
+
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 3</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>COHERENCIA VISUAL DE MARCA</h3>
+    <p class="prompt">Directrices cromáticas, tipográficas y conceptuales que garantizan uniformidad visual en todos los soportes. Cada imagen mantiene la esencia y valores de marca, asegurando consistencia en campañas integradas.</p>
+    <ul class="meta">
+      <li>raw</li><li>stylize 50</li><li>ar 16:9</li>
+    </ul>
+  </aside>
+</article> 
+
+<!-- DERECHA → tarjeta a la izquierda -->
+<article class="ia-shot right" role="group" aria-label="Pieza 5">
+  <div class="ia-frame" aria-live="polite">
+    <div class="stack">
+      <img src="images/emociones1.png" alt="Serie: atelier — toma A" loading="lazy">
+      <img src="images/emociones2.png" alt="Serie: atelier — toma B" loading="lazy">
+      <img src="images/emociones8.png" alt="Serie: atelier — toma B" loading="lazy">
+      <img src="images/emociones7.png" alt="Serie: atelier — toma B" loading="lazy">
+      <img src="images/emociones4.png" alt="Serie: atelier — toma B" loading="lazy">
+      <img src="images/emociones9.png" alt="Serie: atelier — toma B" loading="lazy">
+
+
+    </div>
+
+    <!-- navegación local de la serie -->
+    <button class="nav prev" aria-label="Foto anterior" title="Anterior">❮</button>
+    <button class="nav next" aria-label="Foto siguiente" title="Siguiente">❯</button>
+    <div class="count" aria-hidden="true">1 / 2</div>
+  </div>
+
+  <aside class="ia-card" aria-hidden="true">
+    <h3>EMOCIONES TRADUCIDAS EN IMÁGENES</h3>
+    <p class="prompt">Uso estratégico de luz, color y composición para proyectar valores intangibles —calidez, serenidad, innovación, exclusividad—. La IA se dirige con sensibilidad estética para transformar emociones en impacto visual tangible.</p>
+    <ul class="meta">
+      <li>–ar 3:2</li><li>–style raw</li><li>–q 2</li>
+    </ul>
+  </aside>
+</article>
+
+</section>
+
+  <!-- ===== SECCIÓN 1: Álbum Fujifilm X-E3 (carrusel) ===== -->
+  <section class="album" aria-label="Álbum de fotografía">
+    <div class="album-reveal">
+      <h2>Álbum Fujixilm X-E3</h2>
+
+      <div class="viewport" id="viewport">
+        <div class="track" id="track" aria-live="polite">
+          <figure class="slide Vertical">
+            <img src="images/albumf1.JPG" alt="foto Vertical">
+            <figcaption><span class="badge">A Coruña, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf7.JPG" alt="foto Vertical">
+            <figcaption><span class="badge">Praia das Catedrais, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf3.JPG" alt="foto Vertical">
+            <figcaption><span class="badge">Manacor, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf4.JPG" alt="Fotografía Vertical">
+            <figcaption><span class="badge">Altea, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf5.JPG" alt="Fotografía Vertical">
+            <figcaption><span class="badge">Altea, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf6.JPG" alt="Fotografía Vertical">
+            <figcaption><span class="badge">A Coruña, España</span><span class="badge">2025</span></figcaption>
+          </figure> 
+
+          <figure class="slide Horizontal">
+            <img src="images/albumf2.JPG" alt="foto Horizontal">
+            <figcaption><span class="badge">Oleiros, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Horizontal">
+            <img src="images/albumf8.JPG" alt="foto Horizontal">
+            <figcaption><span class="badge">Asturias, España</span><span class="badge">2025</span></figcaption>
+          </figure>
+
+          <figure class="slide Vertical">
+            <img src="images/albumf9.JPG" alt="Fotografía Vertical">
+            <figcaption><span class="badge">Asturias, España</span><span class="badge">2025</span></figcaption>
+          </figure> 
+
+          <figure class="slide Vertical">
+            <img src="images/albumf10.JPG" alt="Fotografía Vertical">
+            <figcaption><span class="badge">Ferrol, España</span><span class="badge">2025</span></figcaption>
+          </figure> 
+        </div>
+      </div>
+
+      <!-- Flechas -->
+      <div class="nav" aria-hidden="false">
+        <button class="arrow prev" id="prev" aria-label="Foto anterior" title="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
+        <button class="arrow next" id="next" aria-label="Foto siguiente" title="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Contador -->
+      <div class="counter" id="counter">1 / 6</div>
+    </div>
+  </section>
+
+  <!-- Redes -->
+  <div class="redes-contacto">
+    <div class="iconos-redes">
+      <a href="https://www.instagram.com/lorenagmzz" target="_blank" aria-label="Perfil personal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/vanlor.studio" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        </svg>
+      </a>
+      <a href="www.linkedin.com/in/lorena-gomez-garcia" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      <a href="https://medium.com/@litlorg" target="_blank" aria-label="Medium">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1043.63 592.71" fill="currentColor">
+    <path d="M588.67 296.35c0 163.72-131.02 296.36-293.84 296.36S1 460.07 1 296.35 132 0 294.83 0s293.84 132.63 293.84 296.35zm291.06 0c0 154.86-65.51 280.53-146.4 280.53s-146.41-125.67-146.41-280.53S611.4 15.82 732.29 15.82s147.44 125.67 147.44 280.53zM1043.63 296.35c0 142.84-20.9 258.69-46.66 258.69s-46.66-115.85-46.66-258.69 20.9-258.69 46.66-258.69 46.66 115.85 46.66 258.69z"/>
+  </svg>
+</a>
+
+      <a href="mailto:lorenagomezcontacto@gmail.com" aria-label="Correo electrónico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Lorena Gómez García. Created with 💛.</p>
+  </footer>
+
+  <!-- Lightbox / Modal imagen -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Cerrar (Esc)">×</button>
+    <img class="lightbox-img" alt="">
+  </div>
+
+  <!-- ===== Scripts ===== -->
+
+  <!-- Encabezado ocultable al hacer scroll -->
+  <script>
+    (function(){
+      const header = document.getElementById('main-header');
+      if(!header){ console.log('No se encontró #main-header'); return; }
+      let lastY = window.scrollY || document.documentElement.scrollTop || 0;
+      window.addEventListener('scroll', function(){
+        const y = window.scrollY || document.documentElement.scrollTop || 0;
+        if (y > lastY) header.classList.add('hide'); else header.classList.remove('hide');
+        lastY = y < 0 ? 0 : y;
+      }, {passive:true});
+    })();
+  </script>
+
+  <script>
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) header.classList.add('solid');
+      else header.classList.remove('solid');
+    });
+  </script>
+
+  <!-- Carrusel (centra slide, flechas, teclado, swipe) -->
+  <script>
+  (function(){
+    const viewport = document.querySelector('.album #viewport');
+    const slides   = viewport?.querySelectorAll('.slide') || [];
+    const prevBtn  = document.getElementById('prev');
+    const nextBtn  = document.getElementById('next');
+    const counter  = document.querySelector('.album #counter');
+    if (!viewport || !slides.length) return;
+
+    let index = 0;
+
+    function centerSlide(idx, smooth = true){
+      const slide = slides[idx];
+      if (!slide) return;
+
+      const vRect = viewport.getBoundingClientRect();
+      const sRect = slide.getBoundingClientRect();
+      const deltaLeft = sRect.left - vRect.left;
+      const targetLeft = viewport.scrollLeft + deltaLeft - (viewport.clientWidth/2 - slide.clientWidth/2);
+
+      viewport.scrollTo({ left: targetLeft, behavior: smooth ? 'smooth' : 'auto' });
+      if (counter) counter.textContent = `${idx + 1} / ${slides.length}`;
+    }
+
+    function go(delta){
+      index = (index + delta + slides.length) % slides.length;
+      centerSlide(index, true);
+    }
+
+    prevBtn?.addEventListener('click', () => go(-1));
+    nextBtn?.addEventListener('click', () => go(1));
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft')  go(-1);
+    });
+
+    /* SOLO PARA MÓVIL: swipe suave + tap estilo stories */
+(function(){
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (!isTouch) return; // ← en escritorio no hacemos nada
+
+  let startX = 0;
+  let startTime = 0;
+
+  viewport.addEventListener('pointerdown', e => {
+    startX = e.clientX;
+    startTime = Date.now();
+  }, {passive:true});
+
+  viewport.addEventListener('pointerup', e => {
+    const dx = e.clientX - startX;
+    const dt = Date.now() - startTime;
+    const abs = Math.abs(dx);
+
+    // Swipe rápido
+    if (abs > 40 && dt < 350) {
+      go(dx < 0 ? 1 : -1);
+      return;
+    }
+
+    // Tap → mitad izquierda / derecha
+    if (abs < 10) {
+      const medio = viewport.clientWidth / 2;
+      if (e.clientX > medio) go(1);
+      else go(-1);
+    }
+  }, {passive:true});
+})();
+
+    // Inicial
+    centerSlide(index, false);
+  })();
+  </script>
+
+  <!-- Slideshow automático (Estilo editorial) -->
+  <script>
+    (function(){
+      const slides = document.querySelectorAll('#slideshow img');
+      if (!slides.length) return;
+      let index = 0;
+      setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+      }, 3000);
+    })();
+  </script>
+
+  <!-- Preloader clásico -->
+  <script>
+    (function () {
+      const pre = document.getElementById('preloader');
+      window.addEventListener('load', () => { pre.classList.add('hide'); });
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('a'); if (!a) return;
+        const url = a.getAttribute('href') || '';
+        const isHash = url.startsWith('#');
+        const isExternal = a.target === '_blank' || a.hasAttribute('download') ||
+                           (/^mailto:|^tel:|^https?:\/\//i.test(url) && new URL(url, location.href).origin !== location.origin);
+        if (isHash || isExternal) return;
+        e.preventDefault();
+        pre.classList.remove('hide');
+        setTimeout(() => { window.location.href = url; }, 600);
+      });
+      window.addEventListener('pageshow', (e) => { if (e.persisted) pre.classList.add('hide'); });
+    })();
+  </script>
+
+  <!-- Reveal on scroll: contenido del álbum -->
+  <script>
+  (function(){
+    const wrap = document.querySelector('.album .album-reveal');
+    if (!wrap) return;
+    const slides = wrap.querySelectorAll('.track .slide');
+    slides.forEach((el, i) => { el.style.transitionDelay = `${0.08 * i}s`; });
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => { if (entry.isIntersecting){ wrap.classList.add('is-visible'); obs.unobserve(entry.target); } });
+    }, { root: null, rootMargin: '0px 0px -15% 0px', threshold: 0.15 });
+    io.observe(wrap);
+  })();
+  </script>
+
+  <!-- Menú móvil -->
+  <script>
+  (function(){
+    const btn = document.querySelector('#main-header .menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const icon = btn?.querySelector('.menu-icon');
+    if(!btn || !nav) return;
+
+    const lockScroll = (lock) => {
+      document.documentElement.style.overflow = lock ? 'hidden' : '';
+      document.body.style.overscrollBehavior = lock ? 'contain' : '';
+    };
+
+    const setIcon = (open) => { if (icon) icon.textContent = open ? '×' : '+'; };
+
+    const openNav = (open) => {
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      setIcon(open);
+      if (open) {
+        nav.style.maxHeight = '0px'; nav.hidden = false;
+        requestAnimationFrame(() => { nav.style.maxHeight = nav.scrollHeight + 'px'; nav.classList.add('open'); });
+        lockScroll(true);
+      } else {
+        nav.style.maxHeight = nav.scrollHeight + 'px';
+        requestAnimationFrame(() => { nav.style.maxHeight = '0px'; nav.classList.remove('open'); });
+        const onEnd = (e) => { if (e.propertyName === 'max-height' && !nav.classList.contains('open')) { nav.hidden = true; nav.removeEventListener('transitionend', onEnd); } };
+        nav.addEventListener('transitionend', onEnd); lockScroll(false);
+      }
+    };
+
+    btn.addEventListener('click', () => { const isOpen = btn.getAttribute('aria-expanded') === 'true'; openNav(!isOpen); });
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { openNav(false); btn.focus(); } });
+
+    nav.addEventListener('click', (e) => { const a = e.target.closest('a'); if (!a) return; openNav(false); });
+
+    const mql = window.matchMedia('(min-width: 900px)');
+    const handleChange = () => {
+      if (mql.matches) { btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menú'); setIcon(false); nav.hidden = false; nav.style.maxHeight = ''; nav.classList.remove('open'); lockScroll(false); }
+      else { nav.hidden = true; nav.style.maxHeight = '0px'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menú'); setIcon(false); }
+    };
+    mql.addEventListener ? mql.addEventListener('change', handleChange) : mql.addListener(handleChange);
+    handleChange();
+  })();
+  </script>
+
+  <!-- Scroll suave a anclas con offset de header fijo -->
+  <script>
+  (function () {
+    const header = document.getElementById('main-header');
+    const getHeaderH = () => (header ? header.getBoundingClientRect().height : 0);
+    const isSamePage = (a) => { const u = new URL(a.href, location.href); return u.pathname === location.pathname && u.search === location.search; };
+
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href]'); if (!a) return;
+      const href = a.getAttribute('href'); if (!href) return;
+      const url = new URL(href, location.href); const hash = url.hash;
+      if (!hash || !isSamePage(a)) return;
+
+      const id = hash.slice(1); const target = document.getElementById(id); if (!target) return;
+      e.preventDefault(); e.stopPropagation();
+      const y = target.getBoundingClientRect().top + window.pageYOffset - getHeaderH() - 8;
+      history.pushState({}, "", hash);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      const btn = document.querySelector('#main-header .menu-toggle[aria-expanded="true"]');
+      if (btn) btn.click();
+    }, { capture: true });
+
+    window.addEventListener('load', function () {
+      if (!location.hash) return;
+      const id = location.hash.slice(1); const target = document.getElementById(id); if (!target) return;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - getHeaderH() - 8;
+      window.scrollTo(0, y);
+    });
+  })();
+  </script>
+
+  <!-- Overlay instantáneo al navegar -->
+  <script>
+  (function () {
+    const overlay = document.getElementById('nav-overlay');
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+      if (/^mailto:|^tel:/i.test(href)) return;
+      const url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
+
+      e.preventDefault();
+      overlay.style.display = 'flex';
+      void document.body.offsetWidth;
+      requestAnimationFrame(() => { requestAnimationFrame(() => { location.href = url.href; }); });
+    });
+    window.addEventListener('pageshow', () => { overlay.style.display = 'none'; });
+  })();
+  </script>
+  
+  <script>
+(function(){
+  const SEL_ALBUM_IMGS = '.album .track figure img';
+  const SEL_ALBUM_FIGS = '.album .track figure';
+  const SEL_EDITORIAL  = '.editorial .slideshow img';
+
+  let allImgs = [];
+  let currentIndex = 0;
+  let navEnabled = false; // ← solo true para el carrusel
+
+  function buildAlbumList(){
+    allImgs = Array.from(document.querySelectorAll(SEL_ALBUM_IMGS));
+    navEnabled = true;
+  }
+
+  function openLightbox(src, alt, index){
+    currentIndex = index ?? 0;
+
+    const overlay = document.createElement('div');
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+    Object.assign(overlay.style, {
+      position:'fixed', inset:'0', background:'rgba(0,0,0,.88)',
+      display:'flex', alignItems:'center', justifyContent:'center',
+      zIndex:'2147483646', padding:'3vh 3vw'
+    });
+
+    const img = new Image();
+    img.alt = alt || '';
+    Object.assign(img.style, {
+      maxWidth:'92vw', maxHeight:'92vh', width:'auto', height:'auto',
+      objectFit:'contain', borderRadius:'12px', boxShadow:'0 10px 40px rgba(0,0,0,.6)', display:'block'
+    });
+
+    const btn = document.createElement('button');
+    btn.setAttribute('aria-label','Cerrar (Esc)');
+    btn.textContent = '×';
+    Object.assign(btn.style, {
+      position:'absolute', top:'12px', right:'12px',
+      width:'44px', height:'44px', borderRadius:'999px',
+      background:'rgba(0,0,0,.5)', border:'1px solid rgba(255,255,255,.45)',
+      color:'#fff', fontSize:'28px', lineHeight:'1',
+      display:'grid', placeItems:'center', cursor:'pointer', zIndex:'1'
+    });
+
+    overlay.appendChild(img);
+    overlay.appendChild(btn);
+    document.body.appendChild(overlay);
+
+    const prevOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+
+    function close(){
+      document.removeEventListener('keydown', onKey);
+      overlay.remove();
+      document.documentElement.style.overflow = prevOverflow || '';
+      navEnabled = false; // resetea navegación
+    }
+
+    function changeImage(delta){
+      if (!navEnabled || allImgs.length === 0) return;
+      currentIndex = (currentIndex + delta + allImgs.length) % allImgs.length;
+      const el = allImgs[currentIndex];
+      const newSrc = el.getAttribute('data-full') || el.currentSrc || el.src;
+      const newAlt = el.alt || '';
+      img.src = newSrc; img.alt = newAlt;
+    }
+
+    function onKey(e){
+      if (e.key === 'Escape') close();
+      if (navEnabled && e.key === 'ArrowLeft')  changeImage(-1);
+      if (navEnabled && e.key === 'ArrowRight') changeImage(1);
+    }
+
+    btn.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', onKey);
+
+    img.src = src;
+  }
+
+  // Delegación global de clics
+  document.addEventListener('click', (e) => {
+   // Detectar móvil / táctil
+const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+// 1) Carrusel: clic en la foto
+const fig = e.target.closest(SEL_ALBUM_FIGS);
+if (fig) {
+
+  // ✅ EN MÓVIL → NO abrir lightbox (para que funcione el swipe/tap)
+  if (isTouch) {
+    e.preventDefault();
+    return;
+  }
+
+  // 🖥️ Escritorio → sí abrir lightbox
+  e.preventDefault();
+  const img = fig.querySelector('img');
+  if (!img) return;
+  buildAlbumList();
+  const index = allImgs.indexOf(img);
+  const src = img.getAttribute('data-full') || img.currentSrc || img.src;
+  const alt = img.alt || '';
+  openLightbox(src, alt, index);
+  return;
+}
+
+    // 2) Editorial: abre SIN navegación
+    const edImg = e.target.closest(SEL_EDITORIAL);
+    if (edImg) {
+      e.preventDefault();
+      navEnabled = false; // ← explícito
+      const src = edImg.getAttribute('data-full') || edImg.currentSrc || edImg.src;
+      const alt = edImg.alt || '';
+      openLightbox(src, alt, 0);
+    }
+  });
+})();
+</script>
+
+<script>
+/* ===== IA Zigzag: entrada, hover/touch de tarjeta, alternancia de lados ===== */
+(function(){
+  // 1) Intersección: animar cada shot al entrar en viewport
+  const shots = document.querySelectorAll('.ia-zigzag .ia-shot');
+  if (shots.length){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-in'); });
+    }, { threshold: 0.25 });
+    shots.forEach(s => io.observe(s));
+  }
+
+  // 2) Alternar automáticamente lados si faltan clases .left/.right
+  const items = [...shots];
+  items.forEach((el, i) => {
+    if (!el.classList.contains('left') && !el.classList.contains('right')) {
+      el.classList.add(i % 2 === 0 ? 'left' : 'right');
+    }
+  });
+
+  // 3) Tarjeta: comportamiento distinto en touch vs desktop
+  const isTouchEnv = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (isTouchEnv) {
+    // Tap sobre un shot: alterna .show-card en ese shot y cierra otros
+    document.addEventListener('pointerup', (e) => {
+      if (!e.isPrimary) return;
+      const shot = e.target.closest('.ia-shot');
+      if (!shot) return;
+
+      const already = shot.classList.contains('show-card');
+      document.querySelectorAll('.ia-shot.show-card').forEach(el => el.classList.remove('show-card'));
+      if (!already) shot.classList.add('show-card');
+    });
+
+    // Tap fuera: cerrar cualquier tarjeta abierta
+    document.addEventListener('pointerup', (e) => {
+      if (!e.isPrimary) return;
+      if (e.target.closest('.ia-shot')) return;
+      document.querySelectorAll('.ia-shot.show-card').forEach(el => el.classList.remove('show-card'));
+    });
+  }
+
+  // En desktop: limpiar estados al entrar/salir con el ratón
+  shots.forEach(shot => {
+    shot.addEventListener('mouseenter', () => {
+      if (!isTouchEnv) shot.classList.remove('show-card');
+    });
+    shot.addEventListener('mouseleave', () => {
+      shot.classList.remove('show-card');
+      shot.blur(); // evita que :focus-within mantenga la tarjeta visible
+    });
+  });
+})();
+
+/* ===== IA Zigzag: navegación de series múltiples (flechas / teclado / swipe) ===== */
+(function(){
+  const multiShots = document.querySelectorAll('.ia-zigzag .ia-shot');
+
+  multiShots.forEach(shot => {
+    const frame = shot.querySelector('.ia-frame');
+    const stack = shot.querySelectorAll('.stack img');
+    if (!frame || !stack.length) return;
+
+    let idx = 0;
+    const prevBtn = shot.querySelector('.nav.prev');
+    const nextBtn = shot.querySelector('.nav.next');
+    const counter = shot.querySelector('.count');
+
+    // Si solo hay una imagen, activa y pinta contador
+    if (stack.length === 1) {
+      stack[0].classList.add('is-active');
+      if (counter) counter.textContent = '1 / 1';
+      return;
+    }
+
+    // Estado inicial
+    stack.forEach((img, i) => img.classList.toggle('is-active', i === 0));
+    updateCounter();
+
+    function show(newIndex){
+      idx = (newIndex + stack.length) % stack.length;
+      stack.forEach((img, i) => img.classList.toggle('is-active', i === idx));
+      updateCounter();
+    }
+    function updateCounter(){
+      if (counter) counter.textContent = `${idx + 1} / ${stack.length}`;
+    }
+
+    prevBtn?.addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+    nextBtn?.addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
+
+    // Teclado cuando el shot tiene foco
+    shot.setAttribute('tabindex', '0');
+    shot.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); show(idx - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+    });
+
+    // Swipe horizontal sobre el frame
+    let startX = null, startY = null;
+    frame.addEventListener('touchstart', e => {
+      const t = e.touches[0]; startX = t.clientX; startY = t.clientY;
+    }, {passive:true});
+
+    frame.addEventListener('touchend', e => {
+      if (startX == null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
+        dx < 0 ? show(idx + 1) : show(idx - 1);
+      }
+      startX = startY = null;
+    }, {passive:true});
+  });
+})();
+</script>
+
+<script>
+  // Typewriter
+  (function(){
+    const CPS = 65;                 // caracteres por segundo
+    const PAUSA_ENTRE_LINEAS = 600; // ms entre párrafos
+
+    const lines = document.querySelectorAll('.typewriter .tw-line');
+    if (!lines.length) return;
+
+    const textos = Array.from(lines).map(el => el.textContent.replace(/\s+\n/g, ' ').trim());
+    lines.forEach(el => { el.textContent = ''; el.classList.remove('cursor'); });
+
+    let linea = 0;
+
+    function escribirSiguienteLinea(){
+      if (linea >= lines.length) return;
+      lines.forEach(el => el.classList.remove('cursor'));
+      const el = lines[linea];
+      el.classList.add('cursor');
+
+      const full = textos[linea];
+      let i = 0;
+
+      const timer = setInterval(() => {
+        el.textContent = full.slice(0, i++);
+        if (i > full.length) {
+          clearInterval(timer);
+          el.classList.remove('cursor');
+          linea++;
+          if (linea < lines.length) {
+            setTimeout(escribirSiguienteLinea, PAUSA_ENTRE_LINEAS);
+          }
+        }
+      }, 1000 / CPS);
+    }
+
+    escribirSiguienteLinea();
+  })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector('.album .album-reveal');
+  if (!target) return;
+
+  // Si el usuario prefiere menos movimiento, muéstralo sin animar
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    target.classList.add('is-visible');
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target); // solo una vez
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.15  // aparece cuando ~15% es visible
+  });
+
+  io.observe(target);
+});
+</script>
+
+</body>
+</html>

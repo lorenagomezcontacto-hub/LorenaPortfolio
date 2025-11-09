@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HOM — Minimal / Arquitectura</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="homedemo1.css" />
+</head>
+<body>
+
+  <!-- Header minimal sin links funcionales -->
+  <header class="site-header" aria-label="Cabecera principal">
+    <div class="container">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Interiorismo Warlem</span>
+      </div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <span class="nav-link">Proyectos</span>
+        <span class="nav-link">Estudio</span>
+        <span class="nav-link">Servicios</span>
+        <span class="nav-link accent">Contacto</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero sobrio -->
+  <section class="hero" aria-label="Sección de apertura">
+    <div class="container">
+      <h1 class="hero-title">TU ESTILO,<br>NUESTRO DISEÑO</h1>
+      <p class="hero-sub">Interiorismo de autor para quienes valoran la excelencia</p>
+      <div class="hero-cta">
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque imagen destacada (marco blanco con bordes finos) -->
+<section class="feature-image fade-slider">
+  <div class="slider">
+    <div class="slide"><img src="images/interiorismoimage1.jpg" alt="Imagen 1"></div>
+    <div class="slide"><img src="images/interiorismoimage2.jpg" alt="Imagen 2"></div>
+    <div class="slide"><img src="imagen3.jpg" alt="Imagen 3"></div>
+  </div>
+</section>
+
+
+  <!-- Grid de piezas (3 tarjetas) -->
+  <section class="grid-works" aria-label="Selección de trabajos">
+    <div class="container works">
+      <article class="card">
+        <figure class="card-media">
+          <div class="ph-img"></div>
+        </figure>
+        <h3 class="card-title">Galería longitudinal</h3>
+        <p class="card-meta">Hormigón visto · Roble blanqueado</p>
+      </article>
+
+      <article class="card">
+        <figure class="card-media">
+          <div class="ph-img"></div>
+        </figure>
+        <h3 class="card-title">Volumen silencioso</h3>
+        <p class="card-meta">Textura de cal · Latón envejecido</p>
+      </article>
+
+      <article class="card">
+        <figure class="card-media">
+          <div class="ph-img"></div>
+        </figure>
+        <h3 class="card-title">Luz rasante</h3>
+        <p class="card-meta">Lamas cerámicas · Piedra caliza</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Frase de cierre -->
+  <section class="quote" aria-label="Cita editorial">
+    <div class="container">
+      <blockquote>
+        <p>“Menos no es vacío: es precisión.”</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Footer mínimo -->
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="container">
+      <small>© 2025 Studio. Todas las imágenes son mockups de demostración.</small>
+    </div>
+  </footer>
+
+</body>
+</html>
